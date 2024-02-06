@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="593d5c76-5d66-426a-b914-9181466ed54a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/LinkListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MergeSortedArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Palindrome.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReverseSentence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/LinkListTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Linklist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/MergeSortedArray.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Node.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Palindrome.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ReverseSentence.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/StreamToSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +40,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Palindrome">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ayush\OneDrive - Singapore Life\study\test_01" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.StreamToSum">
     <configuration name="LinkListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LinkListTest" />
       <module name="test_01" />
@@ -83,8 +74,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StreamToSum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="StreamToSum" />
+      <module name="test_01" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StreamToSum" />
         <item itemvalue="Application.Palindrome" />
         <item itemvalue="Application.LinkListTest" />
         <item itemvalue="Application.ReverseSentence" />
