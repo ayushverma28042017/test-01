@@ -1,9 +1,15 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+
+// Stram > filter > map> flatmap> sort >> teminla(Collect
 public class StreamToSum {
     public static void main(String[] args) {
-        sumArray();
+//        sumArray();
 
 //        findAverage();
 //        doSqueareFileAverage();
@@ -11,13 +17,18 @@ public class StreamToSum {
 //        findNumerStarWith2();
 //        duplicate();
 //        maxMin();
-        sort();
+//        sort();
+//        skip();
+//        print();
+        sum();
     }
 
     static void sumArray() {
         int a[] = {1, 2, 3, 4, 5};
         OptionalInt res = Arrays.stream(a).reduce((i, j) -> i + j);
+        int result = Arrays.stream(a).sum();
         System.out.println(res.getAsInt());
+        System.out.println(result);
     }
 
     static void findAverage() {
@@ -60,7 +71,8 @@ public class StreamToSum {
 
     static void duplicate() {
         List<Integer> data = Arrays.asList(2, 3, 7, 8, 9, 4, 3, 2, 6, 7, 1);
-        Set<Integer> res = data.stream().filter(e -> Collections.frequency(data, e) > 1).collect(Collectors.toSet());
+        Set<Integer> res = data.stream().filter(e -> Collections.frequency(data, e) > 1)
+                .collect(Collectors.toSet());
         System.out.println(res);
     }
 
@@ -81,4 +93,43 @@ public class StreamToSum {
         System.out.println("Reverse  is:" + reverse);
 
     }
+
+    static void skip() {
+        List<Integer> data = Arrays.asList(2, 3, 7, 8, 9, 4, 3, 2, 6, 7, 1);
+        List<Integer> res = data.stream().sorted().collect(Collectors.toList());
+
+        List<Integer> result = data.stream().skip(3).filter(i -> i> 4).collect(Collectors.toList());
+        System.out.println("result is:" + result);
+
+
+    }
+
+    static void print() {
+        List<Integer> data = Arrays.asList(2, 3, 7, 8, 9, 4, 3, 2, 6, 7, 1);
+        List<Integer> res = data.stream().sorted().collect(Collectors.toList());
+
+        data.stream().forEach(i->System.out.println("print each "+i));
+
+//        System.out.println("result is:" + result);
+
+
+    }
+
+    static void sum() {
+        int [] data ={1,2,3,4,5};
+        int result = Arrays.stream(data).sum();
+        OptionalDouble avg = Arrays.stream(data).average();
+        System.out.println("Sum "+ result);
+        System.out.println("Average "+avg);
+
+
+
+    }
+    static void readFileAsStream() throws IOException {
+        Stream<String> data;
+        data = Files.lines(Paths.get("ayush.txt"));
+        data.filter(i-> i.length() >10).sorted().forEach(x -> System.out.println(x));
+        data.close(); // prevent memory leak
+    }
+
 }
