@@ -1,0 +1,85 @@
+----------------
+
+We’re a passionate team on a mission to change how money moves around the world. Our venture is all about making international payments faster, cheaper, and more reliable. We're looking for a founding technology leader who is comfortable getting their hands dirty in building a solution that uses engineering to solve problems while also building scale.
+
+Responsibilities?
+
+In this role, you will:
+
+Pilot- develop a robust tech infrastructure capable of handling growth and scale.
+Cultivate Innovation- lead a team dedicated to continuous product enhancement while maintaining core stability.
+Simplify Integration- create user-friendly solutions for payment initiators and Web3 participants.
+Expand Horizons- adapt our core solution to new markets and verticals.
+Fuel Growth- play a key role in future fundraising and strategic planning.
+
+
+Attributes?
+
+You should have:
+
+Proven experience in building scalable B2B/B2C payment platforms, preferably in both Web2 and Web3 ecosystems.
+A track record of growing teams from the ground up, particularly in high-transaction environments.
+Experience in the Middle East and/or Philippines markets is a plus.
+Expertise in high-frequency/algo trading, FX market tools, remittance, and payout products.
+Proficiency in C, Java, Rust, and a strong understanding of NodeJS.
+
+----------------------------
+Web2, representing the current state of the internet with centralized services and applications, has a different set of security challenges compared to Web3, which is characterized by decentralized architectures, blockchain technology, and a strong emphasis on user privacy and ownership
+
+
+In episode six of the podcast, we talk to Parin Mehta, former Managing Director for APAC at Airbnb and current Venture Partner at Menyala, about the intimidating topic of career transitions.
+
+
+Changing careers can be daunting, especially if you have invested a significant amount of time and effort in your current one. That process requires us to leave our comfort zone.
+
+
+We use the Learning Zone Model to illustrate the various "zones" outside our "comfort zone": the "fear" zone, "learning" zone, and lastly, the "growth" zone.
+
+
+Parin uses his own career change journey from Airbnb to Menyala as an example of how he left his comfort zone, braved through the fear zone, embraced the learning zone and moved to the growth zone; breaking through each zone in order to reach the next level.
+
+Value Proposition:
+ -Builders at Core
+ - Strong Leadership
+ - Focus on Value Creation
+ - Operations as a Service
+
+
+Payment and transactions: General
+	Singlife  - PayNow
+	FAST
+	GIRO
+	eGIRO
+	Cheque
+	Telegraphic Transfer
+	Demand Draft
+
+
+Cross Border Payments
+	UnionPay
+	Alipay+
+	DuitNow
+	PromptPay
+	QRIS
+
+GIRO is an automated electronic payment service which allows you to make monthly payments to your favourite billing organisations, thereby eliminating the hassle of performing ad-hoc payments every time you receive your bill.
+
+
+eGIRO is a paperless automated electronic payment service that only takes minutes to set up. It allows you to make monthly payments to participating billing organisations, thereby eliminating the hassle of performing ad-hoc payments every time you receive your bill.
+
+PayNow is a service that allows you to send to and receive money using a mobile number, Singapore NRIC, Foreign Identification Number (FIN), Unique Entity Number (UEN) or Virtual Payment Address (VPA) without having to know the recipient's account number.
+
+PayNow service is available to sl CUSTOMER holders as we are one of the 9 participating banks for PayNow service. The participating banks are:
+
+
+Can I transfer money from a PayNow participating bank to a non-PayNow participating bank?
+No. PayNow only enables funds transfer between participating banks. Funds between a participating and non-participating bank can be transferred via other channels such as FAST or Interbank GIRO.
+
+There is no service fee imposed for using PayNow.
+
+Can I use PayNow to transfer money to a bank account overseas? no PayNow can only be used for Singapore Dollar funds transfers between participating banks.
+
+Is sending money secure via PayNow?
+Yes, PayNow is secured and adopts the same high security standards established by the banking industry in Singapore for funds transfer.
+
+

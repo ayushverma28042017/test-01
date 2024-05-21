@@ -1,0 +1,44 @@
+need to do:
+-EBS portal change for eDDA
+- Resource utilization issue
+- Direct sales
+- Affinity connect
+ - other open issues
+ - tagging resources
+ - MPGS sertificate issue
+ - 
+ 
+ 
+ 
+ 
+ - to address the challenge faced by our existing MINDEF-MHA and Employee Benefits customers, who need guidance to make informed financial independence and freedom decisions. 
+ 
+ - platform workers and other individuals who need guidance to make informed financial independence and freedom decisions. '''
+ 
+ - proposed solution is to offer a pre-login product and a discovery experience that allows users to easily access their existing benefits and upgrade options without needing passwords or manual identification
+ 
+ - usage tracking dashboard.
+ 
+ - OpenAI API on Azure with the compliance, regional support, and enterprise-grade security that Azure offers
+ 
+ -Tokens per Minute Rate Limit (thousands): 120
+Rate limit (Tokens per minute): 120000
+Rate limit (Requests per minute): 720
+
+
+- Financial advisro will fincical reivew for you.
+- National database if you are well cover as per you age: 
+- safeguard >sensitive , confidential and propritery data 
+-Cost for Llama2 on OCI 2 USD per hour per core
+- Llama2 : pathcing and upgrading
+
+- "We have consider all security and governace that is required , like no PII data is being used, not sensitive dta is being pass to LLM Model
+data is fully secure in transit and at rest  , and have a gatwaay too to handle Ddos and MIMA attackss.
+
+- I appreciate your time and attention during the presentation. It was a pleasure showcasing 
+- gneration next word based on trained on data set > gnerating soe new , next word
+- Model are coslty coz: size, compute, tuning, inference, deployment,hosting
+-addign 1k of labled data sources> prompt tuning, 
+
+
+

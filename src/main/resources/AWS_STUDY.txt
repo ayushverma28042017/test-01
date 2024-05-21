@@ -1,0 +1,187 @@
+AWS lambda security :
+ AWS Well-Architected and the Six Pillars
+   - Operational Excellence Pillar :  running and monitoring systems
+   - Security Pillar :protecting information and systems
+   - Reliability Pillar :workloads performing their intended functions and how to recover quickly from failure to meet demands
+   - Performance Efficiency Pillar:The performance efficiency pillar focuses on structured and streamlined allocation of IT and computing resources
+   - Cost Optimization Pillar: avoiding unnecessary costs.
+   - Sustainability Pillar:minimizing the environmental impacts of running cloud workloads.
+   
+   
+  What: 
+   - AWS Lambda is an event-driven, serverless compute service that extends other AWS services with custom logic, or creates other backend services that operate with scale, performance, and security.
+   -  Lambda runs code on a highly available compute infrastructure and performs all the administration of the underlying platform, including server and operating system maintenance, capacity provisioning and automatic scaling, patching, code monitoring, and logging
+   
+   - how to run: based on events:
+     -HTTP req from amazon api
+	 - Amazon s3
+	 - table update in dynamo db
+	 - SQS, SNS, cloud watch LOGS ND EVENTS ,, event bridge, step funciton,kINESIS DATA STEAM
+	 
+    - Lambda can also be conﬁgured to access resources within your Amazon Virtual Private Cloud, and by extension, your on-premises resources.
+	- You can easily wrap up Lambda with a strong security posture using AWS Identity and Access Management (IAM), 
+   BENEFITS:
+     - No servers to manage
+	 - Continuous scaling, Millisecond metering,Increases innovation
+	 - Modernize your applications,
+   SECURITY : 
+     AMAZON: AWS manages the underlying infrastructure and foundation services, the operating system, and the application platform
+	 PROGRAMER: responsible for the security of your code and AWS IAM to the Lambda service and within your function.
+	 Data privacy:
+	    -  Encryption at rest, customer managed AWS Key Management Service (AWS KMS) key, encryption in transit, access control, General Data Protection Regulation (GDPR) compliance
+		- 
+	- Lambda functions deployed as container images are encrypted using an AWS Lambda-managed KMS key. If a customer-managed KMS key is provided through the CreateFunction or UpdateFunctionConfiguration APIs, that key is used instead of a Lambda-managed KMS key. When the function container images are stored in Amazon Elastic Container Registry (Amazon ECR), customers are responsible for protecting their images in ECR.
+	
+	- Security in transit
+	 - Lambda uses Transport Layer Security (TLS) 1.2+ for all public APIs. All communications are protected by TLS 1.2+ when you manage Lambda resources through the AWS Management Console, the AWS SDK, or the Lambda API
+	 - Operational security
+	  -customer privacy, human access is disabled on hosts running customers’ Lambda functions
+	 - Vulnerability management
+		- Code releases go through security review and penetration testing. All technology stacks are regularly scanned for vulnerabilities
+	 - Trusted code execution
+	   - Lambda provides a code signing feature to ensure only trusted code is run in your Lambda function.
+	- ambda supports two types of code resources: functions and layers.
+		- A function is a resource which can be invoked to run your code in Lambda
+		- A function can include a common or shared resource called Layers. Layers can be used to share common code or data across diﬀerent functions or AWS accounts
+		- You can manage access to your functions and layers through AWS Lambda policies, or through resource-based permissions
+	- Lambda invoke modes
+	 - The Invoke API can be called in two modes: event mode and request-response mode.
+		- Event mode queues the payload for an asynchronous invocation.
+		- Request-response mode synchronously invokes the function with the provided payload and returns a response immediately.
+		- user >ALB>invoke service> Lambda wrker >Friecracker VM . in invokde sevie is down, it will Quere the req
+		- Queued events are retrieved in batches by Lambda’s poller ﬂeet
+		
+		- When an event fails all processing attempts, it is discarded by Lambda../The dead letter queue (DLQ) feature allows sending unprocessed events from asynchronous invocations to an Amazon SQS queue or an Amazon SNS topic defined by the customer
+	- When Lambda runs a function on your behalf, it manages both provisioning and conﬁguring the underlying systems necessary to run your code.
+	- he Lambda service is split into the control plane and the data plane
+	  -control plane: 
+	     -The control plane provides the management APIs (for example, CreateFunction, UpdateFunctionCode, PublishLayerVersion, and so on), and manages integrations with all AWS services. Communications to the Lambda control plane are protected in-transit by TLS
+	   - Date palne: 
+	    - The data plane is Lambda's invoke API that cues the invocation of Lambda functions. When a Lambda function is invoked, the data plane allocates an execution environment on an AWS Lambda Worker (or simply worker, a type of Amazon EC2 instance) to that function version, or chooses an existing execution environment that has already been set up for that function version
+		
+	-  What this means is that one invoke may leave a state that may aﬀect the next invoke (for example, ﬁles written to /tmp or data in-memory). If you want to ensure that one invoke cannot aﬀect another invoke, we recommend that you create additional distinct functions.
+	
+	- SnapStart is a performance optimization feature in Lambda to reduce a Java function's startup latency, commonly known as cold start time. 
+	- Upon concurrency scale-ups, Lambda clones this snapshotted sandbox and resumes the function execution from the pre-initialized state. SnapStart is currently supported with the Java11 runtime.
+	-LATENCY: CODE LEEL OR NETWRK, IF CODE 
+	- If you want to prevent certain data from being stored in a snapshot, use a beforeCheckpoint runtime hook to delete the data before Lambda creates the snapshot.
+	- Execution environments are never reused across diﬀerent function versions or customers, but a single environment can be reused between invocations of the same function version. 
+	-functions can take advantage of this behavior to improve eﬃciency by keeping and reusing local caches or long-lived connections between invocations.
+	- The Lambda team uses Amazon Inspector to discover known security issues, as well as other custom security issues notiﬁcation mechanisms and pre-disclosure lists to ensure that our runtime languages and execution environment remain patched.
+	
+	- monitoring:
+	  - cLOUDWATCH :  it reports metrics such as the number of requests, the execution duration per request, and the number of requests resulting in an error.
+	  cLOUD RAIL :implement governance, compliance, operational auditing, and risk auditing of your entire AWS account, including Lambda.
+	     -CloudTrail enables you to log, continuously monitor, and retain account activity related to actions across your AWS infrastructure, providing a complete event history of actions taken through the AWS Management Console, AWS SDKs, command line tools, and other AWS services
+	  x-rAY :analyze and debug production and distributed Lambda-based applications
+	  aws CONFIG :track conﬁguration changes to the Lambda functions.
+	  
+	 WS Lambda oﬀers a powerful toolkit for building secure and scalable applications.
+	 
+	 -----------------------------------------------------------------------------------------------------------------------------------
+	 ecr:
+	 - Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that is secure, scalable, and reliable. Amazon ECR supports private repositories with resource-based permissions using AWS IAM.
+	 
+	 - Components of Amazon ECR
+	  -Registry :provided to each AWS account; you can create one or more repositories in your registry and store images in them
+	  -Authorization token:client must authenticate to Amazon ECR registries as an AWS user before it can push and pull images
+	  -Repository: ontains your Docker images, Open Container Initiative (OCI) images, and OCI compatible artifacts
+	  - Repository policy: You can control access to your repositories and the images within them with repository policies. 
+	  - Image: You can push and pull container images to your repositorie
+	  
+	  
+	  --------------------------------------------------------------------------------------------------------------------------------------
+	  
+	  ECS:
+	  
+	   - highly scalable and fast container management service
+	   - You can use it to run, stop, and manage containers on a cluster
+	   - containers are defined in a task definition that you use to run an individual task or task within a service. 
+	   - a service is a configuration that you can use to run and maintain a specified number of tasks simultaneously in a cluster
+	   - tasks and services on a serverless infrastructure that's managed by AWS Fargate
+	   - Amazon ECS provides the following features:
+			- A serverless option with AWS Fargate
+			- Integration with AWS Identity and Access Management (IAM)
+			- AWS managed container orchestration. 
+			- Continuous integration and continuous deployment (CI/CD). 
+			- Support for service discovery
+			- Support for sending your container instance log information to CloudWatch Logs.
+		There are two models that you can use to run your containers:
+			- Fargate launch type - This is a serverless pay-as-you-go option. You can run containers without needing to manage your infrastructure.
+			- EC2 launch type - Configure and deploy EC2 instances in your cluster to run your containers
+		
+		Fargate launch type is suitable for the following workloads:
+			- Large workloads that need to be optimized for low overhead
+			- Small workloads that have occasional burst
+			- Tiny workloads
+			- Batch workloads
+		EC2 launch type is suitable for the following workloads:
+			- Workloads that require consistently high CPU core and memory usage
+			- Large workloads that need to be optimized for price
+			- Your applications need to access persistent storage
+			- You must directly manage your infrastructure
+		
+		Access Amazon ECS:
+		  - AWS Management Console 
+		  - AWS Command Line Interface (AWS CLI) 
+		  - AWS SDKs
+		  - Amazon ECS CLI
+		  - AWS CDK
+		  - AWS Copilot
+	 PRICIG:  Amazon ECS pricing depends on whether you use AWS Fargate or Amazon EC2 infrastructure to host your containerized workloads
+	    
+		- Billing and Cost Management Dashboard 
+		
+		
+  -----------------------------------------------------------------------------------------------------------------------------------------------
+  
+  AWS RDS:
+  
+	- is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. I
+	- It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.
+	
+	- Amazon EC2 and on-premises databases
+	   - Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster.
+	   - for DB:  you assume full responsibility for the server, operating system, and software.
+	   - user manager: HA,scaling,db s/w install,backup,pathcing,app optimizaiton
+	- Amazon RDS and Amazon EC2
+	  - Amazon RDS is a managed database service.
+	  -  Amazon RDS frees you to focus on your application and your users.
+	  - except applitction optimization, all will be handled by AWS
+	  - u can use db product : MariaDB, Microsoft SQL Server, MySQL, Oracle, and PostgreSQL
+	  - manages backups, software patching, automatic failure detection, and recovery.
+	  - turn on automated backups, or manually create your own backup snapshots. 
+	  - get high availability with a primary instance and a synchronous secondary instance that you can fail ove
+	  - he security in your database package, you can help control who can access your RDS databases.
+	  
+	- Amazon RDS Custom for Oracle and Microsoft SQL Server
+	  - Amazon RDS Custom is an RDS management type that gives you full access to your database and operating system.
+	
+	- DB instance: A DB instance is an isolated database environment in the AWS Cloud. 
+	- DB Engine: DB engine is the specific relational database software that runs on your DB instance. eg: mariaDB,<ySQl, Postgres
+	- DB instance classes:determines the computation and memory capacity of a DB instance.
+	-  db.m6g is a general-purpose DB instance type powered by AWS Graviton2 processors.
+	
+	- DB instance storage
+      - Amazon EBS provides durable, block-level storage volumes that you can attach to a running instance. 
+	  - Genral purpose(SSD) , Provisioned IOPS(PIOPS), Magnetic
+	- You can run a DB instance on a virtual private cloud (VPC) using the Amazon Virtual Private Cloud (Amazon VPC) service.
+	-  You can choose your own IP address range, create subnets, and configure routing and access control lists.
+	- Amazon RDS uses Network Time Protocol (NTP) to synchronize the time on DB Instances.
+	- 
+	
+    AWS Regions and Availability Zones
+	    - data center location(Norht americal,europe,asia) is called an AWS Region.
+		- Each AWS Region contains multiple distinct locations called Availability Zones, or AZs. 
+		- By launching instances in separate Availability Zones, you can protect your applications from the failure of a single location
+		- You can run your DB instance in several Availability Zones, an option called a Multi-AZ deployment
+		- DB instance is replicated across Availability Zones,helps provide data redundancy and failover support, eliminate I/O freezes, and minimize latency spikes during system backups. 
+		-  
+	SECURITY: A security group controls the access to a DB instance. It does so by allowing access to IP address ranges or Amazon EC2 instances that you specify.
+	
+	How to work with Amazon RDS
+		- AWS Management console
+		- CLI
+		- Progamming uising sdk
+	PRICING: When you use Amazon RDS, you can choose to use on-demand DB instances or reserved DB instances.
+	

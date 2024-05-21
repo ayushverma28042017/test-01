@@ -1,0 +1,69 @@
+
+Artificial intelligence as a scientific discipline emerged just after World War II with the advent of digital computers.
+Progress in AI was slow until the 21st century, particularly around 2005 when machine learning gained prominence.
+Machine learning, a class of AI techniques, became practical and useful, especially for solving real-world problems.
+Alan Turing's face is used as an example for facial recognition, a classic AI application.
+Supervised learning is explained, emphasizing the importance of training data in teaching AI systems.
+Classification tasks, such as recognizing faces, became powerful with machine learning, particularly around 2012.
+Neural networks, inspired by the structure of animal brains, are essential for machine learning tasks.
+The explanation of how neural networks work involves recognizing simple patterns in input data.
+The rise of AI in recent years is attributed to scientific advances, big data availability, and affordable computing power.
+The Transformer Architecture, introduced in the paper "Attention is All You Need," revolutionized large language models.
+GPT-3, released in 2020, is highlighted for its unprecedented scale, featuring 175 billion parameters and trained on 500 billion words of text.
+GPT-3's capabilities surpass previous AI systems, marking a significant step change in AI development.
+The training data for GPT-3 includes scraping text from the entire worldwide web, emphasizing the need for vast amounts of data.
+GPT-3 is described as a powerful auto-complete system, predicting the next likely word or phrase given a prompt.
+The bitter truth in AI progress is noted, where significant advances often come from throwing more data and compute power at the problem.
+Symbolic AI, focused on modeling conscious mental processes, contrasts with big AI, which views intelligence as a data-driven problem.
+Common sense reasoning tasks, previously challenging for AI, are now achievable with large language models like GPT-3.
+Examples of common sense reasoning questions and correct answers are provided, showcasing GPT-3's surprising capabilities.
+
+
+
+
+
+In this segment, the speaker discusses various issues and challenges related to language models, particularly focusing on GPT-3 and ChatGPT. Here are the key points covered:
+
+Understanding Limitations:
+
+The speaker emphasizes that these language models, including ChatGPT, were not specifically trained to understand certain concepts, such as the meaning of "taller than."
+The training process involves massive amounts of data, and the models often generate answers that might seem correct but lack true understanding.
+Emergent Capabilities:
+
+The emergence of capabilities not explicitly trained for is highlighted as a significant development in AI research.
+The speaker refers to this as an "extraordinary time to be an AI researcher," with newfound possibilities and challenges.
+Introduction of ChatGPT:
+
+ChatGPT is presented as a polished and improved version of GPT-3, maintaining the same underlying technology but with enhancements for accessibility and usability.
+Issues with the Technology:
+
+The speaker discusses problems like the models getting things wrong, often in plausible ways, leading to potential misinformation.
+Guardrails are mentioned as attempts to prevent the generation of inappropriate or harmful content, but their imperfections are acknowledged.
+Bias and Toxicity:
+
+The absorption of content from platforms like Reddit, which may contain toxic content, raises concerns about bias and toxicity in the language models.
+Guardrails are implemented to mitigate these issues, but the challenges of filtering such content persist.
+Copyright and Intellectual Property Concerns:
+
+The models absorb large amounts of copyrighted material, raising issues of intellectual property infringement.
+Instances of generating text that mirrors copyrighted works, including potential legal implications, are discussed.
+Interpolation vs. Extrapolation:
+
+The speaker illustrates a video showing a Tesla's AI misinterpreting stop signs on a truck, emphasizing that neural networks struggle with situations outside their training data.
+Types of General AI:
+
+Different versions of general AI are discussed, ranging from a fully capable AI as a human to more specialized language-based tasks.
+The potential for augmented large language models, combining GPT-3 with specialized subroutines, is considered as an intermediate step.
+Shift in Goalposts for General AI:
+
+The speaker suggests that the definition of general AI may have shifted over time, with current discussions possibly focusing more on practical language-based capabilities.
+In summary, the speaker provides insights into the capabilities, challenges, and potential future developments of language models like GPT-3 and ChatGPT, addressing issues related to understanding, bias, toxicity, copyright, and the broader landscape of general AI.
+
+
+In this segment, the speaker discusses the future of large language models and their limitations in achieving general intelligence. The speaker emphasizes that the transformer architecture, commonly used in language models, may not be the key to achieving overall intelligence, especially in addressing robotics problems. The dimensions of human intelligence are explored, distinguishing between mental capabilities (in blue) and physical actions (in red). The state of the art in machine intelligence is assessed, indicating progress in natural language processing but highlighting gaps in other areas.
+
+The discussion then shifts to the topic of machine consciousness. The speaker mentions a claim by a Google engineer about a language model being sentient, expressing awareness and emotions. The speaker refutes this claim, asserting that current technology, including large language models like ChatGPT, lacks true consciousness. The complexity of understanding consciousness, described as the "hard problem" in cognitive science, is acknowledged, and the speaker concludes that the current AI technology is not conscious and that creating conscious machines remains an unsolved challenge.
+
+
+
+
