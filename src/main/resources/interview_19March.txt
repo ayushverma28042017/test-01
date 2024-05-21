@@ -1,0 +1,276 @@
+
+
+OpenShift
+	-is a platform that allows you to run containerized applications and workloads
+    -powered by Kubernetes under the covers.
+	-open source project that actually powers OpenShift is called OKD
+	-advantage of public or private resources for running OpenShift::bare metal or virtualized hardware
+	- (public,private)> REDHAT OS > KUBERNITICS>OKT>Oenshit
+	-web console and  CLI,facade on top of Kubernetes
+	-create a project and an application::CLI or Web  > push code in git>trigger webhook,jenkin job, >create docker img> fish to registry(private/public)
+	- image streams> for any change in img> deploy v2>
+	-you to push those with no downtime to applications
+	- make infrastructure is healthy and appliction avalible
+	-process of scaling up a new host and adding it into the cluster: use Ansible playbook
+
+TekTon:
+	- Knative build project:origin by google, tekton is open src
+	-Ci/CD : vendor neutral
+	- goal: specify the api, provide kubernitc build project
+	- dashbroad, wbook, clim , catalog, of best preacitve
+	-STEP: 
+		img:
+		run:
+		arg: 
+		crd: extend kubernic capnaited
+	PIPLELINE >>collection of TASK:> can run serial or parrlal >>STEP
+	> teckton:dashboard: ui> create webhook,
+	>TKN: teckton cli > manage resource
+
+----------Hibernate----------------
+save(): reutnr primany key of obj// time mroe as ti need to return idenfier
+persist(): return void ;// only bounday of tranactoin // fast as compare with save()
+
+JDBC VS hibername:
+	-DB independed :hibernate:genrate query on runtime based on dialct, just change dialect frm mysql to oracle
+	- doestno support caching:-1 level session , 2- session factory cachine
+	-ORM> map resulst set to obj ,coonection pooling in hibernate C3PO
+	-hibernate: lazy loading, jdbs: load all data query ,
+	-HBM file, reuntiem tak care of closiing and opening of connection
+	-jdbs is technoloyg, hibernat eis orm frm wrk
+get() vs load()
+	-get() come after load(),get() return null, load return objectnotfound excpetion is thrown
+	- get() always hit DB, load()dont hit everytime
+	- ger(): null or fully iniliaze obj, load() proxy object: proxy: dummy object with id propery is set and other property si null
+	- get()less performace, load()better perormace
+first level cache:
+	-session cahce:mandatory ,enable by defult,not possibel to diable
+	- associatined with session object: created form session factory> if session cloese, all obj in cache is removed
+	- evict(), remove object from session, clear cache clear();remove all the object form cache
+Secoudn level cache:
+	-sessionfactory scope: creat here, avaliable for all session create from SF, if SF get close, all cache will die
+	- load in entity> look in frist leve>then look in secound, if there put in session cache > den in DB and store in both in secoudn elvel and 1 level
+	=-EH cahche is deafult, oracle coherace.. entirer app nto for session
+ORM:
+	-Java obj> table, properrtiy> column, obj data> row data
+	- maintian, vendur indepenet, producitvety, reduce dev time, 
+	-
+-------------BATHC SERVICE---------------------------------
+Amazon SQS (Simple Queue Service):
+
+	- Amazon SQS is a fully managed message queuing service provided by AWS for decoupling and scaling microservices and distributed systems.
+	- It offers reliable, scalable, and cost-effective message queuing with features like message deduplication, dead-letter queues, and FIFO (First-In-First-Out) ordering.
+	- SQS integrates seamlessly with other AWS services and supports both standard and FIFO queues for different messaging requirements.
+RabbitMQ:
+
+	- RabbitMQ is an open-source message broker that implements the Advanced Message Queuing Protocol (AMQP) for reliable, asynchronous communication.
+	- It offers features such as message routing, delivery acknowledgment, message persistence, and clustering for high availability and fault tolerance.
+	- RabbitMQ supports various messaging patterns, including point-to-point, publish-subscribe, and request-reply, making it suitable for a wide range of use cases in microservices architecture.
+	
+----------Monitoring tool---------
+AWS CloudWatch: 
+Zipkin--monitoring and diagnosing latency issues in microservices architectures. 
+Elastic Stack (ELK):Elasticsearch, Logstash, and Kibana used for log management, monitoring, and analytics.
+Grafana: popular open-source analytics and visualization platform used with Prometheus
+Prometheus: An open-source monitoring and alerting toolkit designed for reliability and scalability. 
+
+------------------JMS---------------------
+-Java API that allows applications to create, send, receive, and consume messages in a loosely coupled, reliable, and asynchronous manner. 
+-Component:
+	-producer, consumenr,Message,Destination,connection,session
+wo messaging models supported by JMS, and how do they differ?
+	-Point to point : many cosume rlisnted, but only will consude
+	pub/sub: many can consume
+durable and non-durable subscriptions
+	- leep messgae till expire or until subscriber dont read. all send mesg even if sub is offline
+JMS ensure message reliability and delivery semantics?
+	-At-Least-Once: atleast on consumer
+	-exactly once:ensur no duplicate or message loss
+	-trasaction deliver: message deliver as part of transaction , ACId
+	
+EG:
+ Connection connection = connectionFactory.createConnection();
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            MessageProducer producer = session.createProducer(queue);
+
+            // Create and send a text message
+            TextMessage message = session.createTextMessage("Hello, JMS!");
+            producer.send(message);
+			
+-Dead letter queue  and backout queue both are failure queue
+	DLQ: failure,particulary for Queue manager ,1 for 1 queue manager
+	Backout: for a Queue, can many to queue manager , 
+-Local Q:Trasnamission Q/Dead letter Q, /Backout q(for storage)
+-persistenace and non-presitance msg:
+	- if netwrk fail, or queue manager re-start,, msg will not be lost, 
+-List of Object Wbespehere MQ:
+- 
+	
+			
+-----------------DOCKER-----------------------------------
+docker ps: List running containers.
+docker images: List available Docker images.
+docker pull <image_name>: Pull a Docker image from a registry.
+docker run <image_name>: Create and start a Docker container from an image.
+docker stop <container_id>: Stop a running container.
+docker rm <container_id>: Remove a stopped container.
+docker rmi <image_name>: Remove a Docker image.
+docker logs <container_id>: View logs from a container.
+
+Explain Docker networking modes and their use cases.
+	Bridge: The default networking mode where containers are connected to a bridge network, allowing communication between containers on the same host.
+	Host: Containers share the host network stack, bypassing the Docker bridge network and gaining direct access to the host's network interfaces. This mode offers better network performance but sacrifices network isolation.
+	Overlay: Used in Docker Swarm mode for connecting containers across multiple hosts in a cluster. It enables communication between containers on different hosts using an overlay network.
+	None: Containers have no network connectivity and cannot communicate with the outside world. This mode is useful for running isolated containers or troubleshooting network-related issues.
+create a Dockerfile, 
+	- Base image: from 
+	-Env setup: installing dependencies, copying files, setting environment variables, and configuring the application environment.
+	- Commands:RUN,CMD,COPY,ADD,ExpoSe
+EG:
+	FROM openjdk:11-jre-slim: 
+	WORKDIR /app: This line sets the working directory inside the container where subsequent commands will be executed.
+	COPY target/my-java-app.jar /app: This line copies the executable JAR file of the Java application from the host machine into the /app directory inside the container
+	CMD ["java", "-jar", "my-java-app.jar"]: This line specifies the command to run when the container starts. In this case, it runs the Java application by executing the JAR file using the Java command.
+	// to build::docker build -t my-java-app .
+	// to RUN":docker run --rm my-java-app
+
+--------Kubernetes-------------------------------------------------------------------------------
+diiver version of lin for diff service is dificult
+- aaplevel_system : creat isolated eng, run app , 
+-containeire app:docker: all depency for app: 
+- kubectl: thoda app with same commpae ==replica=1000
+-- able to define in code, how many serice for each app..
+-- Node: VM:> container laucnh: cluster is set of node:> managing of cluster: contraol plane:(Node where kuetice isntall)
+- Kube-apiserver 
+-etch: all data mange the cluster
+-contril-manager: brain , if nod egoies donw,
+-scheeudler: work load
+- worker load -kublets, kube proxy: rule on node
+- containerD: runtime mange docker compnpner 
+kubectl: cmd line, operate kubernites: cube contorl;;>kubectl version :
+>> Pod /Service > ReplicaSET/Deployment
+------------------------------------------
+Consistency: 
+	lineaarizable consistency:
+		-every record process in sequence: as iif only one computer,
+		-head of line blocking, also singlfe point of failure, high latneyc  but low avalibility
+		- high consistency, slow ,fail, singlfe thread, RAFT(protoco ensure ordering maintin across system)
+	Eventualy:
+		-concurrently, parral, eg: email ,send>out> then sent
+		
+------------------------SB----------------------------------------------------------
+rapid app, module,use spring frmwrk,app serviece, standalone app embebed tomcat, all config in app pro, all boileer is reoved
+-deve s/w on sort amnt of time, 
+disable auto-config (exclue- class),,@SB:@Conf+@AutoScan+@Compscna
+-SB vs MVC
+	- SB-web == MVC ;;
+	-Spring : prob solve Depency Injection, 
+	-DI: define ur bean, when u need ask Spring frmwrk,, they will bind,Easier to unit test
+	-duplicaiotn of plubming code, 
+	-SMVC: decouple way : depchter sever, DS not link to molde view resovler
+	-SMVC: lots of confif, webd , configure dispatcher server, .....lots of other supper frmwrk apart from SMVC(like vlaidotr,loggin, jackson..)
+	-SB: auto config and started: started web > bring all depndency, auto cofnig, liek auto config data soruce for hibernate,develop app very quickly
+	- lots of monitoring tool, actuator, embeeded server, jar adn run, tomcats is inside jar,
+-jakarta.persistance.API: JPA
+-JPA: specification, interface,hibernate: most popular impl of JPA,
+@Entity:org.hibernate.emeity 
+@Entity: jakarta.parsisitce api : use this , so code will not depeend on hibernate, can use tolink
+
+UNIT TEST:
+	- Mokito:
+	- junit and mokito,power mock(stati mehtod)
+	- maven help to downloaed depedencies
+	- stub and mock :interfact to external serivc:stub: sample imp of a callss which return the hardcode value which we want to test
+	- stub issue: if new method added to inerafce, need to update stub, maintanc eheadache;; dynamic condition is tuff, usful in simple senario
+	- whne(moc.getdata().rthenReturn("ayush").theReturn("Kumar")); /// first time ayush and sedon time kumar 
+	-// argumenr mather get(anyInt()) // mathc any int pass on mock object
+	-- @Test(expected=RuntimeException.claa) ;powermokita for static method
+	-- @runWiht(powermock.class ) // PowerMock.mockeStati(Utility.clss)
+-------------INTERVIEW------------------------------------
+-manage acc: girbranch> dev> feature brnahc: multiple> lifecycle> Giv IAM permisison>jenkins :CI/CD
+- git>webhook triger jnkind>piple> stage: gitcheckout>build (Mavne)> unit test>Sonar> push img to RCR> deploy to ECS/EKS>
+-Fargat: no need to manage contianer:
+-Securty: SSH TO VPC< NACL level(subnet), IAM permisison;
+
+-Lambda is suitable for event-driven and short-lived workloads, while Fargate is better suited for long-running and persistent applications with more control over the underlying environment.
+-Lambda: Lambda automatically scales out to handle incoming requests by creating more instances of the function in response to increased demand.
+-Fargate allows you to specify the desired number of tasks (containers) to run, and it automatically scales up or down based on resource utilization and workload demand.
+-Lambda: Lambda has a pay-per-use pricing model where you're charged based on the number of requests and the duration of each request's execution time
+-Fargate has a pay-per-task pricing model where you're charged based on the vCPU and memory resources allocated to each running task, as well as the duration of each task's execution time.
+
+-Lambda: Lambda is well-suited for event-driven, short-lived, and stateless workloads such as API endpoints, data processing, real-time stream processing, and background tasks.
+-Fargate: Fargate is suitable for long-running, persistent, and stateful applications that require more control over the underlying environment, dependencies, and runtime. It's commonly used for web services, microservices, batch processing, and legacy applica
+
+-Lambda: Lambda is a function-as-a-service (FaaS) platform where you upload your code (functions) and AWS takes care of provisioning, scaling, and managing the underlying infrastructure. 
+-Fargate is a container-as-a-service (CaaS) platform that allows you to run containers without managing the underlying EC2 instances. You define your containerized applications using Docker, specify the CPU and memory requirements, and Fargate takes care of provisioning and scaling the containers.
+
+
+----------------------------------------MQ--------------------------------------------
+Message Queue (MQ) is a component of messaging middleware that makes asynchronous communication between applications easier. 
+
+JMSConifg.yml
+server:
+  url: "http://localhost"
+  port: 80
+
+ibm:
+  mq:
+    queueManager: QM1
+    channel: DEV.ADMIN.SVRCONN
+    connName: localhost(1414)
+    host: localhost
+    port: 1414
+    user: admin
+  queues:
+    sampleQueues: MQCLIENT_MQ1.RESPONSE.FROM.MQSERVER_MQ2,MQCLIENT_MQ1.RESPONSE.FROM.MQSERVER_MQ1
+
+JmsConfig java class:
+	-JmsTemplate jmsTemplate()
+	-CachingConnectionFactory cachingConnectionFactory() 
+	-JmsConnectionFactory createConnectionFactory()
+	-JmsListenerEndpointRegistry createRegistry()
+	-JmsListenerEndpointRegistrar createRegistrar()
+	-DefaultJmsListenerContainerFactory createDefaultJmsListenerContainerFactory()
+-The properties that we inject using here are used by the JmsConnectionFactory Bean to establish a connection to the message queues.
+-To receive mesg:QueueConfig.java
+	-configureJmsListeners
+	-MessageHandler queueController
+-different environments, we can run into situations where we want to use different sets of queues for different purposes such as testing 
+	-nject the following JMS-related properties that we defined earlier
+	-Create a REST API controller called ContextController.java with a post endpoint that can be used to switch the queues programmatically
+	-use BeanUtils.copyProperties method to copy the new JMSproperties to the JmsConfig bean.
+	-we need to make sure that the new set of queues is accepting messages by using SimpleJmsListenerEndpoint like we did when we first set up the application.
+	
+---------------KUBERNETECS---------------
+-how manage 100 system reliably?
+	-controle plane:Brain cordinate everthing in kubernetes cluster:Key component:
+		-Api server: expose rest api client to talk , one pod is create, update deploy talk to this
+		-etcd: cluster memory: distributed key value store that hold cluster memory
+		-scheduler: which path best fit based on capacity
+		-Contoller MAnager: ensure run it shdu maintiant desired state of resunce,, handle all condination
+		
+REDIS:
+	-Cachine: fast look up
+	-share used session accross server
+	- leader board: to add updte delte query rank effectively
+	
+		-
+---------------------GRAALVM------------------------------------------------
+GraalVM is a high-performance, polyglot virtual machine developed by Oracle Labs.
+ It is designed to run applications written in multiple languages efficiently, 
+ including Java, JavaScript, Python, Ruby, R, and LLVM-based languages like C and C++. 
+ GraalVM offers various features and capabilities, including:
+
+	- Polyglot Execution: GraalVM allows different programming languages to be integrated seamlessly within the same application, enabling developers to choose the best language for each component of their system.
+
+	- High Performance: It provides high-performance execution for both standalone applications and microservices, with optimizations for various languages and workloads.
+
+	- Ahead-of-Time Compilation (AOT): GraalVM supports ahead-of-time compilation, which allows Java applications to be compiled to native executables, resulting in faster startup times and reduced memory overhead.
+
+	- Just-In-Time (JIT) Compilation: GraalVM includes a state-of-the-art JIT compiler that optimizes performance for dynamic and long-running applications by analyzing and optimizing bytecode at runtime.
+
+	- Native Image: GraalVM's native image feature enables the creation of standalone native executables from Java applications, eliminating the need for a Java Virtual Machine (JVM) during execution and further improving startup time and memory consumption.
+
+	- Instrumentation and Profiling: It offers tools for instrumentation and profiling, allowing developers to analyze the performance of their applications and identify potential bottlenecks.	
+
+

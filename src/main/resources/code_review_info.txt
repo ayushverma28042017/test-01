@@ -1,0 +1,131 @@
+JAVA CODE REVIEW:
+- tool Upsource or manula with team 
+  easy review: formatting(pace and line brk), style (are var is final), Naming(name confrom to std) , Test coverage
+  -Tool:run IntelliJ IDEA’s inspections from the command line⁶
+ - What we shud look for:
+	- Design : 
+		- SOLId, Design pattenr,DDD,new code reuse existing code, no duplication ,is voer-enginnering(YAGNI)
+	-Readability & Maintainability:
+		- filed name or var name reflect field they represent
+		- understnad code by read, udner test case , exceptin msg are understandable, complex/confuse sec is documented
+	-Functionality:
+		- does code do what is suppose to 
+		- if any subtle bug, like use of and inplace of or
+-Have you though abt:
+	- security 
+	- regulatory
+	- if new doc ,help is is modified
+	- perf ,if new code intro to many db connections
+	-Test case for new code, think of any new test cases
+	-Reflection: slwo java, chekc if really required
+	- correct timeout, and impact on other system when timeout
+	- dont use parallelis for smaller imput
+	- is code use coreect data structure in mumti threaded : like change Arrylist to Collections.synchrrnizeLIst()
+	-  is doe locks correct: synchronize, lock, atomic vari
+	- write small methodds and classes
+	- keep logic simple, not deep nested if
+	LIST:
+		-Anti-Pattern: Too Much Searching
+			- iteration over list agian an agian for custumern id, better use map
+   - aware of the strengths and weaknesses of each of the implementations of List,SEt,Map,..
+   - right data strub: perf, expected behaviour, reduce complexity
+   
+   
+	SOLID:
+		-There should never be more than one reason for a class to change.
+		-Software entities should be open for extension, but closed for modification.
+		-Functions that use references to base classes must be able to use objects of derived classes without knowing it.
+		-Many client specific interfaces are better than one general purpose interface.
+		- Depend upon Abstractions. Do not depend upon concretions.
+			-eg: say CustomerService calss with have db conneciton code, which it dont need , so use repositary pattern and inject there
+			
+  SECURITY:
+	-common prob: SQL injejction , crosssite scripting , : tool to use for OWASP dependency
+	- eg: new Random() from util package user, secureRandom is 
+	- secret being managed correctly, use loggin/audit
+	- 
+---------------------------
+Good review leads to fewer bugs, more expertise, and knowledge transfer.
+-frequent code reviewers, write better code than others.
+-Secure your services. Create robust services. Expect unexpected behavior. Create fallback for all errors.
+- Don’t log confidential information. Credit card information, permissions, and other sensitive data.
+-Don’t create exceptions holding sensitive data. This exposes sensitive data. The caller can abuse this sensitive data.
+Make SQL queries parametrized using PreparedStatement in Java. A common practice to avoid SQL injections.
+-Sanitize inputs. Sanitize untrusted data. Web forms could contain malicious data.
+-ailure to properly sanitize the data can lead to many different security problems, such as Cross-Site Scripting (XSS) and XML Injection vulnerabilities.
+
+How to review testing?
+	-Pick boundary values for testing.
+How to review the Java class accessibility
+	- Limit accessibility. Expose as little as possible. Convert everything public to protected, or private.
+	- Hide private behavior. Minimize dependencies. Expose a public API.
+	-Look for moving parts. These should live in separate objects. Then inject those.
+	- prefer compostion than inheritance
+final & static
+	-Add private constructors for static classes. This way you ensure your static classes are not instantiated.
+	-Classes with no subclasses should be made final
+Factory & Builder
+	-Prefer factories over constructors. Factories extract unrelated logic
+	- Object creation, in most cases, is not related to business logic. Object creation can be re-used. Without a factory, one needs to copy code
+	-Do you have multiple arguments for a constructor? Use builder template
+How to review null usage
+	-Avoid null as method output. Use Optional.
+	- When null is something, use Optional. When null is nothing, use null.
+	-What does it mean null is something? 
+		- An empty cart is something. 
+		- A missing account is something. These scenarios are examples of when null is something.
+	-When working with lists don’t return nulls¹.: >  Return empty collections, not null.
+How to review exceptions
+	-Handle all valid exceptions. When you see ignored exception, correct it. You can even make Sonar catch this code.
+	- You need to log what caused the exception. Fields, inputs, and parameters. Log these after an exception happens.
+Key takeaways:
+
+	Limit class accesibility
+	Use final classes, and prevent instances of static classes
+	Use factories for instantiation
+	Use Optional, over null
+	Don’t ignore exceptions
+	Learn the difference between unchecked and checked exceptions
+	Avoid exceptions if possible, to improve performance
+
+---------------------VENKAT SUBRIMANIUM----------------
+test case pattern .AAA: Arrange act assert .. 
+
+feedback drivern .. 
+first revie wtest then code..
+- cannt push to main branch until code is review.
+- TDD :
+- code review is good if developer ask for it,, if boss 
+- incremental: lots of code, less feedback , ask early , start in stages, shud  i cont or rejection, am i in right direction..
+- coding style , tab or spaces, pick one be conistent, variable name, method name deriptive and short , code too long, level of abstractiomn, able to understand,cohesive, low cupling, find a bug, dont write the notes but a test where it brak, first write test and then fix,
+- i i thouhg code is doing this but done anohte, ask for refactor, be consertive, WE, 
+- smaller methods, contrutive feedback, not say what is treebile what can be better, adn  how, -- pair with person whose code is being review.
+- gossip dont make us better, it will make us poor, learn form mistake as project, 
+
+------------------------------------
+
+public static void usingBufferedReaderAndLambda() throws IOException {
+    Files.newBufferedReader(Path.of(TARGET_FILE))
+         .lines()
+         .forEach(System.out::println);
+}
+
+public static void usingLines() throws IOException {
+    Files.lines(Path.of(TARGET_FILE))
+       .forEach(System.out::println);
+}
+
+-Retry and idempotency are two techniques that can help payment systems to achieve this goal. 
+-https://romanglushach.medium.com/how-to-avoid-double-payment-techniques-and-tips-for-payment-systems-4a99b6ea35a8
+-  work here is because of the company’s commitment to diversity,innovative technology it uses. ,eveloping new ways to improve banking. 
+-a manager is my ability to motivate others. ommunication is key when motivating employees,
+-owed us to complete all of our projects ahead of schedule
+-This helped the company increase its revenue by 20% in one year.”
+-
+
+
+
+		
+		
+		
+  

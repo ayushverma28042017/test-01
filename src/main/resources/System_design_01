@@ -1,0 +1,354 @@
+-Snowflake provides a variety of different data ingestion options, each with their own pros, cons and important considerations.
+-options for both batch and continuous/real time loading, 
+-Selecting the right option can have an impact on cost, performance, reliability and ease of maintenance.
+-radeoffs like latency, cost, maintenance and required technical expertise. 
+
+Batch loading
+	-data ingestion approach used in all data warehouses,on a fix schedule
+	- big tradeoff: latency.
+	-If your data loads once per day, then it can be up over 24 hours stale before the next load happens.
+	-batch ingestion typically works by taking files from cloud storage (an Amazon S3 bucket, Microsoft Azure Blob storage or Google Cloud Storage), and having some process or orchestration tool automatically load that data into Snowflake on a schedule.
+	- here are two main approaches to batch data ingestion.
+		-Batch loading with the COPY command
+		-This command takes files previously uploaded into a Snowflake internal stage or external stage, and ingests them into the target table. The files could be CSV files, JSON data, or any other supported file format option.
+		
+		-COPY command runs on one of your own managed virtual warehouse, meaning you are responsible for creating and properly sizing the virtual warehouse
+		-Cost & efficiency considerations
+			-COPY INTO command in Snowflake, you pay for each second the virtual warehouse is active
+			- billed for a minimum of 60 seconds each time they resume,
+			-The smallest virtual warehouse is able to ingest 8 files in parallel.
+			-SKILL Required:
+				-Using the COPY command does not require any additional skills on top of basic SQL knowledge.
+			- Batch loading with serverless tasks
+				- Serverless tasks allow Snowflake users to run SQL commands on a defined schedule using Snowflake compute resources instead of their own managed virtual warehouse.
+				-you only pay per second of compute used, serverless tasks can help with the under utilized compute problem that comes with batch loading on your own virtual warehouse
+			- The compute costs for serverless tasks are charged at 1.5X the rate of an equivalent sized virtual warehouse managed by you.
+	-Continuous loading with Snowpipe
+		-Unlike batch processing which runs on a fixed schedule, continuous loading processes data based on some event, usually a new file landing in cloud storage. 
+		- Each new file triggers an event notification, which automatically kicks off the loading process
+		- Cloud based messaging services like AWS SNS or SQS are often used to trigger these notifications.
+		- With continuous loading, data latency will be much lower as new data is constantly being loaded as soon as it becomes available.
+		- continuous processing, Snowflake offers a powerful feature called Snowpipe
+		- Snowpipe is integrated with an event notification service on the cloud provider side (i.e. AWS SNS/SQS). Each Snowpipe object also has an associated COPY command
+		- Most customers use the “auto-ingest” Snowpipe feature, meaning files get automatically loaded as soon as they arrive. 
+		- REST API for Snowpipe which allows you to choose when a Snowpipe object is triggered.
+		-Snowpipe is serverless feature, meaning you do not have to worry about which virtual warehouse to use or whether it is sized correctly. 
+		-Snowpipe charges an overhead fee of 0.06 credits / 1000 files processed
+		- Snowflake recommends aiming for your files to be 100–250MB compressed.
+		-If your upstream applications frequently send data with small file sizes, you will want to consider implementing a process that will aggregate the files into larger sized batches. A common service used for this purpose is Amazon’s Kinesis Firehose
+	-Real time loading with Kafka
+		- credit scoring, fraud analysis, or even user facing analytics.
+		-Delivering data with low latency is typically accomplished by using a message broker like Apache Kafka.
+		- Snowflake becomes a data consumer.
+		-“Snowpipe mode”, which combines Kafka with the traditional Snowpipe methods we discussed above.
+		- “Snowpipe Streaming” mode, a new offering released by Snowflake in 2023.
+	-Kafka Connector — Snowpipe mode
+		- The Snowpipe mode for Kafka connector uses a combination of micro-batching files and Snowpipes. Kafka messages are flushed into temporary files and ingested via Snowpipe
+		-Maintaining this optimal file sizing can become challenging considering the other factors that come into play:
+			-how frequently your source generates data and how fast you need to have its data loaded into Snowflake
+			- he flush rate: how frequently you flush the data into the files, configurable in the Kafka connector options
+			-the partition count in your Kafka cluster
+	- Snowpipe Streaming
+		-With Snowpipe Streaming, there is no stage, no files and no snowpipe objects (which I recognize is confusing, since the name includes “Snowpipe”). With Snowpipe Streaming, data is loaded row by row instead of using files.
+			-Snowpipe at 1 credit per compute-hour (Snowpipe is 1.25). 
+			- If a user creates 100 clients, then this overhead management fee would cost $22,000 / year assuming an credit price of $2.5/credit (100*0.01*24*365*2.5).
+			-he Snowpipe Streaming API is part of the Java SDK, which means you must be familiar with Java in order to use the feature.
+			
+-How to choose a data loading option
+	-What latency does your use case require?
+	- Are you looking for the most cost efficient option?
+	- What technical expertise does your team have and how will the loading option fit into your existing stack?
+	-What system is producing the data and files you need to load, and do you have control over that?
+	
+	
+---------------------DROP BOX--------------------------------
+
+Requiremnts:
+	- user can create and upload files
+	- files can be shared across multiple user
+	- change to file shud be proporgated to all devices with acess
+	- we shud able to c older version of file
+	
+- read write  is nto bottlneck, version and propogation
+-Assumtion
+	1 billion user
+	100 docs per user
+	each doc 100kb
+	1x100x100 - 1 TB dcos
+	most docs shared by <10 pepople and some with many thousand
+
+Schema :
+	userID | DocID
+- indexing and partiiootn by usrid asllow us to quickly se which doc a give has access
+
+Replication
+-Single leader may be best for add ans sub-sqeunt remove
+
+file upload"	
+	- split in chukns: say on s3, so chuck cna uploadd in parallel
+	- only load modifid chuk on file changes
+
+Create Chicnk DB:
+	- hash of chunk file , id , version ,link of s3 
+	-you can alsouse wide column /doc format
+	- shcema , is good, if idnex by id, quick all to get 
+	- all go in single partition
+DB for chunk
+	- locking,, so once eversion can be wriintng by one user
+	- if single leader, it will work..
+	- in case of multileader , Last write win(LWW)
+	
+	
+-----------------------------BOOKING.COM----------------------------
+
+-the platform was handling over 1,500,000+ experiences booked every 24 hours [3].
+
+high-capacity, resilient server infrastructure capable of efficiently handling large volumes of data and user interactions, especially during peak usage periods.
+- 100 million mobile users as of 2022
+-must be robust and scalable, ensuring that it can handle the concurrent requests and data processing needs of this large and active user base.
+-the higher frequency of users browsing for hotels compared to the number of users making reservations, it is clear that a one-size-fits-all approach to scaling does not suit Booking.com's needs
+
+-Architectural Pattern :Microserice:
+	-most fitting solution for this scenario.
+	-loosely coupled services, each designed around a specific business capability.
+	-architectural choice enables individual services to be scaled up or down based on demand without impacting other areas of the system.
+-Databse:
+	- platform’s operational pattern where the volume of hotel searches substantially exceeds the number of actual reservations made. 
+	-efficiency of relational databases in read operations aligns seamlessly with the high number of searches that the platform accommodates. 
+	- he integrity of transactions is paramount in a reservation system, where the ACID properties of relational databases play a crucial role
+	-connections between hotels, rooms, and room types, enhancing data integrity and simplifying maintenance.
+-Storing Images
+	-The platform utilizes content delivery network (CDN) technology to provide users with fast access to hotel images.
+	- possible to deliver content at high speed to users around the world by serving hotel images from geographically closer servers.
+- API Gateway
+	-first point to receive all incoming API requests,
+	- performs authentication and routes them to the appropriate microservices.
+	- rate limiters that protect the system from overloading
+	-
+Main Microservices:
+	-Hotel servic:
+		-users’ hotel searches and includes detailed information, photos and availability of hotels
+		-service has its own database where hotels’ record, properties and current status are kept.
+		-hotel location, room types, and available amenities rarely changes, so it makes sense to cache this information to ensure high access speed and efficiency.
+	-Review Service:
+		-believes that review systems are critical to the user experience and quality of service, which is why they place a great deal of importance on the platform’s review systems
+	-Payment Service:
+		- payment information, transaction history and billing data, enabling users to make payments securely.
+	-Reservation Service: 
+		- reservation details, users’ reservation status and change history. 
+		- communicates with payment Service review Service, and hotel Service.
+		-when a user requested to make a reservation, it calls payment service and waits succesful message from to complete reservation. If payment is successful, it sends request to hotel service to make necessary updates on hotel status.
+	-sEARCH sERICE:
+		-search for accommodations, this service processes these requests using ElasticSearch.
+	-Booking Management Service: 
+		-hotel owners to view and track the reservations made by users, update room availability, and manage booking details. 
+-Third-party Components
+	-Elastic Search: 
+		- ability to index and query large data sets quickly and efficiently, enabling the Search Service to quickly filter and present a wide and diverse range of accommodation options to users.
+	- Kafka:
+		- pulling data from MySQL and feeding data to Elasticsearch.
+		- data from MySQL is fed into Elasticsearch through Kafka, which allows the data to be processed and queried quickly and efficiently. 
+		- MYSQL(Binary logs) > Kafka data src connector> kafka topic> kafka data sink connector > Elastic search
+		
+	- Communication Between Microservices
+		-The architecture is split into two main components: the control plane and the data plane, each with a distinct role in the system’s overall functionality.
+		-control plane 
+			- s responsible for the high-level management of traffic routing, policy enforcement, and service discovery
+			- ZooKeeper and Kubernetes play a pivotal role within this plane.
+			-ZooKeeper, known for its coordination and configuration management capabilities
+			- Kubernetes, which excels in orchestrating containerized applications. 
+			-ensure that services within Booking.com’s ecosystem can discover each other and operate cohesively according to the rules
+		-Data plane:
+			-where the action happens
+			-data packets flow between services through this plane
+			-lightweight, high-performance proxies like Envoy, which are tasked with the direct handling of requests and responses. 
+	-Global Request Management
+		-ADN (Application Delivery Network) based on HAProxy to efficiently manage user requests
+		- HAProxy acts as a high-performance load balancer and proxy server, automatically routing user requests to the most appropriate server. 
+		
+		
+
+
+
+---------------------IPC --------------------------------
+Inter-process communication (IPC) refers to methods that allow processes to exchange data and coordinate actions. 
+1. Pipe:Pipes connect the input and output of two or more processes, creating a pipeline for streaming data. 
+2. 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗤𝘂𝗲𝘂𝗲𝘀:Message queues provide asynchronous communication by enabling processes to exchange data in the form of messages. 
+3.Signals:  provide a notification system that allows processes to be immediately alerted of important events like being forcibly terminated. 
+4.Semaphores help synchronize access to resources that need to be shared between processes by limiting concurrent usage. 
+5.S𝗵𝗮𝗿𝗲𝗱 𝗠𝗲𝗺𝗼𝗿𝘆
+Shared memory allows direct access to shared memory areas so multiple processes can read and modify data efficiently without copying. 
+
+
+------------------------------Authorization, authentication-----------------------------------------------------------------------
+
+Authentication 
+	- is the process of verifying the identity of a user or a system.
+	- Authentication is the process of verifying the identity of a user or a system.
+	- verifying a user’s identity,
+
+Authorization
+	- process of determining whether an authenticated user has permission to perform a specific action or access a specific resource
+	- authenticated user’s access rights or privileges against a set of rules or policies 
+	-verifying a user’s permissions
+
+OAuth
+	-OAuth (Open Authorization) is an open standard for access delegation, which allows users to grant third-party applications access to their resources without sharing their passwords
+	- access resources on behalf of users, without requiring the users to share their credentials.
+	- OAuth uses a combination of tokens and secrets
+	-authorize access to their resources by providing a token, which is issued by the OAuth server and passed along with the request for access. 
+	- The OAuth server then verifies the token and grants access to the requested resources if it is valid.
+JWT?
+	- compact, URL-safe means of representing claims to be transferred between two parties.
+	-used for authorizing requests and exchanging information between parties, such as between a server and a client application.
+	- self-contained token:all the necessary information about the user within the token
+	- eliminates the need for the server to query a database to verify the user’s credentials
+	-server can simply decode the JWT and extract the relevant information about the user, such as their username, role, and other claims.
+	- JWT is based on the JSON (JavaScript Object Notation) data format, which is widely used for exchanging data between applications. 
+	- It is also digitally signed, which ensures that it cannot be tampered with or forged.
+	-JWT is often used in conjunction with other protocols and technologies,
+	- OAuth and OpenID Connect, to provide a complete authentication
+Core Difference
+	- To implement OAuth in a Node.js application, you can use a third-party library such as Passport.js.
+	- Node.js application, you can use a third-party library such as jsonwebtoken to easily generate and verify JWT tokens
+	- you first need to create a JSON object with the information you want to transmit, such as the authenticated user’s username and role. Then, you can use the jsonwebtoken library to sign this JSON object using a secret key. This will generate a JWT token that can be transmitted to the client.
+	- JWT provides a simple and secure way to transmit information between parties
+	- const jwt = require('jsonwebtoken');
+		// Set the secret that will be used to sign the JWT
+			const jwtSecret = '<your-jwt-secret>';
+			// Set the claims that the JWT will assert about the user
+			const claims = {
+			userId: 12345,
+			isAdmin: true
+				};
+			// Use the JWT library to create a JWT using the claims and the secret
+			const token = jwt.sign(claims, jwtSecret);
+	-JWTs can be used to create access tokens that are signed with a secret and can be verified by the API to authenticate the user. 
+	-OAuth can be used to grant third-party services access to the API on behalf of the user, without the user having to share their credentials.
+	-A signed JWT is known as a JWS (JSON Web Signature) and an encrypted JWT is known as a JWE (JSON Web Encryption). In fact a JWT does not exist itself — either it has to be a JWS or a JWE.
+	
+	-
+	FLOWW
+	 we have user, whose foto is on gdrvie and we need to all pintrest to take my foto form g drive and print
+	 - resource owner is Ayush/User
+	 - Resoruce present on server , google server
+	 - applition that neeed fot is Pintrest
+	 
+	 - User will ask pintrest to prinnt my pics
+	 - pintrst will ask google server autorixze me for user Ayush to print hi pics, my client id is abs
+	 - google server will ask Ayush , can i allow the pintrest to take ur pics form drive
+	 - Ayush will approved
+	 - google server will now send premission granted to take ayush pics fomr drive
+	 - now Pinterest will ask give me access token to login to drive ,my client id/sere is 123/456
+	 - google srver will give the token to pintrest app to take the ayush picsk
+	 - pintrest will fetch pics of ayush form drive ,and print for ayush
+	 - acces token will have expire time, not ppswed , also have refresh token
+------------------------- NEED to Know About WEB APP Architecture------------------------------------------------------------------
+
+Web 2: client server
+web 3: peer to peer
+- space from jetbrain : all tool suit
+- Client-sevrer architechure
+- clein> sever>DB
+- 1 tier all in singlfe machine, 2 tier db is another machine
+- anthting more than 3, is n-tier
+- webserver is subset as app sever
+- Peer to Peer Arch: Web 3: blockchain base, node comm with each without centrazie.. no sinle point failure
+- P2P: gaming platfomr, vast is Clint server
+- monolith: all module code in single code base, single point fo failure, 1 brk brk entire
+-micro-service : collection of servive, each one unique resposibility : Modular
+------------------------------Webhook and Web socket--------------------------
+Webhooks:
+	- When a specific event occurs in the source application, it sends an HTTP POST request to a predefined URL (the webhook) in the target application.
+	- Webhooks are typically employed for one-way communication, where the sender initiates the communication to notify the receiver about a particular occurrence.
+	-while Webhooks are event-driven, one-way communication through HTTP callbacks,
+**WebSockets:**
+	- a bidirectional communication channel over a single, long-lived connection. 
+	- WebSockets allow both the client and server to push data to each other at any time. 
+	- for applications requiring real-time updates or interactive communication. 
+	- more suitable for scenarios where constant, low-latency communication is essential, such as chat applications, online gaming, or financial platforms.
+	-a bidirectional, persistent connection for more dynamic and real-time interactions.
+-Spring Boot WebFlux
+	-  I explored the nuances of reactive programming, something magical happened.
+	- code came alive with responsiveness, handling countless tasks simultaneously.
+	- 
+	-
+----------Low latency--------------------------
+
+10 straegey
+	-CDN: to cache content closer to uer, reduce disntace data travel
+	-DB indexing: ensure DB well index so query is faster
+	-Optimize query: analyse and refactor slow query
+	- data denormalization: reduce join operation
+	- caching: in memory cache like Redis so minimiz dB lookup
+	- compression: compress data beoe sending
+	- USE SSD:  solid state drive have faster read/write den traditional HDD
+	- Keep alive connection: reuse TCS connection to avoid overhead of re-established connection
+	-Prefetching and Pre-rendering: Predictively fethc assest or render before hey actually request
+	-Connection poolin: maintain pool of conn to serverce DB 
+	
+	
+-geo-distributed sharding databases? caching can’t substitute everything band return consistent data
+-- Use non-garbage collected language for building microservices requiring high performance. ~ Rust/C/C++  NOT JAVA Python 
+-For intercommunication in between microservices use fast serialize/deserialize format like protocol buffers instead of json
+-- Fail fast: Perform least expensive checks first to exit fast in case of invalidation.
+
+	
+------------------CACHING__________________________
+
+--high-speed storage layer that sits between the application and the original source of the data, such as a database, a file system, or a remote web service.
+
+
+- Client cache: for fast reterival, browser cache
+- DN cachc: faster domain to IP , sol : Route 53,Azure DNS, Cloud DNS
+- CDN cache: fast reterival of static content : Sol: Akamai ,CloudFront, Azure CDN
+- We server CAhche : fast reterival of web content :  Cloudfront , Elastic cache
+- App server cache: redics ,mem cache
+- DB cache: local DB cache
+- CACHE INVALIDATION
+	- Write through:  written in cache and db simultaneously
+	-Write around: direct to DB , bypass cahche 
+	- Write Back: write in cache and retun
+	
+- Cache Invalidations Methods
+	- Purge: remove cache content for specific object ,URL,set of URL
+	-Refresh: syn with db so updated data
+	- TTL: 
+		-stale while revalidated
+-Cache Performance Metrics
+	- Hit rate
+	- Miss rate 
+	-cache size
+	- cache latency
+	
+Cache Replacement Policies
+	- LRU
+	- LFU
+	- FIFO
+	-Random
+----------------JAVA------------------------
+fail-fast: all collection class in java.util.package is FF
+fail-safe: java.util.concurrent : > create copy of collection then iterate
+jit: code inline, 
+volatile: more visibiliy
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

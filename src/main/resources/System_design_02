@@ -1,0 +1,140 @@
+
+------------------DB SHARDING AND PARTIONAING-------------------------------------------------------------
+Traditional Database (RDBMS): Row and column orientation, table joins using foreign keys, normalization.
+As data size increases, performance issues may arise with CPU, memory, and overall efficiency.
+Breaking large tables into partitions using sharding, where each partition is a shard.
+Sharding techniques include:
+	Geo-based: Shard based on location or continent, such as East US, West US, static locations.
+	Range-based sharding: Utilize a range of key values, like the first letter of a username, dividing into buckets (e.g., 26 buckets for each letter).
+	Hash-based: Distribute data evenly across partitions based on hashing.
+Manual vs. automatic sharding:
+Some databases support automatic sharding.
+In cases where it's not supported, sharding needs to be implemented at the application layer, increasing complexity.
+Runtime issues may arise, leading to unevenly distributed data.
+Adjusting the number of shards based on data growth; re-partitioning may be required.
+Changes in the database schema affect all shards; all shards must have the same schema.
+Enables scalability; handles large amounts of data efficiently, with smaller indexes for faster performance.
+Nodes can run on commodity hardware, making it suitable for small data in each partition.
+Foreign keys only within a single shard.
+Cross-shard queries, especially for joins, can be challenging.
+Replication of each shard is necessary, as each one holds a portion of the data.
+
+----------------------------------------------------------------
+
+DROPBOX SYSTEM DESIGN:::
+Designing a system like Dropbox involves several components and considerations. Here's a high-level overview of a simplified system design for a file storage and sharing service similar to Dropbox:
+
+Client-Side Application:
+
+Users interact with a client-side application on their devices (desktop, mobile, etc.).
+The application is responsible for syncing local files with the cloud storage.
+Authentication and Authorization:
+
+User authentication is essential for secure access to the system.
+Use OAuth or similar protocols for authentication.
+Implement proper authorization mechanisms to control access to user data.
+Web Server:
+
+A web server handles HTTP requests from clients.
+It manages user authentication, authorization, and serves web pages or responds to API requests.
+File Chunking and Encryption:
+
+Files are broken into smaller chunks for efficient transfer and handling.
+Implement encryption for data at rest and in transit using secure protocols (e.g., HTTPS).
+Metadata Database:
+
+Maintain a metadata database to store information about files and their hierarchy.
+Metadata includes file names, sizes, timestamps, and user ownership.
+Use a relational or NoSQL database depending on specific requirements.
+Distributed File Storage:
+
+Store file chunks in a distributed file storage system.
+Use scalable and fault-tolerant distributed storage solutions like Amazon S3, Google Cloud Storage, or custom solutions.
+Replication and Sharding:
+
+Replicate data across multiple servers for fault tolerance and load balancing.
+Shard data to distribute it among different servers for scalability.
+Version Control:
+
+Implement version control to track changes in files.
+Users can access and restore previous versions of files.
+Indexing and Searching:
+
+Implement an indexing system for efficient searching of files.
+Use techniques like full-text search or indexing file metadata.
+Notification System:
+
+Notify users about changes in their files or collaboration activities.
+Implement push notifications or email notifications based on user preferences.
+Collaboration and Sharing:
+
+Enable users to share files and collaborate with others.
+Implement access controls, sharing links, and real-time collaboration features.
+Event Logging and Monitoring:
+
+Log important events for auditing and debugging purposes.
+Implement monitoring to detect and respond to issues promptly.
+Backup and Disaster Recovery:
+
+Regularly backup user data to prevent data loss.
+Implement a disaster recovery plan to restore the system in case of failures.
+Content Delivery Network (CDN):
+
+Use a CDN to cache and serve static content, improving the performance of file downloads.
+Global Load Balancing:
+
+Implement global load balancing to distribute user requests across multiple data centers for improved performance and availability.
+Security Measures:
+
+Employ security best practices, including data encryption, secure access controls, and regular security audits.
+This is a simplified overview, and a real-world implementation may involve more detailed considerations and optimizations based on specific requirements and scale.
+
+
+
+---------------------------------DESING PATTERN----------------------------------------------------------------------------------------------
+
+Today, we are sharing with you a list of 23 important design patterns explained in simple words.
+
+➡ Abstract Factory: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+➡ Builder: Separates the construction of a complex object from its representation, allowing the same construction process to create different representations.
+
+➡ Factory Method: Defines an interface for creating objects but allows subclasses to alter the type of objects that will be created.
+
+➡ Prototype: Creates new objects by copying an existing object, thus avoiding the need to create new classes.
+
+➡ Singleton: Ensures a class has only one instance and provides a global point of access to that instance.
+
+➡ Adapter: Allows incompatible interfaces to work together by wrapping an interface around an existing class.
+
+➡ Bridge: Decouples an abstraction from its implementation so that the two can vary independently.
+
+➡ Composite: Allows clients to treat individual objects and compositions of objects uniformly.
+
+➡ Decorator: Attaches additional responsibilities to an object dynamically, providing a flexible alternative to subclassing for extending functionality.
+
+➡ Facade: Provides a unified interface to a set of interfaces in a subsystem, simplifying their usage.
+
+➡ Flyweight: Minimizes memory usage or computational expenses by sharing as much as possible with similar objects.
+
+➡ Proxy: Provides a placeholder for another object to control access to it.
+
+➡ Chain of Responsibility: Allows multiple objects to handle a request without the sender needing to know which object will process it.
+
+➡ Command: Encapsulates a request as an object, thereby allowing for parameterization of clients with queues, requests, and operations.
+
+➡ Interpreter: Defines a grammar for a language and provides an interpreter to interpret sentences in the language.
+
+➡ Iterator: Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+
+➡ Mediator: Defines an object that encapsulates how a set of objects interact, promoting loose coupling by keeping objects from referring to each other explicitly.
+
+➡ Memento: Captures and externalizes an object's internal state so that the object can be restored to this state later.
+... many more
+
+For a detailed guide save the attached pdf.
+
+
+
+
+	

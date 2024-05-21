@@ -1,0 +1,86 @@
+-----------ORACLE--------------
+-preforming self- sufficne  - 
+- pyramid : Princlepal>EM> Staff>sr sft> fresher..
+- best perofrming team: independce/autnomy : take decison, if req mentorhsip, team ask why we need to do rater what and how
+- worst perf: they nno understand failure, they go rabbithole , not learning form mistake , no stad best pract, so repeadly do same mistake
+= if team slip deadline: taking to individual, status , : need to communicate with leadership
+---------------------------------------------------------------------------------------
+principla: distinuguis engg:: partner engg
+- excellent tech communical skill: ableto trnalater in varity of ways , able to communicate with customer
+- Excellent tech skill: good understanding of braod archi, wkr with varity of people , 5 team , how communic, testable, dploy, 
+- moslty 20% code you may write : 
+- making ech decicision, tech debt,  
+- check and balance: evalue what is built, how it built, req uie of project, fesible derciton, concensus,
+- how may touch point, project, quaify and qualty what prioject deliver in menaing way
+- concensus and collabration 
+- wrok with varity fo project
+
+--------------------------------------------------
+Leaders bring clarity to ambiguity
+Leaders bring others along
+	-Leaders don't make decisions and expect others to follow blindly. Leaders communicate the context, align on the underlying motivation, and explain the rationale behind their decisions.
+Leaders are consistent, trustworthy and true to their word
+Leaders manage expectations up and down, and own feedback & requests
+
+--------------------------------
+
+Describe a complex technical problem you faced in the past. How did you analyze and solve it?
+
+Prob: performance of a critical component in our distributed system.responsible for handling a large volume of real-time transactions, and we started noticing a significant increase in response times and occasional service outages.
+
+Analysis:
+Data Collection:first step was to gather comprehensive data
+	We implemented extensive logging and monitoring to capture detailed information about system behavior, including response times, error rates, and resource utilization
+Root Cause Analysis:  performance degradation was primarily linked to an inefficient algorithm used in a key component responsible for transaction validation and processing.
+
+Solution:
+	-Algorithm Optimization:collaborating with the development team to reimplement the algorithm 
+	-Load Testing: extensive load testing under simulated high-traffic scenarios. 
+	- Gradual Rollout: a gradual rollout strategy. We deployed the optimized component to a subset of servers
+	
+The lessons learned from this experience were documented, and the improved algorithm became a standard part of our development practices.
+
+---------------------------------------------------------------------------
+
+Q:How do you foster a culture of innovation within your team?
+
+foster a culture : creating an environment where team members feel empowered to think creatively, share ideas, and experiment with new approaches. 
+Encourage Open Communication:
+Celebrate Diversity of Thought:Acknowledge and appreciate diverse perspectives within the team
+Provide Autonomy and Ownership:Empower team members by giving them autonomy over their work.
+Allocate Time for Creative Thinking:brainstorming sessions, hackathons, or innovation workshops. 
+Reward and Recognize Innovation: celebrate innovative ideas and successful implementations. 
+
+------------------------------------------------------------
+Video stream:
+	focus on video flow and not on auxiallary flow , is that a reasonable scope
+	- core uploading and streaming
+	- 2 client: produciton compnay and viewer :
+		- relaive video storage
+		- Access control for upoad: legimate user can do
+		- 3 hr max vide size > 2GB / hr HD vide
+		- minimal buffering and lagging: 
+		- viwer: mobile. tab/tv :
+		- high read den write
+		- scale horizontianly , eventualiy consistent system,buy a solution or considering building
+		- buffering vs quality
+		- putting servie in ASG behing load balancer : being api gateway ,
+
+-------------------------------------------------------------------------------------
+ authenticate microservices:
+	Token-Based Authentication:microservices can issue and verify tokens, 
+	OAuth 2.0:OAuth 2.0 for delegated authorization
+	API Keys:microservice has its unique API key, and access can be controlled by validating the key during communication.
+	Mutual TLS (mTLS):Each service is provided with a certificate, and only services with valid certificates can communicate 
+	Service Accounts and JWTs:sign JWTs using their private key, and the recipient can verify the authenticity using the public key.
+	Centralized Identity Providers:centralized identity providers (e.g., LDAP, Active Directory) for user authentication
+	OpenID Connect (OIDC):. It extends OAuth 2.0 to provide an identity layer and allows microservices to verify user identities.
+	API Gateway Authentication:requests and forwards them to the appropriate microservices only if authentication is successful.
+	Single Sign-On (SSO):users authenticate once and get access to multiple microservices without re-authenticating for each service.
+	HMAC (Hash-Based Message Authentication Code):Each request is signed with a secret key, and the recipient can verify the signature to ensure the authenticity of the request.
+	Client Credentials Grant (OAuth 2.0):In OAuth 2.0, use the Client Credentials Grant to allow a microservice to authenticate itself using its client ID and client secret.
+
+
+
+
+

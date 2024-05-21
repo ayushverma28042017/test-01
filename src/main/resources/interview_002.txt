@@ -1,0 +1,210 @@
+ STAR (situation, task, action and result) method to formulate your answer.
+ Spring framework :	
+	-Spring is lightweight because it opens without an enterprise Java bean or EJB container
+	- pairs with plaid old Java objects or POJOs
+	Another method is to optimize the query, which can involve rewriting the query if necessary. I might also restructure the indexes.
+	database deadlock:
+		-make a queue to verify each request before sending it to the database
+		-Using a small transaction
+	Sharding involves dividing the tables in a database and storing them in separate machines
+
+
+monolithic architecture,
+	-application are integrated and firmly wrapped inside a big container.
+SOA:
+	-collection of services that communicate with one another is service-oriented architecture
+MS
+	-collection of tiny, independent services based on a business domain.
+
+ database migration
+	-  Liquibase and Flyway.
+tools do you use to look out for performance bottlenecks
+	-Dynatrace,AppDynamics,AppDynamics
+project's scalable architectur
+	-Use scalable components: 
+	-Designing failure: 
+	- Monitor performance: 
+Spring Boot Actuator
+	- variety of HTTP or JMX endpoints for communication.
+	-Spring Boot Actuator supports the Prometheus (a tool for monitoring) endpoint, which is frequently pulled for metric data and provides a graphic representation of data. 
+
+Desing principle:
+	- guiding principles for all software development,regardless of platform or programming language,
+Design patterns are solutions to often occurring generic problems,
+
+SOLID
+	-S - Single-responsibility principle: A class should only have one job and should have one reason to change.
+	-O - Open-closed principle: Objects and entities should be open for extension but closed for modification,
+	-L:states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program.
+	- I - Interface segregation principle: it states that no client should ever be required to develop an interface-
+	-D - Dependency Inversion Principle: it states that entities must depend on abstractions rather than concreteness. 
+	
+ main parts of the JVM
+	- calss loader , Runtime memory area, Execution engine
+-(JIT) compiler, which boosts Java programs' runtime performance.
+ - (eden >s0,S1)[Yong gne],Tenured[Old gen] , perm 
+ 
+ -JDBC) API specifies interfaces for accessing relational databases
+ 
+ --------------
+ 
+ Statement – Used to execute string-based SQL queries. 
+ PreparedStatement – Used to execute parameterized SQL queries.
+ 
+ There are several ways to optimize queries and improve performance. For example:
+
+Specify particular columns with SELECT rather than by using SELECT * (select all)
+
+Make joins with INNER JOIN rather than WHERE
+
+Define filters using WHERE rather than HAVING
+
+Avoid looping statements in the query structure
+
+Avoid correlated subqueries
+
+A trigger is a type of stored procedure that runs when a specific event occurs, such as when a new record is added to the database. 
+
+
+
+The key differences between HAVING and WHERE SQL clauses are:
+
+	The WHERE clause is used in row operations, whereas the HAVING clause is used in column operations
+
+	The WHERE clause comes before GROUP BY in a query, whereas the HAVING clause comes after GROUP BY
+
+	The WHERE clause cannot be used with aggregate functions, contrary to the HAVING clause
+	
+	
+Encrypting databases with sensitive information is crucial for security reasons. Encryption can be implemented in several ways. For example, you could:
+
+Create a master key
+
+Use symmetric encryption
+
+Create a certificate protected by the master key
+
+
+
+
+The key differences between an implicit and explicit cursor are:
+
+Implicit cursors are created automatically when select statements are executed, whereas explicit cursors need to be defined explicitly by the user
+
+Implicit cursors can only retrieve data from a single row at a time, whereas explicit cursors can retrieve data from multiple rows
+
+Implicit cursors are less efficient and more error-prone compared to explicit cursors
+
+
+: A memory footprint in Java is the amount of memory used by a program to store its data and code. 
+
+
+A memory footprint in Java is the amount of memory used by a program to store its data and code. The memory footprint is determined by factors such as the number of objects created, the size of those objects, and the amount of memory used by the program’s data structures.
+
+-----------------------------------------
+Leadership:
+	- share vision with whole team ,highlight vision, challanges and oppurtunity
+	- meeting in-person is gr8 for remote team, 
+	- cleebrate wins with you partners
+	- incldue partner in dmoe: enhancing visibility and public peasking fosters a s sense of acheivement and belonging , motivation team effort
+	
+
+---------------------------------------------------------------
+
+How do we manage sensitive data in a system?
+What is Sensitive Data?
+-pii,HEALTH,INTELECTUAL PROPERTY,FINCICAL INFO, EDICAITON, LEGAL RECORDS..
+ 1-Encryption & Key Management
+	- data tramission must be encryptted, pswd cannot be in plain text
+	- key storage: apllicant pswd,paswd mgr, and audito: all 3 req to open a lock
+ 2- Data desensitization
+	-rocess of removing or modifying personal information from a dataset so that individuals cannot be readily identified.
+	- will do when sahred  research or statistical, masking
+  3.Data Lifecycle Management
+	- developer hsud hav eneceesaayr premisison only for some period,
+	
+--PE--------------------------
+scale projects efficiently while maximizing performance and minimizing costs
+-oversee development teams and coordinate strategies to make sure the technologies are interconnected and product lines are working smoothly
+
+
+------------API security----------------------------------
+USe HTTPS : TCP, publick key from S > session key from C >  encrypted data
+USer OATH2: user need google phot on this app, so this app ask user to loing using google credtinal, it will go auth server, get access token
+			and tha will be sued to loing to goold photo ang get, it has some time, formate mostly use for acces token is JWT
+USe leveled api key : Auth server > client > client hmac> we server
+Authrization: can view , cannot modify
+Rae limit: rate limit rule based on ip, user,action grp,
+Api version: GET /V1/users/123
+check OWASP  security list
+USer API gateway :
+error handling: escriptive helpful error message
+input validation:
+
+----------------------------------------------------------------
+How to Scale an App to 10 Million Users on AWS
+minimum viable product (MVP)
+
+if ddatabase reads were becoming a bottlenec :ElasticCache is a managed Memcached or Redis.
+-moved static content to Amazon S3 and CloudFront to reduce the server load.
+-reduced latency by caching data in CDN at edge location
+-Scaling the computing resources based on load is called Autoscaling
+-moved to a microservices architecture because wanted to scale services independentl
+
+-Splitting a database into many databases based on the business domain is called Federation. 
+	- userdb, product db, forum db
+-Splitting a single dataset across many servers is called Sharding.
+	
+
+
+Airbnb Adopted HTTP Streaming to Save 84 Million USD in Costs
+	-Rendering Path: Netwrk > html > translate to DOM (Parsing)>render tree> layout > paint
+							>CSS >CSSOM 
+    - browser parses HTML incrementally. So, DOM construction is incremental
+	- But the browser blocks the screen until the server sends CSS files. Also parsing CSS is not incremental
+	-browser then combines the DOM and CSSOM to create the render tree.
+	- etermination of the dimensions and node locations by browser is called layout.
+	- browser finally renders the individual nodes to the screen. This is called painting
+	-HTTP Streaming
+		- buffring: server writre entire to biffer, and the send to browser
+		- server brk response into chunk, and send as soon as chunk is ready 
+		- pupular method: chunked transfer encoding
+	-performance golden rule, 90% load time of most websites is on the front end
+	- Because they want to avoid extra engineering effort to enable streaming.
+	-Because nothing gets rendered until that query finishes. 
+	-Solu:Split the HTML document into 2 chunks and send them separately. They sent the HTML <header> in the first chunk. 
+	
+----------BLOOOM FILER:
+-HashSet can be used in a small data set to test if an item is a member of the data set.
+- Bloom filter is a space-efficient probabilistic data structure that is used to test whether an item is a member of a set. 
+-  The bloom filter will always say yes if an item is a set member
+- the bloom filter might still say yes although an item is not a member of the set (false positive). 
+- add an item to the bloom filter
+	-hashed through k hash functions
+	- modulo n (length of bit array) operation is executed on the output of the hash functions to identify the k array positions (buckets)
+	-  bits at all identified buckets are set to one
+-o check the membership of an item in the bloom filter?
+	-hashed through the same k-hash functions
+	- the modulo n (length of bit array) operation is executed on the output of the hash functions to identify the k array positions (buckets)
+	- verify if all the bits at identified buckets are set to one
+- If any of the identified bits are set to zero, the item is not a member of the bloom filter
+
+
+Application:
+	Check if a username exists in a user sign-up flow: if NO, immediatly return else chekc in DB
+	Check if a user has read a Medium article
+	Check if a URL is malicious in Chrome
+
+
+
+
+
+	
+
+
+
+
+
+
+
+

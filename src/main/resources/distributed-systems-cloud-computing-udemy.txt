@@ -1,0 +1,231 @@
+Basic of Large scale Distributed system:
+-------------------------
+A.million of user and petabyte of data
+- cloud is is distributed ,even simple wbesite is DS
+- further vertical scal not possibe after certian point
+- single point of failure-if single syste,
+- other counter user , latency is too high
+- computer open t inter ddos attack,
+
+Solu:
+	- well acrchitect distributed system:
+	- Horizontal scale., grow and shirk on demand
+	-DS: system of serveal process, commuc to acheive commn goal
+	-process runnning on same sys: is no DS
+	- nerk is only option for coomunicaiton, each process know other servers 
+
+B:
+	-Node : process running on mahcine
+	- cluster si cluster of nnode ,
+	-how to distributer wkr between node:
+		- manula
+		- one node master , incharge of distributed , but if it fail .
+		-  build an alogo to elect owne leader, if master is not rechiing, remain will make ohter as leader
+		- some kind of register and discover of node, so automa leader re-elction
+		- open source zookeeper-cordination service for a distributed systme:
+			- high pef, cordination syste, kafka, haddop, hbase, 
+			- hig avail amnn relabity, in prod high tha 3 node
+			- node communicated with zookeper severver cluster, not directly 
+			- -ZNode: hybrid betwen file and direcotyr
+				- presistent znode: stay in betwwen session,valida
+				- Ephemeral: if node idscnnect idsconnect form zookeper, it will get deleted
+			- algo of leadr elctio:
+	 -3 step llgo for leader election
+	 
+C:
+	- zoo.cfg: zookeper look at runtime
+	- dataDri: pathe to log dir, client port, where zookeeper listen
+	- :clientPort:2182
+	-sh zookeperserver.sh start .. zkClie.sh for zlient, ACL param: access control list
+	- 
+	
+D.: service registry and discover:
+	- service discover: who else in cluster : static config in a file and distribute file to all server, 
+	-prob is one node is address change, the other node still try old address
+	- if new node addd, need to distribute to all node
+	-update at once pplce, and confim magement tool will take care: puppet
+	- each node will do service register, 
+	- discover: node call getchild() and getDAta() will help to get data, 
+	- fully peer to peer
+	- automated SD
+E.: SD and SR impl
+	UDP: vidoe, audio, sending log infor ..not finaces, online gaming, allow broadcasting, 1 comp send msg to all comp.
+	TCP: relaibel,no loss,wrk as stream of byte not datagram , relaibe cos tof latency, socketto socket
+		- webserver, well know port liek 8080, stream of bytes, 
+		-parsing byte data is hard which data for whom so we have applicaiton layer
+	APP: FTP file, DNSl host to ip, http hyper media dco, viceo, audio, img, all type
+F.:
+	relative path and query string http
+	http verison http/1,1: new tcp connection establish, then once res of req 1 recvd mthen clint can send req 2, if too long new connection need to be created
+	http 2.0 : multiple req/res on same ocnn, logical brk, 
+	http header: key valye pair of string, conecnt lenght, type, encoding, create owne heder, x-debug,x-test(thei req operate on test data)
+	http 1.1: header pas as plain text inspected by debug tool wireshark , 
+	http 2 : header are compressed ,s ave payload size, harder to debug/inspect
+	http body: anything, but recv shud know how to parse
+	- x-debugheader: how mcuh time took http
+	
+G.HTTTP SYNC: response or error , next req if prev transaction si cmplete
+ASync: send server without waiting for res.
+	Completable<String> future1=- httplinet. sendAsync(url1); // http client after jave  11
+	Completable future2=- httplinet. sendAsync(url2, "objectto handle respnse"); 
+	Stirng response1 = furture1.join();
+	Stirng response2 = furture2.join();
+	
+- Conneciton pooling:
+	- httplicent not clsoe conn after response
+	- if boht http server adn client is on http2, by default connection pooling is enabled 
+	- if atleast one not support http2, or ebale explicitly
+	- setting keepAlive =true
+	-wireshark: debgug took for netwrk, caputre netwrk packer
+	- asyn: perfrom parallel
+	- wireshark inpect netwrk coomm betwe 2 node
+
+H:
+	-Sever fail scenario
+		- At most once: client send only one time: eg: loggin/monitoring, promion to user 
+		-At least once:client keep sending ,until repsonfrm srver
+		-idempotnet: perform multipel time have smae result, like even perorm 1 time
+I:
+	Serializaiton technique:
+		-JSON: string,boolena,array...disadvantage: no std schema , need externa lib, 
+		- byte stream : class def shud be ssa,e at both end, default consturctor, no need extrnal lib, tight couple with jvm, not sure as serics cntain all info
+		-procolo buff : schmea: protoco complier, gne class in any lang , eahc msg is key vlaue pair, with tagrequire filed, optinal field
+			- proto file
+			- lang spesifc stub generaion using pro complier
+			-effieice serialie and deserialie
+			- more secure: only tag number and encoded value, not the whole data,
+			- hard to debug, hard to implement
+			
+	-JSON: humab readable, lang indep, native broser support
+	-java serial : simple, fast develop with native jvm
+	-procol buf: perf, bandwitth, security
+	
+	
+
+
+
+Section 6:: Building Distributed Load balancer
+	- single point of failure
+	- distribute nerwrk trafiic to closuter of server
+	- Types:
+		- H/w LB: decis to h/w : high perm, more reliable
+		-S/w: lb prob running on server ,
+		-oen source: HAProxu,NGNIX
+		Gateway we can have h/w LB, 
+		-health monitoring feature helpt to systme relaible and avalible
+	-LB strategices:
+		- RR: each server wil 1 req, assum each reg same time to process
+		- weighted RR: server with high h/w will get more load
+		-Source IP hash: add item shoping card, and refeh: preferable same serve
+		- above strategic not take sever load into account:
+		- Least connection stratgy: baed on nu of connect, health check req , if server busy then healht check will have latency
+		- agent based : CPU utilizaiton, memory, inbound,outpbout,: give lb real time data
+		
+	-Netwrok layesr where LB can inspect traffic
+		1- layer 4 LB: trnsaport layer : dont inspect content of data, on src ip and port
+			- simple LB, but no routing logic
+		2 - Applicaiotn layer, layer 7  : smarter routiing decis, bae don http header content, base  reg url, broser cookies, 
+			- if rouing ,smart, based on header, traficc, 
+		- 
+	-session 3:
+		- HA PROXY
+			- rleiable , lb, operate on TCP/HTTP
+			- easy, to configure
+			- on linux:haproxy.cfg: - globaal, and proxy : routing on incoming:
+				-default, frntend, backend cna be configured
+			-
+
+
+
+
+SEction 8:
+ session 38:
+	Storage: File system (vidoe ,audio,img,..) or DB(app addiotnal capablity, queyr, cahche, restrition, ACID,)
+	2 type DB:
+		1-Releation: row and col, :struch bas on rpe define schema
+		2- NO stru: key value, doc, graph : struc of each recrd differ from other, easy to scale
+		Avaliblity, scanoibiyt ma gault tolence: DB :
+		distrub daata to multiple node, 
+	Sharding:
+		- partition of large data set, in chunks called shard.
+		- shard can live on diff mahcin, low latency, parllelism, scale horizontally as data icnrease, HA , 
+		- SQL sharding: verical splie table in chuck
+		-NO SL: grp in diffrent shard,done based on record key
+	Strategis of sharding:
+		-hash funciton: which shard : key mod N(n is no of shard): good hash func for even distribtion
+		- Range based sharding: key space in to ranges, name as sahridn key [A-f} shard 1,{g-K} sahrrd 2]
+		- disadbnvg: re arrage keys
+		-disadtabge:
+		 complext, conurrency, race condi, lock , , so need distributed lock
+		 - NOSQL(dynamodb,redis,mongodb,) 
+		 - Acid of no sql if the are so some physical node
+	-Sharding hash based issue and how it solve consistent hashing
+		- N=4, if new now or del : rehash , not all nnode has saem capacity
+		-node ip addes, hash space, turing into ring, all , key mape to 31 or 51 belong to node 2 
+		-Consissnet hasing: ?
+			- based on capicity we cna mapp one physical to to more virtual node
+			-
+	
+  -DB replication::
+	- sharding: split data and place chunk on diff machine
+	-replicaiton: create copy of dat in diff machine
+	- for HA :relicationa :
+	-Fautl tolence: replication
+	-scalibiliy and perf : replicaiton
+  - Architecture:
+	-MASTER - SALVE: if master fail, slave take over, if single wite in tnot enouhg, we go with master master
+	- MASTER-MASTER
+  -Consistency MODEL
+	- Eventualy consistenc: once data write in mster ,eventually all will have same copy and akc will be send to client
+-   - strict consistency : after all salve will have sae copy, then mast will send ack
+	- Strict  consistency issue if one now won, write will timeout , so solution 
+	  quorun consens: Optimiz for read or write based on R and W value
+		- version with all record, r min no of reader has to readn , w is min mo of node write has to write
+		-r+w >N eh: N=5, R=3, W=3 :: 3+3>5 ,so strick consiteny
+		-  so if we read x-20, with version 1 , form other node x-30, vesion 2, so we know 30 is new value
+
+
+Cloud computing and development at global scale::
+	- deploy distributed on cloud infra
+	- run app on compute engine, store jar in storage adn copy and run
+	- automate the prcess using instance template
+	-instance grp: heal clurster for failure, pektraffic, 
+	- targe cpu =60%, min instace=1 
+	- stress app to test the load,
+	- suer base and traffic pattern , we do config :2 intance grp in two region for disctiubuted traffic
+	-Cloud LB: distributed , can scal up and donw,
+	
+-------------------------------------------------------------------------------------------------------------------
+		
+SD Cheatsheet:
+ - 1. High Availability :
+	- ensure a high agreed level of uptime. We often describe the design target as “3 nines” or “4 nines”.
+	- achieve high availability, we need to design redundancy in the system. 
+	- Ways to get HA
+		- HOT-HOT: 2 instance rcv ssame input, and bot send response to downstream
+		- HOT=WARM: only hot send to downstream, if hot donw thne only down start
+		- Single-leader cluster: one leader instance receives data from the upstream system and replicates to other replicas.
+		-Leaderless cluster: No leder,Any write will get replicated to other instances.
+	-high resilency.
+ - 2. High Throughput
+	-handle a high number of requests given a period of time
+	- metrics are QPS (query per second) or TPS (transaction per second).
+	- often add caches to the architecture so that the request can return without hitting slower I/O devices like databases or disks. 
+	- increase the number of threads for computation-intensive tasks
+	-  asynchronous processing can often effectively isolate heavy-lifting components.
+ - 2. High Scalability
+	-  system can quickly and easily extend to accommodate more volume
+	- 
+	
+---------------------
+5 S methods:
+1- Sort  : remove un-necessary items , keep only what need
+2- Set in order : organize item for easy acess
+3- shine :maintian cleaness
+standarize :create a simple repeatable routine 
+systain:keep to rune, make 5 s as habbit
+- autoClosable for resource closeing >> u must use try , if u forgot to user try , workaround ,
+- 
+
+	
+	
