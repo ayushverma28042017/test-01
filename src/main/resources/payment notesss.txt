@@ -1,0 +1,353 @@
+
+
+ Currently we are considering only payments side ,Collection will start soon (in phase 2)
+ Paynow (online) is the preferred mode for payments of <200k. Giro will be the secondary payment method and outsourced cheque as the last option (BCP).
+ For Payment we are thinking to have payment method at client level instead of policy/transacion level. By doing this it will reduce complexity adn ease customer service..
+ As we know PAunow(FAST real time) has limit of $200k per transaction where as Paynow(GIRO) has no limit but follow T+2(DBS/POSB) or T+3(non-DBS)
+ if we are using Payment on GIRO , a copy of bank statement need to obtained to check if correct person to receive the payout is account holder.
+ - Work with finance to get the stats on customer that are registered using NRIC for PAynow or and run campaign for those who have yet to .
+ -COST:
+    Paynow FAST $0.20 per transaction
+	Paynow GIRO : $0.05 per transaction
+	
+------------------------------
+CS individual for healht
+RCS check
+
+Auto payment direct check: 
+-------------------------------------------
+
+
+Singlife
+
+legacy :
+core appp:
+  life 400 :
+  Elixer(shanit): different line of business.
+  GI :
+  
+  when we change back all 3 imapcted 
+  
+  All GIRO :DBS
+  ALL CC: with uob, now need to swithc to DBS
+  chekc: DBS
+  In house:
+  W3
+  currently mostly bathc
+  cheque
+  - 2,10 : same
+  direct credit, expense is cheaper: 20 cent.
+   paynow expensive.
+   
+   
+   Outsource cehque prinintg sevice :::  print and dispatch
+   Chjeck printed : 
+   
+   
+   A . 
+   
+---------------------------------------------
+i need info like:
+
+total volume by payment method (e.g. GIRO, outsourced cheque, etc) used in paying our policy holders?
+
+the payments we made to our policy holders per type (e.g. GIRO, outsource or inhouse cheques, etc.) for the last 12 months?
+
+
+
+surrender/claim/premium refund
+
+
+Auto Payment Direct Credit - giro may.. direct trasfer to acc ,i transfer top ur acc 
+Auto Order Cheque - i need money from cheque.. sys generate cheque ,system se payout
+Outsource Cheque Refund Prem. 
+ - if give more premium by customer by mistake.. suspend may chala gyega.// suspense agiong> auid.. if >3 need to refund to customer
+E-Reimburse to CPFB (Claims)
+  - health> medi calim , medi sheld... CFP kay trough may.. 2 acc medi calim, medi shelid. ppaid frpo, cfp acc
+  
+Auto Cross Cheque :: 
+ - 
+Manual Cross Cheque :
+
+Bank Tape :
+   - telegrapic transfer ,foreign payment
+Direct Debit :
+   -- how direct debit used in payment 
+
+----------------------------------------------------------------------------------------
+where expense is accumalated, need to ask finace
+which expense line,?
+estimate: to imple this project
+full picture of Actual,,
+benifits deriived fromt his p[roject] to go forward,, 
+
+how much banck chagers in eeach flow
+
+refund- is diffrent from payment, it go back to collection.. go to FAST/paynow orGIRO
+-PAynow realtime.. limit 200k 
+- paynow FAST has limit ::200k
+PAYNOW 
+FAST is real time, 
+reconcilation.. if >200k
+-GI and GRP business separate..
+- One time enquery:
+Indiviudial life.
+current process , how to put paynow in that
+
+citi(USD<>>), uob, dbs ,, underlying bank involved..
+DBS:: multi currency account for non-SGD
+
+DESING :::
+   requiestion used,, 
+   requistion, using or not 
+
+----------------ALOK------------------
+resolution
+
+Payment:
+  2 way:
+     Tech stck 
+	 business knowledge
+	    -singlife accept payment and aviva 
+		-collection acc, singlife acc.. aviva acc..collect acct change to UOB , 
+		-GIRO >commpany tieup one bakc,, u collect all bank and send.. bank ak netwrk
+		-clearaing house.. eod day.. settlee all bank transction.. ocbc.uob ,dbs....
+		- RI,NEFT,NEFT
+		- frounthing bank 
+		  -GIRO : deduction: no sstandard..specfic forma.. now std country td.. swift county std to internationll..
+		  GIRO : one bank simplified the process..centralizee, paisa. commision.
+		  - collection acc, payment account..current Account(payable)
+		  - premium and claim..
+		  - Genral ledger: calim, surrender,>> account payble furher su
+		  - char of account
+		  - gneral ledger posting, 
+		SINGLIFE  
+		  -  CC payment allowed
+		  - tech analysisx 
+		  - card>98% , 300, compay take 305 , model factor.,..
+		  - premuim pricing,based on frequency , time value of money
+		  - model factoer : frequncy
+		                    payment method:
+							premuim method
+		   - CC:: impact on pricing impact
+		   - 
+	 ROAD map:
+	   - will u launch CC
+	   - migration analysis: if life 400 to singlife acc: cc
+	   - visa,master,amex
+	   - dbs: diel, h2s,idda,edda,
+	   -ABS: banking consotium
+	   - paynow : intergration: dbs se hai he, paynow payment first ARGO , then to anywhere..today FNZ, baad may life 400 , ref num..ref no policy no.. uniquicly idenfy.. if life 400 ya fns
+	   - VA:virtual acc: ref no.. paynow , fastpayment: ref nuom.. of 
+	   - mast transation with policy
+	   - zhong :
+	   - 
+	   
+	   
+	   payment -prod -squad
+		
+	   a Single Premium (SP) 3-year non-participating endowment plan which provides a guaranteed Maturity Benefit at the end of the policy term.
+platform -- Ezsub
+
+
+-------------------
+eDDA:
+ - Dorect debit authrization
+ - convenience , accesibility, greter efficiency, easirer recosciclation , fast turnaorudn time
+ - edda via NETS , iDDDA vis internet banking
+ - Bank agnostic network for consumers
+ - for BO a public site to sign up for eDDA
+ - BO user:
+    Business Maker
+Business Checker
+Technical Maker
+Technical Checker
+ 
+ - a new initiative by ABS (The Association of Banks in Singapore) to enhance the payment landscape and reduce the cheque/paper base process 
+ - 
+	   
+	   
+--------------------------------------------------------------
+
+General Inter-bank Recurring Order (GIRO) is an automated electronic payment service which allows you to make monthly payment to the billing organisation (BO) from your bank account directly
+
+GIRO set up can be done via 2 methods: 
+
+iDDA which is an approval of a GIRO application via API and occurs instantaneously. 
+
+Hard copy application form which SGL would send off to DBS. FNZ would then retrieve the result form via FTP (3-6 weeks)  
+
+-------------------------------------------------------------------------------------------
+
+Varun ::
+1- Platform solution
+2- Integration with PAS
+3-Cannot use Singlife as piggyback but surely we cna re-use the asset
+4-Customer journey
+
+I am Engg lead for this initiative adn the Payout solution will be ready by OCT.
+
+DBS MAX for collection
+Need to do brainstorming
+
+SCB: 6.5 /cheque and afteer 6 mth double digit
+
+DBS MAX
+Cashless Payment Alternative with Refund Solution
+DBS MAX Proposition:
+PayNow
+QR Checkout Page on Singlife with Aviva’s Website
+Checkout Journey
+
+Implementation Steps using existing DBS connectivity
+
+paynow QR
+online eGIRO
+Online bill payment
+Paynow with visa or master
+
+---
+collecti9on for dbs payer and non-dbs payer
+Do we need refund as well ?
+
+API suits:
+  Inward credit Notification(ICN)
+  Refund API : instantly
+  Sweep API : sweeping fund form pool acc to operating account
+  Balance enquiry API
+  Transation enquiry API
+  
+ Ease of Reconciliation:
+  immediate crtedit info,bal enquiry,api visibility fo cash flow.
+  
+ Web flow: 2FA will be avalible 2FA 
+
+
+-------------------------------DBS MAX---------------------------------------------------------------------------
+
+DBS MAX Paynow  QR:
+
+QR genrator DBS provide login for QR generator or Singlife can also use custome login
+Any paynow participating Bank can be used for QR collection
+later can be easily use DBS paylah /Google pay
+As long as bank allow paynow payment
+mobile wallet QR payment
+notificaiton :ICN 
+- genrate QR: bill ref shud be assinged.. you can may with multiple custoemr /policy number in a single bill ref number
+- ICN , will have bill number,based on bill-ref no  mapping of policy will be done
+- 25 char: bill ref number
+- 
+Seamless checkout: for dbs customer :
+- few mnth,
+- cusotmer have dbs saving acc, seemless trasation ,2FA,
+   make paynow payment, com back to webiste or portal of SL , 
+   min custome rexp 
+   unique: for dbs customer > auto redirect to Sinliffe APP
+   3 mnt refund time limit, noraml has 1 mnth 
+   - trasnaciton eqnuiry API :
+   Sweep API : from virutal acc  acc to physical acc.. consolidated statement for per day, for customer, for policy based on profile
+   - Reconcialtion: who is orginal cusotmer
+   - Simple to use, DBS max for larger cmpany: can also get each transaction reports 
+   - consolidated report,also per transaction
+   - individual trnasaction in bank statement
+   - reporting :deb max transaciotn specific
+   - seggreagte by business producy.. line of business.. more dynamic
+   - schedule tranation specific time,virtual to physical acc
+   - create profiles, branch level, counter level.
+   - x-aivia, x-singlife.. profile
+   - max: avoid duplicate payment
+   - max refund: 3 mnth api , std used in legacy only 1 mnth
+   max wallet:
+   when SL acc was created and integrted with API , have vurtial acc setup, dbs max development in progress, all api feature
+       itemised, 
+	QR EMV  standard: bank wise std.
+	- bill payment: onlne.
+	QR: on the spot colelctions info
+	eGIRO: collection, mandate, day to day basis.. every month - mostly used for recurring payment
+	Aggregator : Delloite ,eGIRO
+	  eDDA: >
+	  
+	------------
+	ICN no difference, for api .little more API in MAX
+	RFP : new pipe, multiple endpoint, new feature
+	    :
+	
+	eGIRO: after set up.. dda
+	      - GIRO approval ---
+		  - API- system auto check 
+		  - eGIRO and FAST colleciton : in one call
+		  - automatically trugger fudn for FAST collection
+	
+	FAST stop payment can be doen from idela portal: if RAPID 
+	GIRO: form need to send to DBS , mom to Friday by 3 pm, one wkrking day before value day
+	      - bulk paynow : transaciton ref will point to :: Stop payment 
+	
+----------------------------------------------------------------------------------------------------------------------------
+
+ack1: email to team before re-try,file satus
+ack1: resent file 
+ack2: user manula
+ack3L ==
+
+FAST: indiviudal debit, 5 transaction , 2 reject,, ack3:3 succes, so 3 debt in acc.. but in bank stattement only 3 T.
+- proxy is active, and payer acc is clsoed when transaciotn initiated  .. so in bank statement there will be debit and credit.
+- statement can be chekc on netbanking
+- CAS lookup fail.. no debit from acc, no statement in transaction
+- If status is Pending, will get updated status in 15 min,, after that status shud be there.. if still pending send mail to dbs tech team
+-  After 11:59, statment day will be tmrw day but value day will same day.
+- transaction statement will be only till 11:30 pm after that it will move to next day transaction.
+-    00:00 - for FAST,
+-    uat pending mock is not .it will always give pending--it will send dub-pedning
+-
+
+
+----------------------
+stop payment transaction level  adn whole file
+
+
+
+
+
+--------------------------------------------
+
+edda:
+ - Agreegator was delloite now accesncure:
+     - web and mobile: only mobile :: FNZ 
+	 - abb 9 bank and BO will register thmeself to edda protal
+	
+	 = certificate , details: ABS portal pay both reg:;
+	 - Dellote> Accenturre
+	 - customer will loign to mobile> select bank.> will redirect to bank website, fill the required details, > bank will redirect to aggregator> aggregator will redirect to BO
+	 - 
+	 -custoemr > edda setup> pwn polic:
+	 - BO: SL:register for edda: setup: bank ,show all list opf bank: call to portal aggrettor: re0dri4ection to bank protal: 
+	 -Bank code: edda ref num:(genrate by BO): sent to agrregator portal:
+	 - which bank calling: bank login page: custoer put logn : 
+	 -submit: reirect toa greegotor prota:> refirext to BO:
+	 - transaciton is under porcession:
+	 - edda creation doc: mandtoru:> bank call: bankl : bank send respponse -4
+	 -
+	 
+	 
+----------------------------------------------------------
+4 main payment type:
+  - Paywave : ATM/VISA : wifi symbol  on card >tap to CC terminal> it ussse CCcard compnay first? % pay to visa> if amtn is less like <500
+  -Paynow : doen through bank ,open DBS app on phon > icon for paynow > direct transfer to u to another person,, i.e acc transfer. mobile/NRIC/UEN/... very less fee, limit on app.
+  - NETS: 2 most coomon:>some vendor dotn accept payway due to 2% surchange as visa askign> inserter you card adn type PIN number>surcghare is too low, if buy too mcuh expenmsive 4k,10, use nets
+  - GRAP pay: scan QR code: from grab wallet>
+  - 
+  
+  -----------------------------------------------------------
+	  resilient microservice
+		-withstand failures and continue to function.
+		- common ways to make resilient is	:
+			- using circuit breaker
+				- llows a microservice to stop calling another microservice if the other microservice is unavailable
+				- This prevents the first microservice from getting stuck in an infinite loop of retries.
+			- using retyr
+			- using health check
+			-desing ms lossly couple
+			- use msg to comm withing ms
+			- use LB to disctirbute traffic
+			-deploy in cloud
+		
