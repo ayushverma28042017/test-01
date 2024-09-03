@@ -37,6 +37,8 @@ public class PallinddromCheck {
         System.out.println(str1 == str2);
         str2 = str2.intern();
         System.out.println(str1 == str2);
+         System.out.println(str1 == str2);
+         System.out.println(str1 == str2);
 
     }
 
