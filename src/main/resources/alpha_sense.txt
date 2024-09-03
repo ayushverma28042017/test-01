@@ -1,0 +1,200 @@
+About AlphaSense
+
+AlphaSense is a market intelligence platform used by the world's leading companies and financial institutions. Since 2011, our AI-based technology has helped professionals make smarter business decisions by delivering insights from an extensive universe of public and private content – including company filings, event transcripts, news, trade journals, and equity research. Our platform is trusted by over 3,500 enterprise customers, including a majority of the S&P 500. Headquartered in New York City, AlphaSense employs over 1,200 people across offices in the U.S., U.K., Finland, India, and Singapore. For more information, please visit www.alpha-sense.com.
+
+Check out what we've built so far
+
+The Role
+
+We are looking for an experienced Senior Software Engineer with a strong passion for product-oriented development to join our team and help us take our product to the next level!
+
+In this role you will join the User Management team responsible for complex user-related components in a multi-tenant SaaS product:
+
+User Management - handling user provisioning from external systems, managing storage for core user information such as permissions, preferences and roles
+Authentication - ensuring secure and seamless integration of user accounts with multiple vendors
+Admin Management - overhauling our admin system to empower enterprise clients with efficient self-management capabilities at scale
+User Preferences - Fine-tuning on-demand features to personalize each user's experience for optimal productivity
+You will collaborate with the team to develop new features and components that are scalable, reliable, and performant. Your focus will be on the backend layer of our web application (Java microservices, databases, message queues, private and public APIs and 3rd party integrations). We value teamwork and strong organizational skills, and we encourage your professional growth beyond an individual contributor role.
+
+Apply if you have comprehensive experience working with..
+
+Java ecosystem and Spring-based applications
+Microservice architectures
+Relational databases (MySQL, PostgreSQL, MariaDB)
+Authentication protocols (OAuth, SAML, OpenId Connect)
+User management systems or storages in a multi-tenant SaaS environment
+Experience working with Docker, Kubernetes, AWS, Spring Native or message queues is considered a plus
+What we offer
+
+Playing a part in the story of a fast growing company
+Interesting career opportunities and training
+Relocation support for single employees, couples and families
+While we do have an office in Helsinki, we're a distributed company. We value outcomes over time, and offer flexible working arrangements, usually meet at the office once a week.
+Private healthcare services from Terveystalo
+2 weeks of vacation granted up front, and possibility to use vacation days as they accrue
+Access to gym room, gaming room, free parking near the office, mobile phone, Lunch benefit, mobile plan, home internet, remote work equipment, and many more....
+You can apply by sending your cover letter and resume through the application form.
+
+-----------------------INTERVIEW----------------------------------------------
+Jva 11:
+
+isBlank - Returns true if the String is empty or contains only spaces
+lines - Returns a stream of lines extracted from the string, separated by line terminators such as \n, \r
+strip(), stripLeading(), stripTrailing() - strip whitespaces from the string
+
+The Z Garbage Collector, also known as ZGC, is a scalable low latency garbage collector designed to meet the following goals:
+`Pause times do not exceed 10ms
+`Pause times do not increase with the heap or live-set size
+`Handle heaps ranging from a few hundred megabytes to multiterabytes in size
+Flight records:
+	-Java profiling tool that monitors and diagnoses a running Java application. It is responsible for collecting data about the running environment, JVM and Java application and dumps the recorded data into a .jfr file, and we can use Java Mission Control (JMC) to analyze and visualize the .jfr file.
+ launch Single-File Source-Code Programs in JDK 11?
+	-Before Java 11 -
+		javac HelloWorld.java
+		java HelloWorld
+	- java 11
+		-java HelloWorld.java
+Java 11, released in September 2018,
+	-new built-in HTTP client API in the java.net.http package
+	-This API provides a more efficient and modern way to perform HTTP requests and handle responses.
+	-HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("https://example.com"))
+        .build();
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		String responseBody = response.body();
+	-  Enhanced Security with Transport Layer Security (TLS) 1.3:
+	- - Launch Single-File Source-Code Programs: 
+	-HTTP/2 Support in the Servlet API:
+	- var keyword introduced in Java 11
+		-declare and initialize local variables with implicit type inference
+		- var age = 25; // implicitly inferred as int
+			var name = "John Doe"; // implicitly inferred as String
+			var list = new ArrayList<>(); // implicitly inferred as ArrayList<Object>
+	-  new built-in HTTP Client API i
+		- more efficient and handle response
+		- Asynchronous and Reactive: CompletableFuture-based methods for sending requests and receiving responses asynchronously.
+			-make non-blocking HTTP calls, improving the efficiency and responsiveness of applications.
+	-Fluent API: The HTTP Client API provides a fluent and easy-to-use API for constructing HTTP requests.
+		-developers to chain multiple method calls together to build the request, making the code more concise and readable.
+		-HttpRequest request = HttpRequest.newBuilder()
+        .GET()
+        .uri(URI.create("https://example.com/api/users"))
+        .header("Authorization", "Bearer token")
+        .build();
+	- body can be processed using HttpResponse.BodyHandlers, which provide built-in support for handling different response types, like String, InputStream, or JSON. 
+	-HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		String responseBody = response.body();
+	- raditional HttpURLConnection API, on the other hand, requires manual parsing and handling of the response stream, making the code more error-prone and harder to maintain
+	-Transparent Compression and Decompression: The new HTTP Client API can automatically handle content compression and decompression using gzip or deflate algorithms based on the Accept-Encoding header. This helps in reducing network bandwidth and improving performance. 
+	- Java 11 introduces the concept of "unnamed modules" to overcome  existing applications that were developed before the introduction of the module system.
+	- latest version of the Transport Layer Security (TLS) protocol, TLS 1.3.
+		-TLS is a cryptographic protocol used to ensure secure communication over a network, commonly used in applications such as HTTPS. 
+			-Faster Handshake:  reduces the number of network round-trips required during the handshake phase
+			- Improved sercuirty:emoves outdated and insecure cryptographic algorithms and introduces new algorithms 
+			-Forward Secrecy by Default:ensures that even if the private key of a server is compromised in the future, past communications cannot be decrypted. 
+			-Extended Support for Digital Certificates: 
+			-Key Updates:
+	-Servlet API with native HTTP/2 support
+		-Protocol Upgrade:multiplexing, server push, and header compression.
+		-Multiplexing:equests and responses to be multiplexed over a single TCP connection,,chieved by sending and receiving individual frames instead of complete requests or responses.
+		-Server Push:the server can proactively send additional resources to the client without waiting for explicit requests
+		-Header Compression:  header compression algorithm, known as HPACK, to reduce the size of header fields sent over the network. 
+-----------------------------------
+ Depending upon the level of concurrency required the concurrent HashMap is internally divided into segments. If the level of concurrency required is not specified then it is takes 16 as the default value.
+ All the 16 segments would also get initialized immediately. Which means more memory consumption
+ -ll the 16 internal segments point to null. The segments get initialized only when data is inserted and the particular segment is to be used. So better memory usage.
+ -Map<String, Integer> conMap = new ConcurrentHashMap<>();
+ -Functional Programming
+	-make use of anonymous functions
+	- no way of passing a method as argument or returning a method body for that instance.
+MetaSpace in Java8? How does it differ from PermGen Space?
+	- metadata is now stored in a native memory are called as "MetaSpace". 
+	-improvements over PermGen space in Garbage collection, auto tuning, concurrent de-allocation of metadata.
+	-Lambda Expression can be defined as an Anonymous Function that allows users to pass methods as arguments.
+	-(arg1, arg2, arg3,...) -> { body }
+	-Default method can call methods from the interfaces they are enclosed in
+	-External Iterators- control over iteration of elements is with the programmer.
+	-Implicit: contril si with iterator itelsef, programme ronly tell what need to be performed
+	-Intermediate operations- Intermediate operations which return another Stream which allows operations to be connected in a form of a query
+	-Terminal operations- Terminal operations produces a non-stream, result such as primitive value, a collection or no value at all.
+	-@FunctionalInterface 
+		- This annotation is optional. 
+		-The interface for which we are writing the lambda function should have only a single method
+		-if more than one method is specified for an interface annotated with we get a compiler exception
+		@FunctionalInterface
+		public interface Greetings {
+
+			public void sayHello(String name);
+
+		}
+	-What is :: (double colon) operator-Method References in Java 8?
+		-lambda expressions do nothing but call an existing method. Because this lambda expression calls an existing method, method reference can be used here instead of Lambda function.
+	- Optional:
+		-, a wrapper object is returned thus users can avoid the null pointer exception
+   - monitor multiple microservices for various indicators like health
+	-microservices involving 50 applications, the admin will have to hit the actuator endpoints of all 50 applications. 
+	-Spring Boot Actuator, it provides a web UI to enable us visualize the metrics of multiple applications
+	-Eureka Service Registration and Discovery helps in such scenarios. As all services are registered to the Eureka server and lookup done by calling the Eureka Server, any change in service locations need not be handled and is taken care of
+	-Zuul is a JVM based router and server side load balancer by Netflix.
+	- a single entry to our system, which allows a browser, mobile app, or other user interface to consume services from multiple hosts without managing cross-origin resource sharing (CORS) and authentication for each one.
+	-Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
+	-We will be using two features of Hystrix-
+		Fallback method
+		Circuit Breaker
+	Zuul is a blocking API. A blocking gateway api makes use of as many threads as the number of incoming requests. So this approach is more resource intensive. If no threads are available to process incoming request then the request has to wait in queue.
+	-Spring Cloud Gateway is a non blocking API. When using non blocking API, a thread is always available to process the incoming request. 
+	-Spring Cloud Bus provides feature to refresh configurations across multiple instances:if we use actuator, for each endpoitn we need to call refresh
+	-Distributed loggin:
+		Spring Cloud Sleuth and Zipkin
+		Spring Cloud Sleuth is used to generate and attach the trace id, span id to the logs so that these can then be used by tools like Zipkin and ELK for storage and analysis
+		Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. Features include both the collection and lookup of this data.
+	-Hashicorp Vault is a platform to secure, store, and tightly control access to tokens, passwords, certificates, encryption keys for protecting sensitive data and other secrets in a dynamic infrastructure
+-----------------------------------------
+Maven Interview Questions
+	-Build tools are generally to transform source code into binaries - it organize source code, set compile flags, manage dependencies.
+	-an automation tool allows the build process to be more consistent. 
+	-Advantage:
+		-Quick project setup, no complicated build.xml files, just a POM and go all developers in a project use the same jar dependencies due to centralized POM.
+		-Promotes modular design of code. 
+	-Archetype is a Maven project templating toolkit.our project we created a archetype which would create a custom maven projects with modules as DAO, SERVICE and WEB.
+	An artifact is a file, usually a JAR, that gets deployed to a Maven repository. 
+	-Maven searches for dependency JAR:	
+		-concept of the repository to hold the jar files.local and remote
+	-What is pom.xml file
+		-POM is the fundamental unit of work in Maven.
+		-info project and configuration details used by Maven to build the project.
+		-default values for most projects. Examples for this is the build directory, which is target; the source directory, which is src/main/java; the test source directory, which is src/main/test;
+		-clean - clean artifactory which was created earlier
+		build - creates the application
+		Site - generates the document
+	-mvn package -Dmaven.test.skip=true
+	- different scopes of maven dependencies
+		- Compile - Dependency is inserted at compile time. This is the default scope
+		Runtime - Dependency is inserted at runtime
+		-Test - Dependency will be inserted only during test cases execution
+		-Provided - This means the project does not need to insert the dependency , as this dependency will be provided by the container when the application is deployed
+	-External jar install
+		mvn install:install-file -Dfile={jar name with location path} -DgroupId={groupid} -DartifactId={artifactId} -Dversion={version} -Dpackaging=jar
+	-
+-------------------Architect----------------------
+1- communicaiton skill, as they need to articulate
+2- job : techincally strong , aslo strong on domain as well
+3- as programmer: we think how , but artchtiect we need to have WHY?
+4- good archtiec come with good question than good answer
+5- dont be power point architect, bice diagram bt not effective when iml comes
+6- archti shud be techincal capable, 
+----------------------------------------
+REST:
+GraphQL: in one call fetch many resources, 
+gRPC: between server to server, but GrPC web can be ued with browser, used protocol buf,data serize in binary,, less data, less huma readly
+websocket: chat appif http: polling,bi-direction, 
+DB:efiicent Btress, fat retrival, row and table, ACID,durabile,
+ACID: Consistency: foreign key enforce
+sharding: shard key: id of person, replicaiton, read only copy, leader follwer app.
+-CAP: 
+-if system rrcv more data then it process, it is good to introduce msg queue
+---------------Multitenancy
+-hsared resoruce(compute,netwrk,storage,)secritly
+-cloud native:
+	-innovation,business aglity, 

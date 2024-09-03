@@ -1,0 +1,346 @@
+Dear Mr. YYYY,
+I am writing to see whether you need a seasoned Engineering leader.
+I have been involved in all engineering aspects. I have a diverse background in technologies like Java, Spring Boot, and Microservices and a passion for coding, design, and problem-solving.
+
+I have worked on many projects throughout my career, delivering high-quality solutions that have added tremendous value to my stakeholders. My expertise in Java and Spring Boot has allowed me to create scalable, flexible, and secure applications that meet businesses' evolving demands.
+I currently work as lead Architect for Singlife in Singapore, a regionally acclaimed Insurance leader.
+
+In my previous roles, I have worked with various clients, from small product-based companies to large corporations. I have helped them achieve their technical goals by providing expert guidance and mentorship. I am an excellent communicator and always strive to keep my clients informed throughout the project, which has helped me build solid and lasting relationships.
+
+My approach to problem-solving is rooted in my love of coding and design. I take pride in delivering creative and practical solutions that exceed my client's expectations. I constantly seek to improve my skills and stay up-to-date with the latest technologies and industry trends.
+
+As Lead Architect, I have worked closely with all strata of business users and stakeholders to ensure that projects are of high quality and rollouts are delivered on time. Apart from architecting enterprise-grade solutions, I also mentor my juniors on technical career paths in engineering.
+I Look forward to conversing with you about the roles 'ZZZZ' within your organization.
+
+
+-------------
+EM:realy happy to be here..
+- bad em:>deosnt dleiver time, false promish,, or cosistent loosing people
+- good: keeppromish, not loosing
+gr8 :> speding lots ,one thn at a time,, growht of pepl is opitmize,, keeping ur promish,
+Assss good EM: i want to try manaementif some say: > why > there si personal staisfication building a person, build gr8 people, enjoying of mentoring, 
+:: if no, lets find another way to grow you,,
+>> FAV question: > how deal jerk emloyee> aweosn eng  but jerk, mean to people,:: true, how manage, firction,..
+>>> leran from mistake, failure, sin is failing to noitce not i failuree
+>>> growing people:
+	- if yuo dont like to do something. someone here lik to to do..
+	- weekly 1 to 1 with my direct: no project,.. time how will i help to grw you ,,how in team cna sccuess u,, tell me more,
+	- 3 things: gorw people, consiuoness(not run away) , intelliegne(rihg tot fighure out ), native (walk into proble)
+	- Biggest failure:
+		- prmish that you keep, give righ estimate,, how long u took to discourv, 3 week, how u rubuild, dahsboard, f2f, 
+		- Actions item, leanr:> 
+	- EM: to quick to schduel meeeintg, meeting are bug not feaurre,
+		> 
+-------------MULTIPLE DATA SOURCE------------------------------------
+Connecting with Multiple Databases using Spring Boot
+Single Database Development: Easy configuration with Data JPA starter
+Requirement for Multiple Databases
+Configuration in properties file for two databases: H2 and MySQL
+Entity Management and Package Organization: Separate packages for entities from each database
+Configuration Logic: Defining data source names for each database
+Creating Data Source, Entity Manager, and Transaction Manager for each database
+Configuration Classes: DB1 and DB2 configuration classes
+Injection of Data Source into Entity Manager, Entity Manager into Transaction Manager
+Rest Controller Setup: Injecting User Repository and Book Repository
+Database Association: User Repository with DB1, Book Repository with DB2
+Data Storage: Users data stored in H2, Books data stored in MySQL
+Execution and Verification: Successful execution of data storage and retrieval from respective databases
+
+-----------------CI/CD-------------------------------------------------------------------
+
+- The project is an e-commerce project following a microservices architecture, previously monolithic.
+- Technologies used include Git for source code management, Jenkins for CI/CD, Docker for containerization, Kubernetes for orchestration.
+- Java is the primary technology used in the project.
+- Responsibilities include infrastructure setup for different environments, Dockerizing applications, deployment automation using CI/CD pipelines.
+- Challenges faced include deployment failures, necessitating branch strategies for bug fixes.
+- Branching strategy involves fixing bugs in the production branch and merging fixes to staging and then to the main branch.
+- Amazon Linux and Ubuntu are used in the project, with differences in package management commands.
+- `wget` is used to download links, while `curl` not only downloads but also checks network connection.
+- `awk` command is used for text processing and pattern matching in files.
+- Free space can be checked using commands like `df -h` or `du -sh`.
+- Groups in Linux are used to grant multiple users access to files.
+- Linux users belonging to a specific group can be checked using `getent` command.
+- SonarQube is used for code quality checks, with failed quality gates leading to bug reports or developer tickets.
+- Jenkins Master manages Slave instances, distributing workload to slaves for efficient execution.
+- If Jenkins Master fails, jobs can be accessed and executed from the server's Jenkins directory after restoring backups.
+- Jenkins plugins include ThinBackup, Deploy to Container, Role-based Authentication, and Nexus for storage.
+- Jobs can trigger other jobs using Jenkins' build after other projects are built or can be configured using pipeline scripts.
+- Ansible is used for infrastructure configuration management, with Playbooks used to install software like Git.
+- Docker is used for containerization, with Dockerfiles containing instructions for building images.
+- Differences between `RUN` and `CMD` in Docker involve `RUN` for executing commands during image build and `CMD` for executing commands when the container is run.
+- Pods in Kubernetes are the smallest and simplest unit, representing a single instance of a running process in the cluster.
+- StatefulSets in Kubernetes are used for managing stateful deployments, unlike Deployments which are for stateless applications.
+- AWS topics covered include connecting to EC2 instances without PEM files, Load Balancers (L4 and L7), Internet Gateway, VPC Peering, and Network Access Control Lists (NACLs).
+- Security Groups and NACLs are compared, with Security Groups providing instance-level security and NACLs operating at the subnet level.
+- Improvement areas suggested include focusing on Jenkins pipeline stages and Kubernetes Manifest files for deployment.
+
+---------------------SPINT BOOT-----------------------------------
+Introduction to Spring Boot:
+Explanation of what Spring Boot is and its purpose in simplifying Spring-based application development.
+Creating a Spring Boot Application:
+Overview of creating a Spring Boot application.
+Use of Spring Initializr to create the application.
+Internal Mechanisms of Spring Boot:
+Auto-configuration feature: Simplifies configuration by guessing required settings based on dependencies.
+Embedded server concept: Provides an embedded server for running applications, eliminating the need for external server deployment.
+Key Features and Benefits:
+Starter dependencies: Introduction of starter dependencies to streamline application development.
+Simplified configuration: Auto-configuration reduces the need for manual configuration.
+Components of Spring Boot Applications:
+Configuration annotations: Explanation of @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations.
+Component scanning: Automatic detection and registration of beans or components.
+Demonstration of Application Creation:
+Step-by-step guide on creating a Spring Boot application using Spring Initializr and Spring Tool Suite IDE.
+Selection of project details, build tool, package structure, and Java version.
+Running the Spring Boot Application:
+Execution of the application to demonstrate successful setup and functioning.
+Verification of component scanning and bean registration.
+
+- Application creation process:
+  - Generating the project from Spring Initializer website.
+  - Explaining the Maven folder structure.
+  - Configuration in the `pom.xml` file.
+  - Introduction to the `Application.java` class as the start class.
+  - Explanation of the `SpringApplication.run` method and its importance in bootstrapping the Spring Boot application.
+  - Demonstration of how the Spring Boot application behaves with and without the `run` method.
+- Customization and handling of the Banner in Spring Boot:
+  - Explanation of the Banner printing logic in the `run` method.
+  - Options to disable or customize the Banner using properties file or programmatic approach.
+  - Customization of the Banner content using ASCII characters and file naming.
+- Introduction to REST API and development setup:
+  - Overview of REST API as an interface between applications to exchange data.
+  - Explanation of client (consumer) and server (provider) applications.
+  - Creation of a Spring Boot project with necessary dependencies using Spring Tool Suite (STS).
+- Creation of a binding class (`Product.java`) to represent data:
+  - Defining properties such as ID, name, and price.
+  - Usage of Lombok annotations (`@Data`, `@AllArgsConstructor`, `@NoArgsConstructor`) for boilerplate code reduction.
+- Setup of a REST controller (`ProductRestController.java`):
+  - Explanation of REST controllers and their role in handling HTTP requests.
+  - Creation of methods to handle HTTP requests and responses related to product operations.
+  
+  
+  - The class is represented as a RestController using the `@RestController` annotation.
+- Methods are defined for saving a product, getting a product by ID, and getting multiple products.
+- The `saveProduct` method is bound to a POST request and expects product data as JSON in the request body.
+- The `getProduct` method is bound to a GET request and returns a product based on the provided ID.
+- The `getProducts` method returns a list of all products.
+- The logic for storing records into a database table is mentioned but not implemented yet.
+- The application is tested using Postman by sending requests to the defined endpoints.
+- Dependency injection is used to inject the repository into the service layer.
+- The service layer contains methods for insertion, update, retrieval, and deletion of course records.
+- The repository extends JpaRepository and provides methods for CRUD operations.
+- The service layer communicates with the repository to perform database operations.
+- The RestController communicates with the service layer to handle HTTP requests and responses.
+
+
+- To implement REST controller:
+  - Use `@RestController` annotation.
+  - Inject service into the controller.
+  - Service interacts with the repository.
+  - Use dependency injection to inject service into the controller.
+  - Inject the service using `@Autowired` annotation.
+- Method to create a new course:
+  - Annotate method with `@PostMapping`.
+  - Use `@RequestBody` annotation to read data from the request body.
+  - Method signature: `public ResponseEntity<String> createCourse(@RequestBody Course course)`.
+  - Call service method `doUpsert`.
+  - Return appropriate response.
+- Method to get a single course by ID:
+  - Annotate method with `@GetMapping`.
+  - Use `@PathVariable` to read the ID from the URL.
+  - Method signature: `public ResponseEntity<Course> getCourse(@PathVariable int courseId)`.
+  - Call service method `doGetByID`.
+  - Return the course and appropriate status.
+- Method to get all courses:
+  - Annotate method with `@GetMapping`.
+  - Method signature: `public ResponseEntity<List<Course>> getAllCourses()`.
+  - Call service method `doFindAll`.
+  - Return all courses and appropriate status.
+- Method to update a course:
+  - Annotate method with `@PutMapping`.
+  - Use `@RequestBody` to read data from the request body.
+  - Method signature: `public ResponseEntity<String> updateCourse(@RequestBody Course course)`.
+  - Call service method `doUpsert`.
+  - Return appropriate response.
+- Method to delete a course by ID:
+  - Annotate method with `@DeleteMapping`.
+  - Use `@PathVariable` to read the ID from the URL.
+  - Method signature: `public ResponseEntity<String> deleteCourse(@PathVariable int courseId)`.
+  - Call service method `doDeleteByID`.
+  - Return appropriate response.
+- Testing with Postman:
+  - Send POST request to create a course.
+  - Send GET request to retrieve a course by ID.
+  - Send GET request to retrieve all courses.
+  - Send PUT request to update a course.
+  - Send DELETE request to delete a course by ID.
+- Exporting data to Excel:
+  - Use Apache POI API.
+  - Create workbook, sheet, rows, and cells.
+  - Retrieve data from the database.
+  - Populate the Excel file with the retrieved data.
+  
+  
+  - Row index zero is designated for storing header data.
+- Each row will have three cells representing ID, name, and price.
+- Data rows will be created to store the actual data, with cell indexes available for each row.
+- After the first data row is created, the data row index is incremented for subsequent records.
+- The data is stored in an Excel file, and the file is sent in the response.
+- An output stream is obtained from the HTTP servlet response to write the workbook data.
+- The workbook is closed after writing the data, along with the output stream.
+- A REST controller is created to access the service layer method for generating the Excel report.
+- The REST controller method accepts an HTTP servlet response as a parameter for downloading the Excel file.
+- Content type and content disposition headers are set to send the Excel file as an attachment.
+- The REST controller method calls the service layer method to generate the Excel report.
+- Docker is introduced as a containerization platform to simplify deployment.
+- Docker containers are described as easily shippable and executable environments for applications.
+- Docker is used to containerize the Spring Boot application.
+- A Dockerfile is created to specify instructions for building the Docker image.
+- The Docker image is built using the Docker build command.
+- The Docker image is run as a container using the Docker run command.
+- Port mapping is used to map the container port to the host port.
+- The application is accessed in the browser using the host's IP address and port number.
+- AWS Cloud is introduced as a leading cloud provider offering on-demand IT resources.
+- Cloud computing is defined as the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
+- The procedure for deploying a Spring Boot application on AWS Cloud is outlined.
+
+- Setting up an EC2 instance in AWS with a Linux operating system to host the application.
+- Planning to connect to the Linux machine using mobile exam software.
+- Installing Java software on the EC2 instance to run the Spring Boot application.
+- Creating a Spring Boot application using Spring Tools Suite IDE with Maven packaging.
+- Running the Spring Boot application locally and accessing it in the browser.
+- Launching an EC2 instance with Amazon Linux, selecting instance type, storage, tags, and security groups.
+- Enabling SSH protocol and port 22, and opening port 8080 for the Spring Boot application.
+- Connecting to the EC2 instance using mobile exam software, updating packages, and installing Java.
+- Packaging the Spring Boot application as a JAR file using Maven.
+- Uploading the JAR file to the EC2 instance and executing the application.
+- Accessing the deployed application in the browser using the public IP of the EC2 instance.
+- Explaining AWS RDS (Relational Database Service) for managing relational databases in the cloud.
+- Creating a MySQL database instance in AWS RDS with public access enabled.
+- Connecting to the AWS RDS database using MySQL Workbench and verifying the connection.
+- Updating the Spring Boot application configuration to connect to the AWS RDS database.
+- Running the Spring Boot application, creating a table in the AWS RDS database, and inserting records.
+- Testing the application's ability to communicate with the AWS RDS database and perform CRUD operations.
+
+-------------------------------TEST CASE---------------------------------
+
+test case pattern .AAA: Arrange act assert .. 
+
+feedback drivern .. 
+first revie wtest then code..
+- cannt push to main branch until code is review.
+- TDD :
+- code review is good if developer ask for it,, if boss 
+- incremental: lots of code, less feedback , ask early , start in stages, shud  i cont or rejection, am i in right direction..
+- coding style , tab or spaces, pick one be conistent, variable name, method name deriptive and short , code too long, level of abstractiomn, able to understand,cohesive, low cupling, find a bug, dont write the notes but a test where it brak, first write test and then fix,
+- i i thouhg code is doing this but done anohte, ask for refactor, be consertive, WE, 
+- smaller methods, contrutive feedback, not say what is treebile what can be better, adn  how, -- pair with person whose code is being review.
+- gossip dont make us better, it will make us poor, learn form mistake as project, 
+
+----------------REST/SOAP/gRPC/WebSOCKET/Webhook/--------------------------------------------
+gRPC:
+	-multiple programming languages, making it suitable for polyglot microservices architectures
+	-Protocol Buffers (protobufs) for efficient data serialization, which results in smaller message sizes and faster communication.
+	-supports various authentication mechanisms and features like load balancing, retries, and deadlines for building robust distributed systems
+SOAP:
+	-It relies on XML for message format, making it highly structured and self-describing.
+	-SOAP has strict standards and a rigid message format, 
+	-It supports various communication protocols, including HTTP, SMTP, and more.
+	- known for their reliability, security features, and support for complex transactions.
+GraphQL
+	-GraphQL is a query language and runtime for APIs
+	-  data they need, reducing over-fetching and under-fetching of data.
+	-Unlike REST, where endpoints are fixed, GraphQL provides a single endpoint for all queries and mutations, allowing clients to shape the responses.
+	- introspection, meaning clients can query the schema to discover available types and operations
+	-building flexible and efficient APIs, especially for applications with dynamic data requirements like mobile apps.
+Webhook:
+	-real-time communication between applications or systems.
+REST
+Websocket:
+
+--------------------DB MIGRATION--------------------------
+DMS:AWS service, Hetro (oracle to MySQL) , or same (ORacle to orace) leess downtime
+Backup-restore: have soem donetime
+Data rpelicaiton: repication db in aws, once sync gradually remove the op prem
+use externa tool: which migrate+do schem validaiton,
+export/import: export to s3, import form s3
+
+------------on-premise monolithic application to AWS-------------------------------
+Assesment and planning:
+	-current architecture, dependencies, and components of the monolithic application.
+	-goals of the migration, such as improving scalability, reliability, or reducing operational overhead.
+	- AWS services and resources that best fit the application's requirements.
+	-detailed migration plan outlining tasks, timelines, and responsibilities.
+Decomposition and refactor:
+	-monolithic application into smaller, more manageable components.
+	-refactoring or re-architecting to better leverage cloud-native capabilities.
+	-microservices architecture or serverless computing for improved scalability and agility.
+Containerization (Optional):
+	-encapsulate dependencies and ensure consistency across environments.
+	-ECS EKS
+Data Migration:
+	- 
+Deployment Automation:
+	- Ci/CD :Auspiple,build,code deploy..
+Networking and Security:
+	-Virtual Private Cloud (VPC) networking to isolate resources and define access control policies using AWS Identity and Access Management (IAM).
+	-network security measures such as security groups, network ACLs, and AWS WAF (Web Application Firewall) to protect against unauthorized access and DDoS attacks.
+Monitoring and Logging:
+	-monitoring and logging infrastructure using Amazon CloudWatch, AWS CloudTrail, and AWS X-Ray to track application performance, detect issues, and troubleshoot errors
+	-key performance indicators (KPIs) and service level objectives (SLOs) to measure the success of the migration and
+Testing and Validation:
+	-load testing, security testing, and disaster recovery testing
+Go-Live and Optimization:
+	-Execute the migration plan in a phased approach, starting with non-critical workloads and gradually transitioning to production.
+	-optimize resource utilization using AWS Auto Scaling, AWS Cost Explorer, and AWS Trusted Advisor.
+Throughout the migration process, collaboration between development, operations, and security teams is essential to ensure alignment with business objectives and adherence to best practices. 
+
+-----------------------Handling double payment scenarios----------------------------------------------------
+
+Idempotency:
+	-multiple requests with the same parameters produce the same result
+	- cleint giv UUID  and server check if UUID is being procees, if return response
+Atomic Transactions: 
+	-either complete successfully or fail entirely
+Trasnastion Monitorin:
+	-monitoring and logging to track all payment transactions and their statuses. 
+Payment Gateway Integration: 
+	-  to identify and prevent duplicate payments, such as transaction IDs and reconciliation reports.
+Retry Logic: 
+	-Use exponential backoff strategies with jitter to retry failed requests with increasing delays to avoid overwhelming the syste
+Confirmation Mechanism
+	- return a confirmation response indicating the outcome of the transaction
+Error Handling:
+	-Clearly communicate the reason for the failure and provide guidance on how to proceed.
+Customer Communication: 
+	-case of payment failures or duplicate charges, communicate customer
+Testing and Simulation: 
+	-duplicate payment attempts, network failures, and system outages.
+	
+--------------------Handling distributed transactions in a microservices architecture------------------------------------------------------------
+
+Design for Transactional Boundaries:
+	-ensuring that each microservice is responsible for a specific domain and manages its own data independentl
+Use Saga Pattern:
+	-A saga is a sequence of local transactions, each executed within the scope of a single microservice, coordinated by a saga orchestrator.
+Compensating Actions
+	- handle failures and rollbacks, so  restore the system to a consistent state.
+Asynchronous Communication:
+	-use messaging queues or event-driven architecture to coordinate transactions between microservices.
+Idempotent Operations:
+	- all operations within a saga are idempotent to handle retries and duplicate messages
+Transactional Outbox Pattern:
+	= atomically publish events from the microservice's database transaction
+	-outbox table stores events to be published asynchronously, ensuring consistency between database changes and event publication
+Event Sourcing:
+	-event sourcing to capture the state changes of entities within your microservices. 
+	-Event sourcing records all changes as a sequence of immutable events, providing a reliable audit trail for distributed transactions.
+Distributed Transaction Management:
+	-distributed transaction management frameworks or tools to coordinate transactions across multiple microservices. 
+	-These frameworks provide features like two-phase commit (2PC), compensating transactions, and transaction monitoring.
+Retry and Circuit Breaker Mechanisms:
+	-Retry mechanisms automatically retry failed operations with exponential backoff,
+	-circuit breakers prevent cascading failures by temporarily blocking requests to failing services.
+Testing and Simulation:
+
+	

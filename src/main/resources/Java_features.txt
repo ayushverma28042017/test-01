@@ -1,0 +1,68 @@
+JAVA 8-Java17::
+java 11- LTS releae
+	-Jva 9: JPMS
+	-List.of,Map/of()
+	-FLow: reaative stream, for http client new
+	-var , container(docker)
+	-2 new GC: Epsilon GC(no-ope GC): it does nothing, not 
+				ZGC: in prod java15: collector compltely concfurent, not stop the world(trage was 10 mili sec), not depend on size of data, no of thread, really fast
+	-no GC tuning was reg ZGC: 
+	- TLS 1.3 supports, add new cipher, and alogo
+	- run direcly src doe file without complie, compile on the fly.. eg: java Hello.java, compilled in memory,for teaching
+	- HTTP client:
+		-reactive API: Http 1.1 and 2 	, HttpClient c= Httpclient.newBuilder().build(); 
+			CompletableFuture<> =c.senfAsync(..)
+	-JAva 12 2019:
+		- improvemtn of GC, 
+	- JAva 13: not major change, impl of socke PI
+	- java 14: expression  swithc: swithc return before
+		boolean wrkday= swithc(fayofWeek) { Case STAmSUn, -> flase:default -> true;
+		}
+	}
+    - use yield to reutrn value form swithc
+		eg: case SaT -> { Sop(:done); yiedl false;)}
+	-Helpfult nullpointer excpetion
+		var r = a.b.c ;// cannt read a as b.c is null
+	JVA 15:
+		-text block:
+			""" ........."""
+	   -remove Nashorn: java script engine was reoved
+	   -remove Solaris and SPACK prot, update UDP
+	Jva 16:
+		pattern maching of instaceof: save it form case
+			boolean equals(Object o){ if(obj instance of MyClass that){ that.get()}}
+			if(obj instance of String s|| s.lenght())
+	- Records:
+		-imutable, final,data holder class: types tuples
+		- automatic contructor, getters,equals,hashcode,toString.
+	-user case of Records:
+		Multiple return values
+			-MinMax minMAx(int[]  arr {..})
+			- MinMax is more expressive than Pair<int,int>
+		-DTO: use, user for temo tuple
+    -Java 17:
+		- new LTS,Spring6 ,will run on java 17 ,jetty 12 req java 17,
+		-Sealed interface Color permits Red,Blue,Yellow {} //it will only have 3 imple
+			-final calss Red implemnt Color {}
+			- records Yellow implement Colors{}
+
+----------------------------------------------------------------
+Sealed class:
+	Benefits:
+		- Domian modleing: wrie code tht revel its intent
+		- Abstract base class, we can have any no of sub class, and final class, there is no sub class, what bout in between?
+		- Close hierarchy: we have only thhing that this will support.say payment menthods, only few mehtod need to be support
+		-contol hierarchy of classes, other approcah. make contruct as prtected, enum alo give nice clsed hierachty,
+		- use wih interface or class
+		- public seald class TrafficLiht permit RedListmYellowLight, 
+		- you can wirte Relight codein same file, or other file but in same Module , or in same packege.
+		- sealed class or interface  must have a subclass : compiler will say this
+		- if the impleemnt is not final ,copiler will say error, make as final ..
+		-final YellowLight impleement List or mark as sealed..
+		- sealed YellowList imple Ligt{} ;// sealed class must have implementation
+		- declare sealer, final, non-sealed:(to open hierarchy again)
+		
+	 
+	
+		
+				

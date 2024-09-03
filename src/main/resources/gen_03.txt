@@ -1,0 +1,67 @@
+quality of leader:
+	- people connect dot in subject matter.
+	- communicate to broader team
+	- stages of leader: role and out tht we need 
+	-think abt role in broad contxt.. entire business not th  funciton
+	- how they think enginner as part of whole org.
+	- optimizing compnay from a feature or product
+	- how manage perf of team:
+		- being able to track how everyone is dowing and measure with expectaion
+		- regular 1 and 1, what there goal, wrkign on, plan for week or in mnht.
+		- 1 and 1 : every week if small team.. if big team: bi weekly..so big team rely on team lead
+		- lead feedback abt other engg..
+		- under performer: give feedback to candidate regularly.. dont tell last moment
+		- taks leve, team level, org level prob based on design.. based on there area
+		- top performer,,keep giving en new changgle project task
+	- EM most imp:
+		- must be tech excellent
+	- principle:
+--------------------------------------------------------
+why this role:
+passonate abt role, i believe i can use  my exp,knowledge and skills to better this org.
+- also there will be new challanges that will help me to advance my carrir
+
+ROLE:
+	- talent managemnt :hiring/firing
+	- coach engg for better performance.
+	- connect multiple departm withgin engg.
+	- budgemt maangent
+	 - spervison
+Quality:
+	- technical knowledge
+	- project managent skill
+	- coomunciation
+	- good decsion
+	- proper deligation
+
+chanllenge last role:
+	- manage team of 60 engg.
+	- sudden;l 100 engg.
+	- to solve.. grop to team, assing team lead , and they report
+	
+daily rout:
+	imp task dnt lag
+	- planning to team
+	- codnut team merting if necessay
+
+EM:
+	- start jr eng
+	 - this position help
+
+Mindset:
+	- all emp involve, team wrk
+	- open-minded, and ideas
+	
+Biggest chanllge:
+	- manaign all is nto easy 
+	- emp gtop in team 
+	-  changggle will be distribute
+How motivatedL
+	0 result oriented
+	- independe dealine,
+	- listend odcase
+	
+	
+------------------------------------------------------------------
+
+- REST can be used for meta data, but for video we can use open socket

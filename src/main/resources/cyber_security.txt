@@ -1,0 +1,74 @@
+Common attack
+methods include SQL injection attacks,
+ man-in-the-middle attacks, 
+ denial-of-service attacks, 
+ credential stuffing attacks
+and
+ access control exploits.
+
+As the API was not
+protected by any form of authentication, the attacker was able to make an API request for customer details. The
+incident further demonstrates the need to adhere to API best practices that would have mitigated the extent of the
+breach, such as implementing techniques to obfuscate customer details, and rate limiting to prevent mass data
+exfiltration within a short timeframe.
+
+
+Document API usage, technical requirements, and integration processes, ensuring all relevant information is
+regularly updated in accordance to change management policies.
+• Encrypt all API traffic using Transport Layer Security (TLS) encryption to prevent man-in-the-middle (MITM)
+attacks.
+Implement proper access control to APIs and API users should use proven authentication and authorisation
+mechanism to control, where needed.
+• Implement rate limiting and limit payload sizes based on established rules to defend again denial-of-service
+attacks or brute force attacks.
+• Monitor and log API activities to detect any anomalous behaviour in API traffic and facilitate the
+implementation of appropriate mitigation measures.
+
+SSL.com's TLS certificates safeguards your website from MITM attacks by encrypting all data with a secret key that is only known to the original client and server. MITM attackers are not able to read or tamper with the encrypted data without knowledge of this secret key.
+
+-----------------------
+an attacker provides malicious SQL statements through the application.
+sql injection-code injection used to execute malicios sql statement
+-it wrk only for web app that uses db
+-select * from user wehre 1--1l
+- how to use sql injection
+  - using get method -uses url - data visible in url ,
+  - update url 1--1 in url
+  -using POST:
+    - username : 'or1=1' passwrkd-adsa
+  - use bind parameter-- use whole queyr as string not as logical operator
+  -form validation and limit char..
+  
+ - parameterized queries (also known as prepared statements) instead of string concatenation within the query.
+ 
+ 
+ 
+**************************************************************************************************************************
+
+
+A head of engineering is a senior-level engineering manager who is responsible for the overall technical direction of a team or organization. They typically have a deep understanding of engineering principles and practices, as well as strong leadership and communication skills.
+
+The specific roles and responsibilities of a head of engineering can vary depending on the size and structure of the organization. However, some common responsibilities include:
+
+Setting the technical vision for the team or organization. This includes defining the team's goals, identifying the technical challenges that need to be solved, and developing a plan to achieve the team's goals.
+Managing the engineering team. This includes hiring and onboarding new engineers, setting performance goals, and providing feedback.
+Overseeing the engineering process. This includes ensuring that the team is following best practices, managing the development lifecycle, and tracking the team's progress.
+Representing the engineering team to other stakeholders. This includes communicating the team's progress to management, working with product managers to define requirements, and interacting with customers.
+Solving technical problems. This includes identifying and resolving technical issues that impact the team's ability to deliver.
+Keeping up with industry trends. This includes reading technical blogs, attending conferences, and networking with other engineers.
+A head of engineering is a critical role in any organization that relies on technology. They are responsible for ensuring that the team is delivering high-quality work that meets the needs of the business. They also play a key role in shaping the future of the organization's technology strategy.
+
+Here are some of the skills and qualities that are essential for a head of engineering:
+
+Technical expertise. A head of engineering should have a deep understanding of engineering principles and practices. They should be able to understand and solve complex technical problems.
+Leadership skills. A head of engineering should be able to motivate and inspire their team. They should be able to set clear goals and expectations, and provide effective feedback.
+Communication skills. A head of engineering should be able to communicate effectively with a variety of stakeholders, including engineers, product managers, and customers.
+Problem-solving skills. A head of engineering should be able to identify and resolve technical problems.
+Strategic thinking skills. A head of engineering should be able to think strategically about the team's work. They should be able to identify opportunities for improvement and make recommendations for change.
+If you are interested in a career as a head of engineering, there are a few things you can do to prepare:
+
+Get a strong engineering education. This will give you the foundation you need to understand and solve complex technical problems.
+Gain experience as an engineer. This will give you the opportunity to develop your technical skills and leadership abilities.
+Network with other engineers. This will help you learn about different career paths and opportunities.
+Stay up-to-date on industry trends. This will help you ensure that you are prepared for the challenges of the future.
+

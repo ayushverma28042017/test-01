@@ -1,0 +1,227 @@
+----------------------------------REMOTE TEAM WORKING ISSUE AND SOLUTION-------------------------------------------------------------------------
+To combat this fallacy, one simply needs to acknowledge that your entire team - internal or partnered - is hoping for your success. No-one joins a team wanting anything else except interesting work with interesting people. Embrace this natural human instinct, and share your hopes and dreams with the combined product squad. Let everyone understand the vision, the challenges and the opportunities. Do not hide information, but rather share it freely and bask in the energy produced when everyone has a shared objective.
+Remote teams work best when they have had the chance to eat a meal together; the pseudo-religious rituals of breaking bread.
+Most offshore teams have experienced senior leaders coming to their place of work. Much fewer have had the opportunity to travel to the client location and interact with customers and front-line staff. But those are the precious moments, building lifelong experiences and friendships. Plan for that Return on Investment wisely.
+
+‍
+A wise person once told me that some partners feel the pain during difficult times, but are left out during wins - such as a successful product launch or a closed funding round. This has stuck with me. Don’t be the kind of person who dumps your problems on your partners (technological or personal), but forgets them when there is a win.
+
+
+Finally, I believe that end of sprint product demos are one of the most important indicators of how integrated a team is. Use this opportunity wisely, with members of your remote team presenting the work they have done.This provides visibility, a chance for public speaking, and brings a sense of belonging and achievement. The team will repay through their efforts.
+
+
+point:
+	- break down the barriers to create an intergrated team
+	- share your vision with whole team
+	- meeting people in person is gr8 for remote user
+	- celebrate you wins with partner
+	- include your partner in product demo
+
+Feedback :
+
+- To create a truly integrated team, ensure that tight feedback loops between all partners are effectively and regularly captured.
+-Cleint name : Project name
+	-Role recognition satisfaction
+	- Work climante statisfction
+	-Work life balance
+	- manager communication satisfaction
+	- Training adequate statisfaction
+	
+
+Communication That Works
+	-team communicates is probably the biggest indicator of how well integrated they are, and therefore their productivity potential.
+	-ensure the integrated team has a shared and lively chat platform
+	- channel for off-topic discussion, such as interesting articles or personal news.
+	-online whiteboard tools:levelling in room and on call people
+	- recording tool: Loom: by recording demo and onboarding,create libray of material,usefult for distributeed tema and new joiner,super scalable
+Setup for Succes:
+	- subjected to restrictions that kill typical ways of working
+		-I have encountered was Desktop Virtualisation software that didn’t support copy and paste. Imagine trying to build software in 2023 without the use of a clipboard!
+Code of conduct:
+	- document:ets out expectations for meeting etiquette, video conferencing standards, code review expectations, how “simple” is better than “clever”, etc.
+Conclusion:
+	- The world is changing. Fractional experts, elastic workforces and remote teams are becoming more commonplace.
+
+Summary:
+	- Integrate with team,Create feedback loop,USer comunication platform effectively,culture of writing ,offcie it shd be setup for success,intruduce a code of conduct
+
+--------------------------------AWS INSTANCE TYPE--------------------------------------------------------
+
+C6a:
+	-Leading x86 price-performance ideal for compute bound applications that benefit from high performance processors.Powered by 3rd Gen AMD EPYC processors with frequencies up to 3.6 GHz.
+	-Batch processing, distributed analytics, data transformations, log analysis, and web applications
+	
+M6a:
+	-Balanced compute, memory, and networking resources for general purpose workloads.Powered by 3rd Gen AMD EPYC processors with frequencies up to 3.6 GHz.
+	- Business critical applications, web and application servers, back-end servers for enterprise applications, gaming servers, caching fleets, and app development environments
+T3a
+	- Baseline level of CPU performance with the ability to burst CPU usage at any time for as long as required.Powered by 1st Gen AMD EPYC with frequencies up to 2.5 GHz.
+	- Micro-services, low-latency interactive applications, small and medium databases, virtual desktops, development environments, code repositories, and business-critical applications
+	
+R6a
+	- Fast performance for workloads that process large data sets in memory.Powered by 3rd Gen AMD EPYC processors with frequencies up to 3.6 GHz.
+	-The best price performance in Amazon EC2 for graphics applications.Powered by AMD Radeon Pro V520 GPUs and 2nd generation AMD EPYC processors.
+G4ad
+	-The best price performance in Amazon EC2 for graphics applications.Powered by AMD Radeon Pro V520 GPUs and 2nd generation AMD EPYC processors
+	-Remote workstations, game streaming, and graphics rendering.
+	-
+
+--------------------------------------JAVA INTERVIEW______________________________________________________
+Issue with HashMap in multithreaded env.
+	- if you initialize the HashMap just by one thread and then all threads are only reading from it, then it’s perfectly fine. 
+	-at-least one of that thread is updating HashMap i.e. adding, changing or removing any key value pair. Since put() operation can cause re-sizing and which can further lead to infinite loop, 
+overriding the hashCode() method have any performance
+	- poor hash code function will result in the frequent collision in HashMap which eventually increases the time for adding an object into Hash Map. 
+	- From Java 8 onwards though, collision will not impact performance as much as it does in earlier versions, because after a threshold the linked list will be replaced by the binary tree, which will give you O(logN) performance in the worst case, as compared to O(n) of linked list.
+ Do all properties of an Immutable Object need to be final?
+	-Not necessarily, as stated above you can achieve same functionality by making the member non-final but private 
+	and not modifying them except in a constructor.
+	- Remember making a reference variable final, only ensures that it will not be reassigned to a different value, but you can still change individual properties of object, pointed by that reference variable. 
+	
+How does the substring() method inside String works?
+	-“Substring creates a new object out of source string by taking a portion of original string”. 
+	- Until Java 1.7, substring holds the reference of the original character array, which means even a sub-string of 5 character long, can prevent 1GB character array from garbage collection, by holding a strong reference.
+	- This issue is fixed in Java 1.7, where the original character array is not referenced anymore, 
+Can you write a critical section code for the singleton? 
+	- previous question and expecting the candidate to write Java singleton using double checked locking. 
+	- use the volatile variable to make Singleton thread-safe.
+	- public class Singleton {
+ 
+    private static volatile Singleton _instance;
+ 
+    /**
+     * Double checked locking code on Singleton
+     * @return Singelton instance
+     */
+    public static Singleton getInstance() {
+        if (_instance == null) {
+            synchronized (Singleton.class) {
+                if (_instance == null) {
+                    _instance = new Singleton();
+                }
+            }
+        }
+        return _instance;
+    }
+ 
+}
+
+How do you handle error condition while writing stored procedure or accessing stored procedure from java?
+	-My take is that stored procedure should return an error code if some operation fails but if stored procedure 
+	itself fails than catching SQLException is the only choice.
+
+What is difference between Executor.submit() and Executer.execute() methods ? 
+	- submit() provides more flexibility and control over task execution by allowing you to handle exceptions and retrieve task results using Future, whereas execute() is simpler and more lightweight, suitable for scenarios where you don't need to track the task's status or result.
+	-Return Type:
+
+	submit(): Returns a Future object representing the pending completion of the task and allows you to retrieve the result (if any) or handle exceptions.
+	execute(): Returns void, meaning there's no direct way to obtain the result or handle exceptions thrown by the task.
+	Exception Handling:
+
+	submit(): Allows you to handle exceptions thrown by the task by catching them when calling Future.get().
+	execute(): Exceptions thrown by the task are typically uncaught, which might lead to termination of the application if not handled properly using mechanisms like Thread.UncaughtExceptionHandler.
+	Task Submission:
+
+	submit(): Accepts Callable and Runnable tasks, allowing tasks that produce a result (via Callable) or don't return any result (Runnable).
+	execute(): Accepts only Runnable tasks, making it suitable for scenarios where the task doesn't produce a result.
+	Future Object:
+
+	submit(): Returns a Future object that allows you to check the status of the task, cancel it if necessary, and retrieve the result once it's available.
+	execute(): Does not provide a Future object, making it more suitable for fire-and-forget scenarios where you don't need to track the status or result of the task.
+	
+What is the difference between factory and abstract factory pattern?
+	-Abstract Factory provides one more level of abstraction
+	-A factory method pattern creates instances of classes derived from a common superclass
+	-abstract factory pattern creates families of related or dependent objects without specifying their concrete classes, promoting loose coupling and easier substitution of object families.
+	-EG: 
+Where does equals() and hashCode() method comes in the picture during the get() operation? 
+	-When you provide a key object, first it’s hashcode method is called to calculate bucket location. 
+	Since a bucket may contain more than one entry as linked list, 
+	each of those Map.Entry object is evaluated by using equals() method to see if they contain the actual key 
+	object or not.
+
+ How do you avoid a deadlock in Java?
+	-you can make an arrangement in the code to impose the ordering on acquisition and release of locks. 
+What is the difference between creating String as new() and literal? 
+	-When we create the string with new() Operator, it’s created in heap and not added into string pool while String created using literal are created in String pool itself which exists in PermGen area of heap.
+	-e need to call String.intern() method which is used to put them into String pool explicitly.
+What is an Immutable Object? Can you write an Immutable Class? 
+	-Mostly Immutable classes are also final in Java, in order to prevent sub classes from overriding methods, 
+	which can compromise Immutability.
+	-making member as non-final but private and not modifying them except in constructor.-
+	-java.util.Date, use clone() method keep a separate copy for yourself, 
+------------------------------VENKAT LAMBDA-------------------------------
+Lambda expression: anonamous func: esle high cerenomy, noise, uwnated code 
+    funtion: has 4 things : name, param, body and return  , most imp is body , then param ,, name and return type is not so imp
+	- lambda has only body adn param..
+	- jave alwasy has backward compatibility, c# and scala dont have backward compatibility..
+	- new Thread(() -> System.out.priint("test")).start(); // use fo lambda with exsitng API, lambda compatable with backward compat
+	- singlfe abstract menthod >> lambda can be used
+	- labmda code get converted in to anonymou inner classactual by compiler,, so there will 2 class file creard, Sample.class and Sample$1.classs
+	- 9million programenr:
+	- invoke dynamic :u can attached and detach dynacmically :dynamci type lang: save from overhaed of creating 
+	anonymous class if we avhe many lamnda
+	- external iterator: if list  , fo r loop and iterate, more control 
+	-for(int i: list){S.o.p.} // imperative
+	- internal iterator: list.forEach(new Consumer<Interger>(){ System.out.print(value)}) ;// ploy declaritive //
+	-remove noise: list.forEach(Interger value ->S.o.p(value))
+	-- remove more nosie: list.forEache(value ->System.out.out(value)) ;// type inferece for lambda 
+	- remove more noise, as above is pass throug :: list.forEach(System.print::out()) ;; :: is menthod ref , to recvie and the value and pass as argument
+	- poly: you can tell waht to do, but you can varry the imple based on type of object
+	- parenthsis is option of r1 parament ,
+	- lambda shud be sort: it shdu be glue : if big lambda : nosie, dublication, hard to read , hard to test
+	- Method reference: param to static method .. System.out:print()// referen to instance method
+			- list.stream().map(String:: valueOf).forEach(Sytem.out.::Print) // reference to static method
+			- param as targe:.map(e ->e.toStirng())  // sytea is same if call static or instance method
+			- 2 param: list.stream().reduce(0,Integer::sum)
+	- dont write spagetthe code,, diff to untabgle
+	- number.stream()
+		.filter(e -> e%2==0)
+		.map(e -> e*2) // if this time intesice logic, use 
+		.sum();
+	- number.parralestream() //i dont mind using thread ans resource to get the answer faster
+	- willing to spedt resoruce//use when make sense, when asner faster, when data size is big or task compute is time consuming
+	- lamda are gateway drug, strema si addiction..
+	- stream is abstraion , is bunch of func, not data sit on stream like set or list,non mutating pipleline,jsut transaformation, 
+	- filter: take a value and block soem and let some go through
+	- map: transform value: non of output = no of input ;// no gurantee of type fo imput and output type
+	- map and filter is to be in swimlanes:: 
+	-reduct: cut across the swimlanes: reduce: take vlaue..,produc next resut,, it keep coming, 
+	-reduce : take 2 param, first type t and proce R
+	-reduct: transform a collection, to single vlaue, non stream to a concreate type(Set/List)
+	-Collectors:coolect(toList()) or toSet() // take care of thread safety. race condtion // it is also a reduce operation
+	- creating a map of value 
+		- List<Preson> lsit= create preosn list;
+		- care a map of name and age as map
+		-list.strea().collect(toMap(person.getName()+perons.gerAge(),person))
+	--create a map where name is key and vlaue si people with same name
+	- people.stream.collect(groupingBy(perosn.getName))
+	-build pipeline : intermidate funciton : which termail operation, then it will trigger
+	- it postpone actiully you call by terminal ,apply all operetion on each elemnt, so slice diffrently
+	- take one element: apply each sequunce to all ..so cost is same as imperative one, same order of computation
+	- computaion complexixty is same,, LAzy evalutiaon,easier to maintain, change,..
+	- you are more efficient not when you wrk faster, but when you dont work.
+	- lazy evaluation is possible only if funciton dont have side effect, dont print stuuf in intermidate fucn to know the satus
+	- stream is sized or unsize,, ordered or undered, distinct or non distict, sorted and unsorted
+	-totaly depend on what is soruce ,si 
+	- if you start with physical colleciton, u have size,
+	- infintie stream.
+		-Stream.iterate(100,e ->e+1)
+		.filter(e -> e%2)
+		.mapToInt(e-> e*2)
+		.limit(5)
+		.sum();
+	- any fucntion return stream from strea are lazy funciton..they are intermidiate function
+	- code consise, expressive, easy to change, code is cohesive, 
+	-
+	- 
+
+---------------OPEN SOURCE-------------------------------
+Web development: Node.js,React,apache http
+Data managemnet: Redis,Postgres,Ealstic search
+Deve toop: git,Vscode,jupyter notebook
+Machin: tensroflowmparkmkafka
+Deops: doker , kubernectics
+
+
+

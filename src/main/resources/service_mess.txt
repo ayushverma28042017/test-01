@@ -1,0 +1,37 @@
+lexible architectures allow seamless integration of new features or business logic changes without overhauling the entire system
+
+-Kubernetes2 runs Docker containers in a cluster and enables load balancing
+as well as fail over.
+- adds features like service discovery and routing
+
+
+SERVICE MESS:
+	- infrastructure component that facilitates observing, controlling, and securing communication between services
+	-unlike Enterprise Service Buses (ESBs) or API Gateways , SM focu only on communicaiton and netwrl not business logic
+	- 2 layer
+		- data plane: no of ms instnace, deploye: like side car patter, all netwrk trafiic  will be intersected, 
+		- control plane: any change in servie procey, telemetry
+		-service meshes Linkerd
+	- Microsoft, HashiCorp,
+	- Buoyant, and Solo.io to create Service Mesh Interface4 (SMI), an API specification for
+		service mesh features.
+
+	-Linkerd2, Istio, and Consul.
+	-SM feature: Tracing,Monitoring,Logging,Routing,Serucitry(encrypt)
+		Resilience(individual microservices still work even if other microservices fail.).if 1 mc call other and that fail, caller ms will still repsosne may be saying the othe ms is down, try after 10 min, it will help to stop cascase failure.to achieve this
+			-Circuit breaker: cutoff linke if service is down, 
+			- re-try:
+			-timeout
+	- Routing help:
+		-canary releaase:new feature to small set of user
+		-A/B tested: diffrent user will ahve different version of ms, it is prossible by service proxy
+		-
+	-Istio is the most popular service mesh and was developed by Google and IBM.
+	-all service mesh features described in the previous
+chapter such as metrics, logging, tracing, traffic routing, circuit breaking, mTLS, and
+authorization.
+  =-Istio uses Envoy1 as service proxy
+  -Istio integrates established applications such as
+Prometheus, Grafana, and Jaeger and the service mesh dashboard Kiali.
+
+		

@@ -1,0 +1,168 @@
+INTERVIEW _EM 
+---------------FOR CUlture fit, performace and career progression---------------
+1. If hired as an engineering manager for our organization, what would be your goals?
+	- first goal would be to enhance the communication between engineers or between engineers and clients.
+	- want to solve diverse engineering problems efficiently and satisfy your organization’s clients.
+	- improved team cohesion and enhanced communication with clients also fit within your budget. 
+Why do you want to become an engineering manager at our organization?
+	- researched your organization in detail and show how their values—such as open communication, strong work ethic, a drive and passion for software engineering—align with the values of your organization? 
+	
+ Which skills are required to perform successfully in an engineering manager position? Why are those skills crucial?
+	- empathy, communication, and time management skills, 
+	- technical skills, such as knowledge of frameworks, APIs, programming languages, and databases. 
+	-empathy not only when coaching an underperforming member of the engineering team
+	- ommunication improves team bonds and helps with addressing different issues for team members. 
+4. Tell me about a time when you were unable to achieve a goal as an engineering manager.
+	- team were unable to achieve a particular target in time, they must explain the methods they used to rectify this for their future work.
+	-unable to communicate successfully with a remote team member (because of the restraints of asynchronous communication) 
+	- could not coach a senior developer well enough to help them advance to a management position
+5. Why did you decide to become a manager?
+	- looking to progress further in their career
+	-use their skill set in a more challenging position
+	-seeking to better understand the business side of engineering to help achieve the goals of their client
+	
+6. What would your previous team of engineers say about your management style?
+	- previous engineering team found it easy to communicate with them, thanks to their management style
+	-  their team thought they had a knack for finding solutions to complex issues. 
+	- values a more hands-on management approach, look for candidates who are ready to use their coding knowledge and actively participate in helping their engineers,
+7. Do you sometimes choose to contribute to the coding process?
+	-management style of your candidates
+	-coaching leadership style, a transformational leadership approach, or a servant leader management style 
+8. Have you ever gotten negative feedback about your management style? How did you improve as a result?
+	- Common types of negative feedback
+		-Still participate too much in day-to-day tasks
+		- Cannot offer team members substantial feedback
+		- Fail to provide the right updates for their team
+9. What skills do you look for in candidates when hiring an engineer for your team?
+	- Attention to detail
+	- Communication skills
+	- Critical thinking skills
+	- The capacity to solve complex problems
+
+
+--------------------related to experience and background-----------------------------------------------
+1. Can you outline your primary responsibilities in your previous role?
+	- responsible for hiring new team members, tackling diverse issues, communicating with stakeholders, clients, and team members, and overseeing the career progression of their team members
+	-were responsible for coaching senior engineers, or that their role involved assessing the performance of the team, organizing 1-on-1 meetings, delegating and redistributing tasks, or improving team collaboration.
+2. How big was the largest team that you managed?
+	- Agile engineering teams is seven, 
+	-  expansion phase, look for candidates who have experience of managing growing teams. 
+3. Do you have any experience managing engineers remotely?
+	-mention different methods and tools to manage remote teams
+	-Two of the methods might include synchronous and asynchronous communication, 
+	-  tools you’ll likely hear mentioned are video conferencing apps and task or project management tools.
+4. What are your experiences with improving team motivation?
+	- The first is setting achievable goals and providing opportunities for team members to grow. 
+	-The second is ensuring that their team members don’t become demotivated because of unexpected roadblocks.
+5. Could you describe your experience with team conflict resolution?
+	- Get to the root of the problem
+	- Encourage communication 
+	- Address the conflict
+	- Prevent future issues
+6. How many years of experience do you have as an engineering manager?
+	-ight equate to a more successful hire, so you might look for candidates who have upwards of three or five years 
+7. What is your experience with providing feedback to engineers?
+	- o provide their engineers with feedback to help them grow, so you should look for a candidate who understands how important feedback is—both positive and constructive. 
+
+
+-------------------behavioral engineering manager----------------------------------------------------------------------
+1. Tell me about a time when you had to hire top talent for a team. What was your approach to this?
+	- hiring top talent, including referrals, hiring internally, using social media, or using their network.
+	- Use technical skills tests or job simulations
+	- Conduct structured interviews with candidates
+	- Do reference checks
+	
+2. Talk me through a time when you helped promote an engineering team member. What was your process?
+	- importance of testing a candidate’s skills and analyzing their performance before suggesting or approving a promotion?
+3. Have you ever coached a senior-level engineer? What is your process?
+	-coached senior engineers so that they could become engineering managers themselves
+4. Describe a time you carried out a 1-on-1 session that helped an engineer solve a problem. Which approach did you use?
+	- a team member might be unsure who to approach to solve an issue, and it’s the engineering manager’s responsibility to offer guidance.
+	- engineer might feel stuck on an issue, whether that’s about a cloud service license or an issue related to communication in the team.
+	- team members to document the problems they are encountering, so that they can then discuss them in 1-on-1 sessions.
+5. Have you ever had to coach an engineer who had performance issues?
+	- This performance plan should be backed up with 1-on-1 coaching that offers feedback tailored to the underperformer’s needs,
+	-might try to move the engineer to a different team or a role where their performance might improve.
+6. Which process do you follow when coaching tech leads?
+	-Coding reviews
+	- Task delegation 
+	- Coaching
+	- Quality assurance
+	- Solution architecture 
+	- Performance monitoring
+	-Engineering managers should keep a document or spreadsheet to track the progress of the tech lead and assess whether they’re able to successfully manage these responsibilities
+
+7. Have you ever transitioned between two teams that were different in size? How did you adjust your management style?
+	- Especially in a larger team, communication is critical, as it helps engineering managers ensure that all team members are on the same page.
+	- communication tools are an essential part of their management style when managing larger teams or that video conferencing tools facilitate the process
+8. Tell me about a time you had to coach engineers to solve technical debt. What processes do you follow?
+	- Ensuring the software product is aligned with its expectations or requirements
+	- Refactoring to make improvements to software systems without altering how the code functions
+	- Training their engineers
+	- Ensuring the proper documentation is maintained
+9. Have you ever struggled to delegate tasks in a project? Could you explain how the project was finally completed?
+	- Engineering managers should also recognize which tasks have a higher priority, since task delegation and task management go hand in hand.
+10. Have you ever had to let an engineer go? What was your process?
+	-other options available for tackling underperformance, such as offering the underperforming engineer another career option or role within the same company?
+	 -engineering managers should be capable of explaining that documenting all solutions offered is imperative (especially due to labor laws) and that, although it’s unfortunate, firing an engineer might sometimes be necessary.
+11. Describe a time you had to reject an engineer’s request to incorporate new technology into the stack.
+	- Candidates might respond by acknowledging three factors when evaluating new tech—in-depth research into what the technology can do, engineers’ experience when using the technology in the past, and considering the organization’s budget.
+
+12. Describe a time where you made a tough decision when managing a team.
+	- a candidate with exceptional talent but poor soft skills.
+	-They must outline that they looked at the track record of engineers when making decisions, besides past outcomes from similar decisions. 
+	
+	
+---------------------------------------------------------------------------------------------
+
+- best perofrming team: independce/autnomy : take decison, if req mentorhsip, team ask why we need to do rater what and how
+- worst perf: they nno understand failure, they go rabbithole , not learning form mistake , no stad best pract, so repeadly do same mistake
+= if team slip deadline: taking to individual, status , : need to communicate with leadership
+
+---------------------------------------------------------------------------------------
+
+- excellent tech communical skill: ableto articulate  in varity of ways , able to communicate with customer
+- Excellent tech skill: good understanding of braod archi, wkr with varity of people , 5 team , how communic, testable, dploy, 
+- moslty 20% code you may write : 
+- making ech decicision, tech debt,  
+- check and balance: evalue what is built, how it built, req uie of project, fesible derciton, concensus,
+- how may touch point, project, quaify and qualty what prioject deliver in menaing way
+- concensus and collabration 
+- wrok with varity fo project
+
+--------------------------------------------------
+Leaders bring clarity to ambiguity
+Leaders bring others along
+	-Leaders don't make decisions and expect others to follow blindly. Leaders communicate the context, align on the underlying motivation, and explain the rationale behind their decisions.
+Leaders are consistent, trustworthy and true to their word
+Leaders manage expectations up and down, and own feedback & requests
+
+
+--------------------------------
+
+Describe a complex technical problem you faced in the past. How did you analyze and solve it?
+
+Prob: performance of a critical component in our distributed system.responsible for handling a large volume of real-time transactions, and we started noticing a significant increase in response times and occasional service outages.
+
+Analysis:
+Data Collection:first step was to gather comprehensive data
+	We implemented extensive logging and monitoring to capture detailed information about system behavior, including response times, error rates, and resource utilization
+Root Cause Analysis:  performance degradation was primarily linked to an inefficient algorithm used in a key component responsible for transaction validation and processing.
+
+Solution:
+	-Algorithm Optimization:collaborating with the development team to reimplement the algorithm 
+	-Load Testing: extensive load testing under simulated high-traffic scenarios. 
+	- Gradual Rollout: a gradual rollout strategy. We deployed the optimized component to a subset of servers
+	
+The lessons learned from this experience were documented, and the improved algorithm became a standard part of our development practices.
+
+---------------------------------------------------------------------------
+
+Q:How do you foster a culture of innovation within your team?
+
+foster a culture : creating an environment where team members feel empowered to think creatively, share ideas, and experiment with new approaches. 
+Encourage Open Communication:
+Celebrate Diversity of Thought:Acknowledge and appreciate diverse perspectives within the team
+Provide Autonomy and Ownership:Empower team members by giving them autonomy over their work.
+Allocate Time for Creative Thinking:brainstorming sessions, hackathons, or innovation workshops. 
+Reward and Recognize Innovation: celebrate innovative ideas and successful implementations. 

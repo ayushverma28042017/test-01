@@ -1,0 +1,119 @@
+CASE STUDY::
+financial services company, the decision to modernize their legacy system brought forth several trade-offs.
+
+Trade-offs in Architectural Decisions:
+	A.Incremental Integration vs. Full Replacement:
+		-company opted for an incremental approach, integrating microservices for new features while gradually phasing out older components
+	B.Maintaining System Integrity vs. Implementing New Technologies:
+		-adopted an API-first approach, creating interfaces that allowed new and old systems to communicate effectively
+	C. User Experience Overhaul vs. User Familiarity
+		-user-centric redesign was implemented, but key elements familiar to long-term users 
+	D.Data Migration: Security vs. Accessibility:
+		-specialized data migration tools with robust security features, ensuring data integrity 
+Learning from the Decision-Making Process:
+	A.Balanced Approach:balancing innovation with operational stability.
+	B.Stakeholder Involvement: Ensuring all stakeholders, including end-users and technical staff, are involved
+	C.Flexibility and Adaptation:flexible approach that can adapt as the modernization process unfolds,
+	
+	
+-----------------------------
+CASE STUDY 2:
+A leading retail company sought to enhance its real-time data processing capabilities to better respond to customer behaviors and market trends. The goal was to implement an Event-Driven Architecture (EDA) to facilitate real-time data analysis and decision-making.
+
+Challenges and Trade-offs in Architectural Decisions:
+	A.Choosing EDA over Traditional Architectures:
+		-Decision: The company decided to implement EDA, prioritizing the ability to process large streams of real-time data over the ease of maintaining a traditional architecture.
+	B.Scalability vs. Complexity
+		-architecture was designed to be highly scalable with distributed components, accepting the increased complexity in exchange for better handling of data loads
+	C.Data Consistency vs. System Responsiveness:
+		-company adopted eventual consistency models where appropriate, allowing for faster system responses at the cost of temporary data inconsistencies.
+	D.Integrating with Legacy Systems:
+		-phased integration approach was taken, with new event-driven components being introduced gradually while ensuring compatibility with legacy systems.
+	E.Investment in New Technologies vs. Cost Efficiency:
+		-company allocated a significant budget for technology upgrades and staff training, considering it a worthwhile investment for long-term gains in data processing capabilities.
+
+
+
+Key Learnings include:
+Emphasis on Training: The importance of investing in employee training for new technologies to ensure a smooth transition.
+Balancing Short-term Challenges with Long-term Benefits: Understanding that short-term challenges and investments can lead to significant long-term advantages.
+Continuous Evaluation and Adaptation: The need for ongoing evaluation and adaptation of the architecture to ensure it meets evolving data needs and integrates well with other system components.
+
+
+----------------------------------------------
+
+Since you have access via sftp you might also have access via rsync which by default operates through an ssh tunnel (which sftp also does). rsync is generally a good choice to downloading (syncing)
+
+To download multiple files with SFTP, use the mget command. 
+
+put /home/user-name/example.txt /root
+mput /home/user-name/*.txt /root
+df -h // disk space
+
+Using the SSH protocol, it supports encryption and other security methods used to better protect file transfers.
+
+During file transfer, all of the data is divided into packets and sent through a single secure connection.
+Only the recipient with the required decryption key will be able to see the original content.
+
+The SSH protocol (also referred to as Secure Shell) is a method for secure remote login from one computer to another.
+
+-non-protected login protocols (such as telnet, rlogin) and insecure file transfer methods (such as FTP).
+
+
+SSH flow:
+	cleitn initiate connectio
+	serve send publick key
+	open secure channel
+	user login to server and start transfering
+	
+	
+---------------------------
+
+Strangler-Fig Pattern is a frequently used technique for doing system rewrites.
+	-  incrementally migrate new functionality to the new system and rollback easily if required.
+	- Identifying parts of the existing system that you wish to migrate
+	
+	
+----------------------------------------------------------------------------------------------
+
+Flexible architectures allow seamless integration of new features or business logic changes without overhauling the 
+entire system
+
+-Kubernetes2 runs Docker containers in a cluster and enables load balancing
+as well as fail over.
+- adds features like service discovery and routing
+
+
+SERVICE MESS:
+	- infrastructure component that facilitates observing, controlling, and securing communication between services
+	-unlike Enterprise Service Buses (ESBs) or API Gateways , SM focu only on communicaiton and netwrl not business logic
+	- 2 layer
+		- data plane: no of ms instnace, deploye: like side car patter, all netwrk trafiic  will be intersected, 
+		- control plane: any change in servie procey, telemetry
+		-service meshes Linkerd
+	- Microsoft, HashiCorp,
+	- Buoyant, and Solo.io to create Service Mesh Interface4 (SMI), an API specification for
+		service mesh features.
+
+	-Linkerd2, Istio, and Consul.
+	-SM feature: Tracing,Monitoring,Logging,Routing,Serucitry(encrypt)
+		Resilience(individual microservices still work even if other microservices fail.).if 1 mc call other and that fail, caller ms will still repsosne may be saying the othe ms is down, try after 10 min, it will help to stop cascase failure.to achieve this
+			-Circuit breaker: cutoff linke if service is down, 
+			- re-try:
+			-timeout
+	- Routing help:
+		-canary releaase:new feature to small set of user
+		-A/B tested: diffrent user will ahve different version of ms, it is prossible by service proxy
+		-
+	-Istio is the most popular service mesh and was developed by Google and IBM.
+	-all service mesh features described in the previous
+chapter such as metrics, logging, tracing, traffic routing, circuit breaking, mTLS, and
+authorization.
+  =-Istio uses Envoy1 as service proxy
+  -Istio integrates established applications such as
+Prometheus, Grafana, and Jaeger and the service mesh dashboard Kiali.
+
+		
+
+	
+	

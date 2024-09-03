@@ -1,0 +1,66 @@
+IAM fundamental :
+	- Indentity and access management
+	- control access to resource
+	- resouce entity that you create in aws
+	- lambda/db
+	- acotion on resource
+	- policy: auth to performa the action depedne on policy
+	- user that role can do action, json
+	- acess denied : if nno permission
+	- polcy doc attacht to ayush user
+	- { effect ="Allow",
+	    "Sid": id of resource,
+		"Action": "lambda:create funciton",
+		"Resource": "*",
+		"conditon" :if read only to tablein DB
+		}
+	- Acees key and sceret access key :
+	- AWS console and CLI  and AWS SDK : 3 way to dreate func
+	- Access key and secret ass key: in IAM section, 2 string
+	- user name and password, programtaically that use to access
+	-cli: how aws know: configure access key and secret access key
+	- valdiate againg policy doc.
+	- sdk , you need to give access and secret access key
+	-arn;aws:dynamodb:table/mytable
+	- Groups:
+		-acc owner org 
+		- admin , dev, test, assign default policy doc to each grp
+	-Roles:
+		- simlar to user as policy attached
+		- user temp time access 
+		- user to abiliyt to certian permision for certain time
+		- eve lambda can be have role how long this func will run
+	Trust relationshipt"
+		- 2 acc aws, by owenrshipt
+		- user in acc 2 need access to db in acc 1,
+		- trust Rel: through IAM , duplext
+		- acct1 will assume role to acct 2
+	Pro tips"
+		-PRotect ROOT acc at any cost, create user and use that acc
+		- Explicit Effect: Deny wins over Effect :Allow
+		- user least privilage modle, less use wild card
+		-policy simulator:
+			- see if u have service/action if u have access
+			- debug tool
+
+VPC subnet:
+	-default VPS AWs create
+	- CIDR: netwrk block used for private ip for this vps
+		-10.0.0.0/16: last truck is flexible :65k ip address
+		-tenancy: if you want dedicated h/w
+		-No of AZ: upto 6 per alllow,in diff az,diff region
+		- no of public subnet:
+			- private 
+		- cidr block: assing to each subnet
+			-10.0.015 cidr for sibnet
+		-sbnet? route table> netwrl coonection
+		VPC : endpoint: if need s3 acces,
+			- VPC endpoint for s3:
+			- if tolka to S3, no need to go publicj internet, back channel
+		NAT gatwya:
+			- allow resource in private subnet to call go to public internet
+		- add nnat to route so it connect to public internet
+		-vpc peering
+	ppt: clear,insight,ebgagable
+	
+	

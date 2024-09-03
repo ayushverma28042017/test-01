@@ -1,0 +1,212 @@
+CloudLinux:
+	- remote-first company.
+	-  low-cost Linux infrastructure and security products that help companies to increase the efficiency of their operations.
+	- CLN is an integral SaaS platform tasked with the licensing of all CloudLinux products
+	- server operations and oversees the billing process for customers.
+	- Take complete control and responsibility for the entire CLN team from a technical standpoint
+
+
+
+
+
+
+---------------------------------------
+
+Certainly! Here's an example showcasing vast experience in building enterprise-grade applications using Java:
+
+Over the past decade, I have amassed extensive experience in architecting and developing enterprise-grade applications leveraging the power of Java. My journey includes successfully leading and contributing to the creation of robust and scalable solutions tailored to meet the diverse needs of large-scale businesses.
+
+In my role as a Java developer, I've demonstrated proficiency in utilizing Java's rich ecosystem to design and implement intricate systems. This includes harnessing frameworks like Spring and Hibernate to ensure the seamless integration of various components, as well as employing design patterns to enhance maintainability and flexibility.
+
+I've spearheaded projects from conception to deployment, collaborating with cross-functional teams to align technological solutions with business objectives. My expertise extends to optimizing application performance, ensuring security protocols, and adhering to best practices in coding and documentation.
+
+Noteworthy achievements include delivering mission-critical applications that have stood the test of scalability and reliability, even in high-traffic environments. I've consistently stayed abreast of the latest advancements in Java and related technologies, incorporating modern practices to future-proof the applications I develop.
+
+In summary, my extensive experience in building enterprise-grade applications using Java reflects a commitment to excellence, innovation, and a proven track record of delivering solutions that align with organizational goals.
+
+https://apply.workable.com/cloudlinux-1/j/B06E488360/
+
+
+--------------------------------------------
+Resiliency:
+	- Relability
+	- Graceful failure
+	- Error handling
+	- Ability to ahndle and recover from failure gracefully
+	- Solu: Detect failure and recover quickly adn efficiently
+	- pattern: Circuit breaker, Bulkhead ,Compensating Trasnaction , Leader elecion
+CAP:
+	= PT: system doesnt go done
+	-AV: system keep trtung the response
+	- C: give consisten result always( response shud not have stale data)
+Scalibility:
+	: 
+	
+Cache Invalidation:
+	- omputer system declares the cache entries as invalid and removes or replaces them
+	- Write-through cache : data wrtien in cache den DB then response ,, cons: latency
+	- Write-around cache :data writen in DB bypass cache 
+	- Wrtie-Back :only in cahce, then return , cache then asynchronously syncs this write to the database.
+	
+	Eviction policies
+		- Lifo
+		-FIFO
+		LRU ,MRU
+Distributed cacche:
+	- A distributed cache is a system that pools together the random-access memory (RAM) of multiple networked computers into a single in-memory data store used as a data cache to provide fast access to data
+gloabl cache:
+	-a single shared cache that all the application nodes will use
+
+Use case:
+	- DB caching, CDN, DNS, API
+CDN:
+	- distributed grp of server tht works together to provide fas delivery of internet content(stati file HTML/CSS/JS/IMG/vidoe)
+Edge server:
+	- To minimize the distance between the visitors and the website's server, a CDN stores a cached version of its content in multiple geographical locations known as edge locations
+	
+Types of CDN: 	PUSH AND PULL
+
+PROXY : 
+	- intermediary piece of hardware/software sitting between the client and the backend server
+	- FWD : user>proxy> internet> Server
+	-BKWD: user> internet> Proxy> SErver
+	- chaching, servueity, load balancy, scale, flexibiliy
+
+Avalibilty:
+ Availability is the time a system remains operational to perform its required function in a specific period.
+Reliability:
+	- If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. 
+	
+Scalibility:
+	- Scalability is the measure of how well a system responds to changes by adding or removing resources to meet demands.
+	-VS:ertical scaling (also known as scaling up) expands a system's scalability by adding more power to an existing machine
+	-HS:expands a system's scale by adding more machines
+	
+Database Replication
+	- Mastr-slave replicaiton
+		- Master read+write,, slave only read
+	-MASTER-MASTER: read write from both
+
+ACID:
+	- maintaining data integrity during transaction processing.
+	- Atomic: All operations in a transaction succeed or every operation is rolled back.
+	-Consistency: On the completion of a transaction, the database is structurally sound.
+	- Isolated: Transactions do not contend with one another. 
+	- durable: Once the transaction has been completed and the writes and updates have been written to the disk, it will remain in the system even if a system failure occurs.
+	
+BASE:
+	-NO SQL
+	- Basic Avalibility , Soft state , Eventual cnsitent
+
+Consistent Hashing
+	-we use a hash function to hash our partition keys (i.e. request ID or IP)
+
+Data Replicaiton 
+	- To ensure high availability and durability, consistent hashing replicates each data item on multiple N nodes in the system where the value N is equivalent to the replication factor
+	
+GIT:
+	Git maintains three local storages on our machine, which means that our code can be found in four places:
+
+	- Working directory: where we edit files
+	- Staging area: a temporary location where files are kept for the next commit
+	- Local repository: contains the code that has been committed
+	- Remote repository: the remote server that stores the code
+	- WD - git add> SA > get commit > LD > git push  > Remote repo
+	- Remote>get fetch > Local repo > git merge . Working dir
+	- Remote repo > git pull > working dir
+	- remote repor > git clone > local dir > git checkout > working dir
+	-The "git tag" command operates on the local repository. 
+	
+	
+---------------------------23 Jan----------------------------------------------------------------------------------------------------------------------------------------
+
+Event-Driven Architecture (EDA):
+	- Event-Driven Architecture (EDA) is about using events as a way to communicate within a system.
+	- achieving loose coupling between services within a system.
+	- pub and cosument unware of each other 
+	- An event is a data point that represents state changes in a system
+	- three key components	
+		- Producer
+		-Consumer
+		- Event router
+	-ways to implement the event-driven architecture, 
+		- SAGA: 
+		- PB-SUB
+		- Event Sourcing
+		- CQRS:
+	- Advantge:
+		- docuple, agility, higly scalable adn distributed ,easy to add new cosument
+	- Dis advantg:
+		- complex, error handling, gurnantee delivery
+	- EG: NAS, AWS Event bridge, SNS, Goole Pub-sub, Kafka
+	- Event sourcing vs Event-Driven Architecture (EDA)
+		-Event Sourcing : nstead of storing just the current state of the data in a domain, use an append-only store to record the full series of actions taken on that data.
+		- Even-driven:events to communicate between service boundaries. Generally, leveraging a message broker to publish and consume events asynchronously within other boundaries.
+	- Command and Query Responsibility Segregation (CQRS)
+		- Command Query Responsibility Segregation (CQRS) is an architectural pattern that divides a system's actions into commands and queries.
+		- a command is an instruction, a directive to perform a specific task. 
+		- t is an intention to change something and doesn't return a value, only an indication of success or failure.
+		- a query is a request for information that doesn't change the system's state or cause any side effects.
+		- Client >Write > command> Write DB 
+		- Client>Read >Query > ReadDB .  Write bd will snc with read db
+		
+		-CQRS pattern is often used along with the Event Sourcing pattern.
+ API Gateway
+	- It is a single entry point into a system that encapsulates the internal system architecture and provides an API that is tailored to each client.
+	- other rresponsibilities such as authentication, monitoring, load balancing, caching, throttling, logging, etc.
+	-Service: version/rate limit/log/reverse proxy/service discouver/routing /ip whitelisting/caching
+
+Backend For Frontend (BFF) pattern
+	- reate separate backend services to be consumed by specific frontend applications or interfaces.
+	- to avoid customizing a single backend for multiple interfaces
+	- ave some logic to reformat the data, and therefore, we can use BFF to shift some of this logic
+	- FE(Web,mobile,tab) > BFF(Bff web , Bff mobile) > backend >DB
+	-GraphQL performs really well as a backend for frontend (BFF).
+REST, GraphQL, gRPC
+	-REST:
+		- API:definitions and protocols for building and integrating application software
+		- Concept:
+			-Uniform interface m client server, statelsess, caheable,Layer syste, 
+			- HTTP verbs: GET.PUT,POSt,DELETE,PATHC
+			-HTTP res: 1xx > information response
+					2xx > success
+					3xxx> redireccition
+					4xxx: Client error
+					5XXX: sever error
+		-Advantage:Simple,flexiable.good caching support, client sever decouples, portable, easy
+		-Dis-Advtg: over fetching data, Someitme multiple round trip
+	-GRAPH QL
+		-APIs that prioritizes giving clients exactly the data they request and no more
+		- developed by Facebook and later open-sourced in 2015.
+		-designed to make APIs fast, flexible, and developer-friendly.
+		- Schema :the functionality clients can utilize once they connect to the GraphQL server.
+		- Query: request made by the client. It can consist of fields and arguments for the query
+		- Resolver :collection of functions that generate responses for a GraphQL query
+		-Advanage:
+			- over fetching dta , strongly defined schema, code gen support, payload optiization
+		-Dis advaage:
+			- Shift complexity to server-side
+			cachin hard
+			- version ambidous,N+1 prob
+	- gRPC
+		- open-source high-performance Remote Procedure Call (RPC) framework that can run in any environment.
+		- pluggable support for load balancing, tracing, health checking, authentication and much more.
+		- Protocol buff:
+			- provide a language and platform-neutral extensible mechanism for serializing structured data in a forward and backward-compatible way.
+		- Service definition
+			-protocol buffers as the Interface Definition Language (IDL) for describing both the service interface
+		
+		Advantage:
+			-light,high perf,bi-direction
+		Disadvtg:
+			-
+
+	Type	Coupling	Chattiness	Performance	Complexity	Caching	Codegen	Discoverability	Versioning
+	REST	Low			High			Good	Medium		Great		Bad		Good			Easy
+	GraphQL	Medium		Low				Good	High		Custom		Good	Good			Custom
+	gRPC	High		Medium			Great	Low			Custom		Great	Bad				Hard
+					
+
+
+	
+	

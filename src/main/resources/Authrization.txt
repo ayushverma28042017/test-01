@@ -1,0 +1,149 @@
+
+publish and interact with protected data
+open standard for token-based authentication and authorization on the Internet
+
+end user's account information to be used by third-party services, such as Facebook, without exposing the user's password
+
+Advtg:
+-SSL,Token,SSO,
+
+Grant Type in OAuth 2
+	A-Auth code grant
+	B-implicit 
+	C-RO credential grant
+	D-client crendtial grnt()
+	E- refresh token
+
+D:
+	-Grant_type='cleint_credential
+	-cleint_id
+	client_secrect
+	username
+	passwrkd
+	- eg: whne login on FB from Mobile,user will have to specify the facebook credentials to the app
+	-FLOW: user/pswd in mobile app>FB auth server>ACCteokne>FB SERVER(useing Accestoke)>FB server validate from FB auth server > provide resource> app show resources
+	
+C:
+	-Authentication does not involve any end-user
+	-here the machine it self authenticates itself to access a protected resource
+	-Client credentials grant type the user has no role to play
+	-it is machine to machine communication. This is typically used by clients to access resources about themselves rather than to access a user's resources
+	Trivago server will be accessing several third party APIs to show search results. Machine to machine authentication will be done by the Trivago server to access the third party API's to get the hotel data. Suppose it wants search data from makemytrip.com, so Trivago Server will authenticate itself by calling makemytrip's authorization server to get access token and then using this token access the makemytrip resource server to get the search result.
+	
+	
+------------------------------------------------------------------------------------------------------
+
+What is OpenID Connect
+	- for authentication that allows users to securely sign in to websites and applications using a single set of credentials
+	-adds an identity layer on top of OAuth 2.0,
+	-easier for users to access multiple sites without having to remember different usernames and passwords.
+	-additional security features such as session management, token revocation, and user info requests.
+	-OpenID Connect supports multi-factor authentication, which requires users to provide more than one form of identification when signing in
+How does it compare with OAuth 2.0
+	-addtional security: allow client app to veridy user identy before granting
+	-main difference between OpenID Connect and OAuth 2.0 is that OpenID Connect provides an additional layer of security by allowing the client application to verify the identity of the user before granting access to resources. 
+	-to verify it uses JWT: cryptographicaaly signd token contains user indentity ,name ,emial,  addres
+	-client vlaid this ,with there won records of data of that user in their Db or other trusted sosurce
+	- enter credentials multiple times, they only need to do so once when logging into the OpenID Connect provider
+CLEINT:
+	- app that make OpenId conneect req to auth server,it can be web app, mobile,oth any 
+	-cleint must register himslef with auth server
+RP(relying party)
+	- app that relies on authnetication performe by openid connect provide
+
+What are some examples of client types in OpenID Connect?
+	-authentication protocol that enables clients to verify the identity of users and obtain basic profile information
+	-client types, including web applications, mobile apps, JavaScript-based applications, and native applications
+	-Mobile apps can also use OpenID Connect to authenticate users and access their data.
+	-avaScript-based applications are usually single page applications (SPAs) that use OpenID Connect for authentication and authorization
+	-ative applications are desktop or mobile applications that use OpenID Connect to authenticate users and access their data.
+examples of different flows supported by OpenID connect
+		- Authorization Code Flow
+		-mplicit Flow, Hybrid Flow, Client Credentials Flow, Resource Owner Password Credentials Flow, and Refresh Token Flow.
+Authorization Code Flow is the most secure of these flows as it requires the user to authenticate with the OpenID provider before granting access to the application.
+
+Implicit Flow is less secure but faster, as it does not require the user to authenticate with the OpenID provider.
+
+Client Credentials Flow allows applications to request access tokens without involving the user. 
+
+digitally signed by the issuer, which ensures that they have not been tampered with or altered in any way.
+
+using JWTs, OpenID Connect provides a secure and efficient way to authenticate and authorize users.
+
+What happens when the client receives an access token that has expired?
+	client must then request a new access token from the authorization server in order to continue with the authentication process. This is done by sending a refresh token to the authorization server, which will then issue a new access token. 
+	-refresh token can also be used to obtain additional access tokens without having to re-authenticate the use
+	-
+	
+A Refresh Token is a special type of token that contains the necessary information for an OpenID Connect provider to issue a new Access Token without requiring the user to authenticate again. The Refresh Token is typically sent along with the Access Token when the user authenticates and is stored securely by the client application. When the Access Token expires, the client application can use the Refresh Token to request a new Access Token from the OpenID Connect provider.
+
+
+implementing logout functionality in OpenID Connect
+	-Single sign-out protocols also provide an extra layer of security by ensuring that any session tokens associated with the user’s account are invalidated when they log out.
+
+Another way to implement logout functionality in OpenID Connect is through the use of back-channel logouts.
+	-Back-channel logouts allow the identity provider to send a notification to all applications that have been authenticated using the same OpenID Connect identity provider whenever the user logs out. 
+
+ront-channel logouts involve redirecting the user to the identity provider’s logout page after they have logged out of the application. 
+
+Securing  clent secret:
+lient Secret is to store it in a secure location, such as an encrypted file or database. It should also be kept separate from other sensitive information and not shared with anyone outside of the organization. 
+
+-------------------------------------------------------------------------
+SPRING NATIVE:
+	-native executables using Spring Framework and Spring Boot applications.
+	- Spring applications are deployed as Java bytecode running on a Java Virtual Machine (JVM). 
+	-native image generation technologies like GraalVM, there's growing interest in compiling Spring applications into native executables.
+	
+Native Image Generation: Spring Native leverages GraalVM's native image generation capabilities to compile Spring applications into native executables
+Improved Startup Time and Resource Consumption:
+	-have faster startup times and lower memory overhead 
+	-ow resource consumption are critical, such as serverless computing or microservices running in resource-constrained environment
+	
+	Compatibility and Optimal Performance:existing spring app
+	
+--------------JRAALVM--------------
+support multiple programming languages and execution modes, including running applications written in Java, JavaScript, Python, Ruby, R
+-Polyglot Execution: GraalVM supports running multiple languages on the same virtual machine, 
+-High Performance: GraalVM includes a high-performance just-in-time (JIT) compiler that can optimize code written in various languages for better runtime performance
+-Native Image Compilation: GraalVM's native image feature allows developers to compile Java applications into standalone native executables. 
+-This eliminates the need for a separate JVM runtime, resulting in faster startup times and reduced memory overhead
+-useful for building lightweight and fast-booting microservices, command-line tools, and serverless functions.
+-Ecosystem Integration: GraalVM is compatible with existing Java ecosystem tools, libraries, and frameworks, making it easy for developers to leverage their existing code and infrastructure. 
+
+
+Hellow workd in java: .057 sex
+native-image hello.java, it will elimate thall uncesaary lib, and will create and binaly ony with req..
+when u run ,it will take .002 sec , 25 time faster upto 100 times faster
+- gr9 for container and cmd all
+
+------------------------SMAL----------------
+SAML 2.0 is an XML-based standard for single sign-on (SSO) authentication, while OpenID Connect is a newer standard that uses JSON and REST instead of XML.
+
+-OpenID Connect is also more focused on mobile and web applications, while SAML 2.0 is more geared towards enterprise applications.
+
+SAML is an XML-based standard for exchanging authentication and authorization data between security domains, i.e. between an identity provider and a service provider.
+
+
+SAML is used in Single Sign-On (SSO) scenarios, where a user authenticates with an identity provider and then is able to access multiple service providers without having to re-enter their credentials.
+
+Single sign-on can be implemented on multiple platforms by using a central authentication server. 
+
+Some common ways that hackers try to steal session IDs are by using session ID prediction attacks, session ID hijacking attacks, and session ID fixation attacks.
+
+ multiple identity providers at the same time. This can be done by configuring the identity providers in the application’s configuration file.
+ 
+ 
+
+
+
+
+--------------ARCHITECT-------------------
+The job of an architect is not just decision making, but one of compromising.
+Architects should block time on their calendars on a weekly basis to pair program with developers on your team.
+One of the most important documents that an architect should be involved in creating is the ADRs, the architectural decision records.
+Tools like ArchUnit can give us a way for us to express our architectural expectations. Use tools like ArchUnit as a guardrail (guidance) rather than as a stick (enforcement).
+Architects leverage the emerging Gen AI tools, to feed proposed architecture and ask questions like, "What are the vulnerabilities in this architecture? Are there concerns we need to think about in this architecture?"
+
+
+

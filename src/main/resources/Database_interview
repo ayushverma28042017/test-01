@@ -1,0 +1,947 @@
+SQL Interview:
+--------------------------
+1- secodn highest salary:
+: SELECT TOP 1 Salary FROM
+(SELECT TOP 2 Salary FROM [EmployeeDetail] ORDER BY Salary DESC) T ORDER BY Salar
+yASC
+
+2.Write the query to get the department and department wise total(sum) salary
+from "EmployeeDetail" table.
+
+: SELECT Department, SUM(Salary) AS [Total Salary] FROM [EmployeeDetail]
+GROUP BY Department
+
+:> in was asce order  add last "GROUP BY Department ORDER BY SUM(Salary) ASC"
+
+45. Write the query to get the department, total no. of departments, total(sum) salary
+with respect to department from "EmployeeDetail" table.
+Ans: SELECT Department, COUNT(*) AS [Dept Counts], SUM(Salary) AS [Total
+Salary] FROM[EmployeeDetail]
+GROUP BY Department
+
+Get department wise average salary from "EmployeeDetail" table order by salary
+ascending
+Ans: SELECT Department, AVG(Salary) AS [Average Salary] FROM [EmployeeDetail]
+GROUP BY Department ORDER BY AVG(Salary) ASC
+
+
+. Get employee name, project name order by firstname from "EmployeeDetail" and
+"ProjectDetail" for those employee which have assigned project already.
+Ans: SELECT FirstName,ProjectName FROM [EmployeeDetail] A INNER JOIN [ProjectDeta
+il]B ON A.EmployeeID = B.EmployeeDetailID ORDER BY FirstName
+
+
+
+) Get employee name, project name order by firstname from
+"EmployeeDetail" and "ProjectDetail" for all employee if project is not assigned then
+display "-No Project Assigned".
+Ans: SELECT FirstName, ISNULL(ProjectName,'-No Project
+Assigned') FROM[EmployeeDetail] A LEFT OUTER JOIN [ProjectDetail] B
+ON A.EmployeeID = B.EmployeeDetailID ORDER BY FirstName
+
+
+56. Write a query to find out the employeename who has not assigned any project,
+and display "-No Project Assigned"( tables :- [EmployeeDetail],[ProjectDetail]).
+Ans: SELECT FirstName, ISNULL(ProjectName,'-No Project
+Assigned') AS [ProjectName]FROM [EmployeeDetail] A LEFT OUTER JOIN [ProjectDetail]
+B ON A.EmployeeID =B.EmployeeDetailID
+WHERE ProjectName IS NULL
+
+
+
+Write down the query to fetch EmployeeName & Project who has assign more
+than one project.
+Ans: Select EmployeeID, FirstName, ProjectName from [EmployeeDetail] E INNER JOIN[P
+rojectDetail] P
+ON E.EmployeeID = P.EmployeeDetailID
+WHERE EmployeeID IN (SELECT EmployeeDetailID FROM [ProjectDetail] GROUP BYEmpl
+oyeeDetailID HAVING COUNT(*) >1 )
+
+Write down the query to fetch EmployeeName & Project who has assign more
+than one project.
+Ans: Select EmployeeID, FirstName, ProjectName from [EmployeeDetail] E INNER JOIN[P
+rojectDetail] P
+ON E.EmployeeID = P.EmployeeDetailID
+WHERE EmployeeID IN (SELECT EmployeeDetailID FROM [ProjectDetail] GROUP BYEmpl
+oyeeDetailID HAVING COUNT(*) >1 )
+
+
+Write down the query to fetch ProjectName on which more than one employee
+are working along with EmployeeName.
+Ans: Select P.ProjectName, E.FName from ProjectDetails P INNER JOIN EmployeeDetails
+E
+on p.EmployeId = E.Id where P.ProjectName in(select ProjectName from ProjectDetailsgr
+oup by ProjectName having COUNT(1)>1)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+SQL Server 2016?: JSON datatype
+character data SQL Server supports :Regular and Unicode
+e Regular character data types: Char and VarChar
+
+INDEX:
+	- Index is a database object, which can be created on one or more columns
+	- index will improve the performance of data
+		retrieval and adds some overhead on data modification such as create, delete and modify. 
+How many clustered indexes there can be in one table?
+Only one.
+How many non-clustered indexes there can be in one table?
+For SQL Server 2005: 249 Nonclustered Index
+For SQL Server 2008: 999 Nonclustered Index
+
+What is clustered table?
+A table having clustered index also called as clustered table.
+
+Disadvantages of the Indexes?
+Inserts and updates takes longer time with clustered index.
+It takes some disk space to create Non-Clustered index
+
+How many columns can we include in non clustered index?
+Max 16 columns can be combined to make a single composite index key,
+
+Why Use an Index?
+Use of SQL server indexes provide many facilities such as:
+* Rapid access of information
+* Efficient access of information
+* Enforcement of uniqueness constraints
+
+Types of Indexes?
+SQL Server has two major types of indexes:
+Clustered
+Non-Clustered
+
+What is Clustered index?
+A clustered index sorts and stores the data rows of the table or view in order based on the
+clustered index key. The clustered index is implemented as a B-tree index 
+
+
+What is Non-Clustered index?
+A nonclustered index can be defined on a table or view with a clustered index or on a heap.
+Each index row in the nonclustered index contains the nonclustered key value and a row
+locator
+
+
+DATABASE MODELING::
+	-  process of creating a structured representation of an organization's data and the relationships between different data entities.
+	- involve:data structure, constraints, and rules that govern how the data is stored, accessed, and managed within a database
+	- primary goal of database modeling is to design a database that accurately reflects the information needs of an organization and supports       efficient data storage, retrieval, and manipulation
+	- Key components of database modeling include:
+		- Entities: object or concept of real world
+		- Attribute: char/properties
+		- Relationship: hwo entitie are related
+		- Contratint: rules and condition tht defienn integrity and behaviour of data
+		- Normalization: process of organize data to redice:	
+			- redundancy
+			- dependecny
+			- esuring data consitency
+			- reducing risk and anomalies
+	- Normalization:
+		- breaking down large tables into smaller, more manageable tables and defining relationships between them.
+		- several normal forms (1NF, 2NF, 3NF, BCNF, etc.), each building on the previous one, with the higher normal forms addressing more complex relationships. 
+		-1NF: eliminate duplicate column from same table
+		-2NF:remove partial dependency: ensure non-key fully functional  dempend on primary key
+		-3NF: eliminate transasitive depenency:by removing removing column that deplen on non-key
+		-BCNF: remvoe remaining anomaliess(inser, delee, update anomalies)
+	- Normalization help:
+		- Minimize data reduncy , reduce risk fo data anomalies,improve data integrity, simplifying dta mantaince andmodificaiton
+	
+
+
+---------------------------------
+
+1. 𝗗𝗮𝘁𝗮 𝗪𝗮𝗿𝗲𝗵𝗼𝘂𝘀𝗲: The powerhouse of data storage, a centralized hub that houses integrated data collected from various sources. Think of it as the grand library of data, where information is stored, categorized, and made ready for analysis.
+
+2. 𝗗𝗮𝘁𝗮 𝗠𝗮𝗿𝘁: Tailored for specificity, a data mart is a subset of a data warehouse designed to focus on a particular line of business or team, ensuring that specific data needs are met with precision.
+
+3. 𝗗𝗮𝘁𝗮 𝗟𝗮𝗸𝗲: Imagine a vast, unstructured reservoir of raw data kept in its native format. A data lake offers the flexibility to store massive volumes of data until it's needed, ready to be shaped and formed for purposeful insights.
+
+4. 𝗗𝗮𝘁𝗮 𝗣𝗶𝗽𝗲𝗹𝗶𝗻𝗲: This is the workflow of data movement, a critical series of processes that include extracting, transforming, and loading data (ETL) from one system to another – the data journey from source to destination.
+
+5. 𝗗𝗮𝘁𝗮 𝗤𝘂𝗮𝗹𝗶𝘁𝘆: The foundation of reliable analytics. Data quality measures how well data fits a company's needs in terms of accuracy, validity, completeness, and consistency. It's the yardstick that ensures data is trustworthy and decision-ready.
+
+6. 𝗗𝗮𝘁𝗮 𝗠𝗶𝗻𝗶𝗻𝗴: The art of uncovering hidden patterns and insights. Data mining involves sifting through large datasets to identify trends, correlations, and anomalies that can inform strategic business moves.
+
+
+
+-----------------NoSQL Databases and When to Use Them-------------------------------------------------------------
+
+- non-relational database
+- popular because they allow users to store data with a flexible schema.
+- NoSQL databases are high-performant, scalable, and flexible, which makes them great for mobile, web, and gaming application
+	-Scalability:NoSQL databases typically scale out by using distributed clusters of hardware
+	- Flexibility:NoSQL databases have a flexible data model that makes them ideal for semi-structured and unstructured data
+	- High-performance: for specific data models and access patterns; this results in higher performance.
+
+
+-Key-value databases
+	- databases store data in pairs, each containing a unique id and a data value.
+	- Use cases:Session management, user preferences, and product recommendations
+	-Amazon DynamoDB, Azure Cosmos DB, Riak
+-In-memory key-value databases
+	-Redis, Memcached, Amazon Elasticache
+	- By eliminating disk access, these databases enable minimal response times.
+- Document databases
+	-Document databases are structured similarly to key-value databases except that keys and values are stored in documents written in a markup language like JSON, XML, or YAML
+	- USe case:User profiles, product catalogs, and content management.
+	- MongoDB, Amazon DocumentDB, CouchDB.
+-Wide-column databases
+	- databases are based on tables but without a strict column format.
+	- Use cases:Telemetry, analytics data, messaging, and time-series data
+	- Cassandra, Accumulo, Azure Table Storage, HBase.
+- Graph databases
+	-relationships between data using nodes and edges.
+	- Nodes are the individual data values, and edges are the relationships between those values.
+	- Social graphs, recommendation engines, and fraud detection
+	- Neo4j, Amazon Neptune, Cosmos DB through Azure Gremlin.
+- Time series databases
+	-store data in time-ordered streams.
+	- the time of collection, ingestion, or other timestamps included in the metadata.
+	-Industrial telemetry, DevOps, and Internet of Things (IOT) applications.
+	-Graphite, Prometheus, Amazon Timestream.
+	
+
+-------------ZOOKEEPER-----------------------------------------------------------------------------
+
+-provides synchronization across a distributed system
+- Zookeeper follows a client-server model for synchronization across the nodes in a cluster.
+- Any change in a server is considered as successful unless it is written to at least half of the servers, 
+- service:naming, configuration information, and group services in distributed applications.
+
+------------------Why Is It Hard to Horizontally Scale SQL Databases?----------------------------------------------------
+- intricacies involved in scaling them
+- Horizontal scaling, or sharding, is often spotlighted for its ability to distribute a database across multiple machines
+- Database scaling :
+	- VS: scaling up, involves adding more power to your existing machine—in other words, upgrading the CPU, RAM, or storage.
+	-HS: distribute your database load across multiple machines or nodes.
+- SQL DB: designed with a focus on relationships and ACID properties to ensure reliable transactions
+- ACID Compliance Across Distributed Systems
+	ISSUE:If a customer wants to transfer money from one account to another, and each account is on a different shard, the transaction must be atomic across all involved shards
+-The Complications of Distributed Joins
+	- can lead to a lot of data movement over the network, which is far slower than local data retrieval, and can become a severe bottleneck.
+- 3. Transactions Across Shards
+	-a database into smaller, more manageable pieces, but it also distributes transactions over multiple nodes.
+	- Ensuring Atomicity and Durability IS DIFFICULT
+- 4. Ensuring Data Consistency
+		-Each shard must not only be an accurate source of truth on its own but also stay consistent with the rest of the system
+		- Impact of Network Latency
+- 5. Sharding Strategies and Their Pitfalls
+	- sHARDING stratgies:
+		-The Balancing Act of Data Distribution 
+				- o distribute data evenly across all nodes
+				-Users table that we decide to shard based on the user's last name. 
+				-Resharding, or redistributing the data across shards, is a complex and risky operation that can involve significant downtime
+		-Schema Changes in a Sharded Environment :It's complicated.
+		- Enforcing Data Integrity Over Multiple Servers
+			-database scales out, ensuring that data remains consistent and that integrity constraints are enforced across all shards becomes a formidable task
+- Mitigation Strategies for SQL Database Horizontal Scaling
+	-While the challenges of horizontally scaling SQL databases are significant, various strategies can mitigate these issues
+	-1. Partitioning and Federated Databases
+		-  handling the complexities of sharding is to use partitioning within the same database or federating databases
+		- s split across different tables or databases, but still under a unified system that can manage cross-partition queries and transactions more efficiently.
+	-2.Application-Level Sharding
+		-application to be aware of the sharding strategy, it can direct queries to the appropriate shard,
+	- 3.  Consistent Hashing:
+		- to distribute data evenly across shards and minimize the amount of data that needs to be moved when shards are added or removed.
+		
+	- 4.. Database Middleware:
+		-  use middleware solutions that sit between the application and database layers.
+	- 5.Denormalization
+		-duplicating data to reduce the need for complex joins. 
+		- data redundancy and storage requirements, it can also improve query performance in a distributed database
+	- 6. Geo-Partitioning
+
+
+
+-------------------Essential Software Design Principles You Should Know Before the Interview--------------------
+-key objectives of software design principles include
+		- Encouraging code reusability and modularity.
+		Promoting loose coupling between components or modules.
+		Ensuring code readability and understandability.
+		Enhancing testability, maintainability, and scalability.
+		Facilitating effective collaboration among team members
+- SOLID,DRY (Don't Repeat Yourself):,KISS (Keep It Simple, Stupid):,YAGNI (You Aren't Gonna Need It): Composition Over Inheritance: 
+-YAGNI (You Aren't Gonna Need It): A principle that advises developers to focus on delivering the features that are currently needed
+- Open-Closed Principle:be open for extension but closed for modification.
+-Liskov Substitution Principle :objects of a derived class should be able to replace objects of the base class without affecting the program's correctness.
+
+-Interface Segregation Principle:clients should not be forced to depend on interfaces they do not use. 
+-Dependency Inversion Principle (DIP):high-level modules should not depend on low-level modules; both should depend on abstractions.
+
+
+----------------8 REST API Interview Questions Every Developer Should Know--------------------------------
+
+-Application Programming Interface, is a set of rules and protocols for building and interacting with software applications. 
+- key components of REST API: Stateless, HTTP Method, Resources
+
+
+A subnet is a smaller network that is created by dividing a larger network into multiple smaller sub-networks. It allows for better network management and security by dividing a large network into smaller, more manageable segments. A subnet can be assigned a specific IP address range and can be used to group devices that have similar network requirements.
+
+CIDR stands for Classless Inter-Domain Routing and is a method used to allocate IP addresses and route Internet traffic. It is an alternative to the traditional IP address class system and allows for more efficient use of IP address space. CIDR notation is used to represent IP address ranges and subnet masks. The notation consists of an IP address followed by a forward slash (/) and a number representing the number of bits in the subnet mask. For example, 192.168.0.0/24 represents a subnet with a subnet mask of 255.255.255.0, which allows for up to 256 IP addresses to be assigned within the subnet. CIDR notation is commonly used in routing protocols to advertise the size and location of IP address blocks.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for that workload.
+disaster
+	- Natural , Technical failure , Human error
+- Both the nature of the disaster and the geographical impact are important when considering your disaster recovery strategy.
+	- EG: mitigate a local flooding issue causing a data center outage by employing a Multi-AZ strategy, 
+- Availability focuses on components of the workload, whereas disaster recovery focuses on discrete copies of the entire workload.
+
+- When creating a Disaster Recovery (DR) strategy, organizations most commonly plan for the Recovery Time Objective (RTO) and Recovery Point Objective (RPO).
+- Recovery Time Objective (RTO) is the maximum acceptable delay between the interruption of service and restoration of service.
+- There are broadly four DR strategies discussed in this pager: backup and restore, pilot light, warm standby, and multi-site active/active
+- Recovery Point Objective (RPO) is the maximum acceptable amount of time since the last data recovery point. 
+
+1- Bankup and RE-store:
+Backup and restore is a suitable approach for mitigating against data loss or corruption. This approach can also be used to mitigate against a loss of access to data by replicating data to other AWS Account or to mitigate the lack of redundancy for workloads deployed to a single Availability Zone.
+   can use :(IaC) such as AWS CloudFormation , gitlab, jenkings,
+   
+- Your workload data will require a backup strategy that runs periodically or is continuous. How often you run your backup will determine your achievable recovery point 
+- AWS Backup supports continuous backups and point-in-time recovery (PITR) in addition to snapshot backups.
+-Amazon Simple Storage Service (Amazon S3), you can use Amazon S3 Same-Region Replication (SRR) to 
+
+- you must also back up the configuration and infrastructure necessary to redeploy your workload and meet your Recovery Time Objective (RTO). AWS CloudFormation provides Infrastructure as Code (IaC), and enables you to define all of the AWS resources in your workload
+
+- Amazon Machine Images (AMIs). The AMI is created from snapshots of your instance's root volume and any other EBS volumes attached to your instance. 
+
+-
+
+2-:: pilot light
+
+2-Unlike the backup and restore approach, your core infrastructure is always available and you always have the option to quickly provision a full scale production environment by switching on and scaling out your application servers
+- With the pilot light approach, you replicate your data from the Production account to DR account and provision a copy of your core workload infrastructure.
+- Resources required to support data replication and backup, such as databases and object storage, are always on.
+   
+- A pilot light approach minimizes the ongoing cost of disaster recovery by minimizing the active resources, and simplifies recovery at the time of a disaster because the core infrastructure requirements are all in place.
+
+3: Warm Stadby:
+The warm standby approach involves ensuring that there is a scaled down, but fully functional, copy of your Production environment in DR environment
+-decreases the time to recovery because your workload is always-on in DR account
+-hat pilot light cannot process requests without additional action taken first, whereas warm standby can handle traffic (at reduced capacity levels) immediately. 
+
+4:AWS SERVICE:
+All of the AWS services covered under backup and restore and pilot light are also used in warm standby for data backup, data replication, active/standby traffic routing, and deployment of infrastructure including EC2 instances.
+- AWS Auto Scaling is used to scale resources including Amazon EC2 instances, Amazon ECS tasks, Amazon DynamoDB throughput, and Amazon Aurora replicas within an AWS Region. Amazon EC2 Auto Scaling scales deployment of EC2 instance across Availability Zones within an AWS Region,
+- Multi-Site Active/Active: your workload simultaneously in multiple accounts as part of a multi-site active/active or hot standby active/passive strategy.
+
+-reduce your recovery time to near zero for most disasters with the correct technology choices and implementation 
+- AWS Cloud Development Kit (CDK)  allows you to define Infrastructure as Code using familiar programming languages. 
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+-Client-side load balancing is a method of distributing network traffic and requests across multiple servers or resources from the client side of an application.
+Key characteristics:
+	- Distributed Decision making:lients independently determine which server to send their requests to based on various factors such as server health, response times, or proximity.
+	- Reduced Server Dependency
+	- dynamic Adaption:dynamically adapt to changes in the network or server conditions
+	- Improved Scalability:
+	- Potential Challenges: otential inconsistencies if clients have different views of server health
+	- Ribbon ,Consul  .Envoy Proxy,Eureka (Netflix OSS):,HAProxy
+
+
+-----------------------------DOCKER---------------------------------------------------------------
+
+DOCKER:
+
+Docker image is made of layers and uses layer caching which means if nothing changes related to a layer it will not recreate that layer again if it is already available.
+-layers might be reused in multiple images too.
+- relationship between docker files and docker image layers
+	- layers of the base image and then apart from the metadata commands like LABEL all the other lines will end up in a new layer
+	- layers are immutable and docker uses a technique called union mount which allows it to create virtual directories by merging content in different layers. 
+	- 
+- ocker uses a copy-on-write strategy which allows top layers to read from the bellow layers for existing resources, but when needed to update it copies the files and does the modifications in the new layer.
+- Each image has different tags which represent different versions
+-To define the base image, instruction FROM is used (in lines 1 and 9)
+
+1. FROM maven:3.9-eclipse-temurin-21 AS builder
+- -To define the base image, instruction FROM is used 
+2. WORKDIR /app
+-WORKDIR defines the directory the docker file working on
+3.COPY pom.xml .
+-  COPY command allows to copy of files from the local directory to the image layer
+- here pom.xml is copied to the working directory (/app)
+
+4. RUN mvn dependency:go-offline
+- download all dependencies and plugins using the Maven dependency plugin.
+Why we didn’t copy the whole directory and then run the Maven package? 
+-to optimize the use of docker layer caching. The chance of changing dependencies is very low, but application code changes frequently. 
+
+5.COPY src src
+-copy the source directory
+
+6.RUN mvn package 
+- reate a fat jar (jar with all the transitive dependencies)
+
+7. RUN java -Djarmode=layertools -jar target/spring-boot-docker-1.0.0.jar extract
+-have the generated fat jar file in the target directory
+-We can use this jar file and run directly in the next stage using the java -jar command.
+
+  
+ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
+-Setup application to start when starting the container using ENTRYPOINT
+
+GRAAL VM:
+Using GraalVM we can create native executable binaries which can run without JRE.
+
+FROM ghcr.io/graalvm/native-image-community:21 AS builder
+- 3 parts which are the registry in this case it’s GitHub container registry then the user name and the final part is the image name followed by a tag.
+
+- reason we need to specify the path here is by default it searches in the docker hub(docker.io)the name is missing because they are official images
+- why Oracle Linux docker image as  GraalVM image is based on Oracle Linux and the binary it created can be run only in Oracle Linux-compatible operating system.
+
+
+
+- workflow:
+	- dockerfile>Docker image> from docker hub > docker cntainer>
+	- Virtualization: Host>Hypervisor)run vn) , run many vm on woth their own OS
+	- allocate fix memory to every VM
+	
+	-Contanization
+		- use host os, space is not fix, can be taken from os
+		- container engine is docker engine
+		- cokde rclient and docer sever, 
+		- docekr sevr rcv command form client in form of api or cli
+		- can be on same os or differn os
+		
+		
+--------------------------------------------------
+When we 𝐦𝐞𝐫𝐠𝐞 𝐜𝐡𝐚𝐧𝐠𝐞𝐬 from one Git branch to another, we can use ‘git merge’ or ‘git rebase’. The diagram below shows how the two commands work.
+eg: 
+main brach name is A> B, then form B a feather branch is forked, and some changes done
+				feature bring> E>F>G 
+Also in main brahc there was some change doen after beaure brck was forked
+            A>B>C>D
+			
+not we have 2 ways to merge these two branch , feature and main
+- Rebase: it will move the feature branch ahead of mail and will creae new commit 
+- EG: A>B>C>D>E'>F'>G' 
+- MergE: i will just create only one new commit G'
+after merge: >A>B>C>D>G'
+
+
+𝐆𝐢𝐭 𝐌𝐞𝐫𝐠𝐞
+This creates a new commit G’ in the main branch. G’ ties the histories of both main and feature branches.
+
+Git merge is 𝐧𝐨𝐧-𝐝𝐞𝐬𝐭𝐫𝐮𝐜𝐭𝐢𝐯𝐞. Neither the main nor the feature branch is changed.
+
+𝐆𝐢𝐭 𝐑𝐞𝐛𝐚𝐬𝐞
+Git rebase moves the feature branch histories to the head of the main branch. It creates new commits E’, F’, and G’ for each commit in the feature branch.
+
+The benefit of rebase is that it has 𝐥𝐢𝐧𝐞𝐚𝐫 𝐜𝐨𝐦𝐦𝐢𝐭 𝐡𝐢𝐬𝐭𝐨𝐫𝐲.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+𝗦𝗤𝗦 (𝗦𝗶𝗺𝗽𝗹𝗲 𝗤𝘂𝗲𝘂𝗲 𝗦𝗲𝗿𝘃𝗶𝗰𝗲) is a message queuing service that operates on a pull mechanism, where messages are sent to a queue and consumers poll the queue to retrieve messages. 
+Messages retrieved by one consumer become invisible to others for that duration. This model is perfect for decoupling system components, ensuring individual messages are 
+processed by a single consumer. By default, messages are retained for 4 days, with the option to extend up to 14 days. SQS supports both standard and FIFO (First-In-First-Out) 
+message queues.
+
+📣 𝗦𝗡𝗦 (𝗦𝗶𝗺𝗽𝗹𝗲 𝗡𝗼𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗦𝗲𝗿𝘃𝗶𝗰𝗲) employs a push mechanism, where messages are published on a given topic. This enables the fanning out of messages to a broad array of subscriber endpoints,
+ such as SQS queues, HTTP/S endpoints, Lambda functions, and emails. SNS does not persist messages; once a message is successfully delivered, it is not stored. It is well-suited for
+ broadcasting notifications or enabling communication between distributed system components.
+
+💡 𝗞𝗶𝗻𝗲𝘀𝗶𝘀 𝗔𝗺𝗮𝘇𝗼𝗻 𝗞𝗶𝗻𝗲𝘀𝗶𝘀 offers real-time data streaming capabilities, enabling the collection, processing, and analysis of large streams of data in real time. Unlike the distinct 
+pulling model of SQS or the pushing model of SNS, Kinesis provides a comprehensive platform for continuous data intake and processing. This supports scenarios requiring 
+immediate insights from high-volume data sources. Kinesis Data Streams allows for the building of custom, real-time applications and offers the ability to filter data before 
+it is stored.
+
+𝗘𝗮𝗰𝗵 𝘀𝗲𝗿𝘃𝗶𝗰𝗲 𝗵𝗮𝘀 𝗶𝘁𝘀 𝘀𝘁𝗿𝗲𝗻𝗴𝘁𝗵𝘀:
+producer > SQS > Consumenr 
+
+Pub > SNS > Consuemnr grp (kiness, fargat, SQS,..)
+
+data>Kinesis data stream > Kines data firehose > S3 > Aws red shift
+								 |
+								  Lambda(will file dat)
+						
+-----------------------------------------------------------------------------------------------------
+
+How to Become a Good Backend Engineer (Fundamentals):::::::::::::::::
+
+Communication Protocols
+	-Almost all the protocols we use and love on the backend are either built on top of TCP or UDP
+	-TCP is a stream-based connection-oriented protocol while UDP is a message based and connectionless
+	-TCP provides reliable delivery at a cost of connection setup and retransmission
+	-UDP starts faster but doesn’t have guaranteed delivery
+	-HTTP protocol was originally built on top of TCP because we wanted to send requests and responses reliably
+	- HTTP/2 introduced application level streams so multiple requests can be sent on the same connection.
+	-HTTP/2 evolved and had to be rewritten on top of UDP with HTTP/3 to solve the TCP head of line problem
+	- Protocols such as WebSockets, gRPC or just raw TCP/UDP can be used for bi-directional commc
+Web Servers
+	- Web servers deliver static or dynamic content served on top of the HTTP protocol.
+	-Modern web servers support both HTTP/1.1 and HTTP/2. HTTP/3 is slowly getting support as its newer protocol. 
+	-CDN is a web server that acts like a cache and communicate with the origin backend web server to get the content
+	- web servers are Apache Tomcat, Apache httpd, and NGINX. The latter can act as both a web server and a proxy
+Database Engineering
+	-users to store and retreive data consistently and in a durable fashion
+	- aCID
+	-No database system is complete without indexes and at their core B+Trees is the data structure of choice
+Proxies
+	- proxy is it receives requests from a client and forward the requests to backend servers.
+	-proxy hides the network layer identity of the original client from the destination server
+	- There are two levels of proxying: layer 4 and layer 7 proxying.
+	- Layer 4 proxying works at the transport layer, while layer 7 proxying works at the application level.
+	- a content delivery network (CDN) is a reverse proxy that sends request to the origin backends
+	-proxies are NGINX, HAProxy and Envoy. 
+	-Cloudflare recently moved away from NGINX, their primary reverse proxy, and built their own proxy because of certain limitations in NGINX.
+	-
+Messaging Systems
+	- As services start to communicate to each other, coupling and dependencies increase which increases the complexity of building scalable backend applications
+	- Messaging systems are designed to remove this coupling
+	-publish-subscribe where a client can publish a message and other clients can subscribe to consume this content. 
+	- Kafka use long-polling model while RabbitMQ uses push model, both has pros and cons.
+	-How do you make sure the consumer reads the message only once? 
+	
+Message Formats
+	-Message formats go hand in hand with communication protocols
+	- two types human readable and non-human readable. Examples are XML, JSON and protocol buffers.
+	-fine to have a Javascript client communicates with a C# backend using JSON as a message format
+	- Protocol buffers became very popular and were designed to solve the problem of high bandwidth messages
+Security
+	-You can secure communications with encryption or TLS. 
+	-One type of security risk is a man-in-the-middle attack. 
+	-attacker intercepts communication between two parties and tries to eavesdrop or modify the data being exchanged
+	 -To prevent this type of attack, it is important to encrypt and authenticate the communicated parties using Transport Layer Security (TLS).
+	 
+	 -Another type of security risk is a denial of service attack
+	 -attacker tries to prevent legitimate users from accessing a service by flooding it with requests or through finding a way to crash the backend by sending a special payload. 
+	 -o prevent this type of attack, it is important to have a firewall or a layer 7 DDOS protection layer in place to block illegitimate requests. 
+	 - Cloudflare has great services to detect DDOS traffic.
+	 -There is a client side security attacks such as XSS (cross side scripting), there are server side security attacks such as SQL injection.
+	 
+	 
+-----------------------------------------------------------------------------------------------------------
+How VPNs really work
+	-Normally with no VPN, your client sends a SYN segment to port 80 that goes into an IP packet with a destination IP 1.2.3.4 and source ip 6.6.6.6
+	- Now say you deploy a UDP based VPN, and you use a VPN server on IP 3.3.3.3. 
+	-The client still produces the SYN ip packet with destination 1.2.3.4 and source ip 6.6.6.6 but then the vpn client captures that IP packet, encrypts it and puts it on a new UDP datagram with VPN info and that UDP goes into a new IP packet destination ip is 3.3.3.3 source is 6.6.6.6.
+	
+	
+-----------------------JSON is incredibly slow: Here’s What’s Faster!--------------------------------------
+
+-JSON, short for JavaScript Object Notation, is a lightweight data interchange format that has become the go-to choice for transmitting and storing data in web applications
+-JSON is the glue that holds together the data in your applications
+-Human-Readable Format:,Language Agnostic:,Data Structure Consistency:,Browser Support:,
+-JSON APIs: :web services and APIs provide data in JSON format by default.
+-SON Schema: Developers can use JSON Schema to define and validate the structure of JSON data
+
+-Importance of Application Speed and Responsiveness
+	-User Expectations>A delay of even a few seconds can lead to frustration and abandonment.
+	-Competitive Advantage: to attract and retain users more effectively than sluggish alternatives.
+	-Search Engine Rankings: like Google consider page speed as a ranking factor. Faster-loading websites tend to rank higher 
+	-Conversion Rates: 
+
+Why JSON Can Be Slow
+	- 1. Parsing Overhead
+		-When JSON data arrives at your application, it must undergo a parsing process to transform it into a usable data structure.
+	-2. Serialization and Deserialization
+		-JSON requires data to be serialized (encoding objects into a string) when sent from a client to a server and deserialized (converted the string back into usable objects) upon reception. 
+	- 3. String Manipulation
+		-JSON is text-based, relying heavily on string manipulation for operations like concatenation and parsing
+	-4. Lack of Data Types
+		-JSON has a limited set of data types (e.g., strings, numbers, booleans). Complex data structures might need less efficient representations, leading to increased memory usage and slower processing.
+	-5. Verbosity
+		- Redundant keys and repetitive structures increase payload size
+	-6. No Binary Support
+		-JSON lacks native support for binary data.
+	- 7. Deep Nesting
+		- JSON data can be deeply nested, requiring recursive parsing and traversal
+		
+Alternatives to JSON
+	-1. Protocol Buffers (protobuf)
+		-a binary serialization format developed by Google. 
+		-onsider protobuf when you require high-performance data interchange, especially in microservices architectures, IoT applications, 
+	-2. MessagePack
+		-inary serialization format known for its speed and compactness. 
+	-3. BSON (Binary JSON)
+	-4. Apache Avro
+-OPTIMIZE JSON
+	-1. Minimize Data Size:
+		-Use Short, Descriptive keys: dnt use ""customer_name_with_spaces": "John Doe"" use  "customerName": "John Doe"
+	-2. Use Arrays Wisely:
+			USE "orderItems": ["Product A", "Product B"] NOT:"order": {
+    "items": {
+      "item1": "Product A",
+      "item2": "Product B"
+    }
+  }
+  
+  
+	-3.3. Optimize Number Representations:(Use Integers When Possible: )
+		-"quantity": 1 IS GOOD, DONT USE "quantity": 1.0
+	-4. Remove Redundancy:
+	// Inefficient
+{
+  "product1": {
+    "name": "Product A",
+    "price": 10
+  },
+  "product2": {
+    "name": "Product A",
+    "price": 10
+  }
+}
+
+// Efficient
+{
+  "products": [
+    {
+      "name": "Product A",
+      "price": 10
+    },
+    {
+      "name": "Product B",
+      "price": 15
+    }
+  ]
+}
+	-Use Compression:
+		- If applicable, use compression algorithms like Gzip or Brotli to reduce the size of JSON payloads during transmission.
+
+	- Profile and Optimize:
+		-Profile Performance: Use profiling tools to identify bottlenecks in your JSON processing code, and then optimize those sections.
+		
+	
+------------------------------------------------------------------------------------------------------------------------------------------
+
+COOKIE :::  A cookie acts as the preference card. When we log in to a website, the server issues a cookie to us with a small amount of data. The cookie is stored on the client side, so the next time we send a request to the server with the cookie, the server knows our identity and preferences immediately without looking into the database.
+
+
+---------------------How Disaster Recovery Works in the Cloud?-----------------------------------------
+
+AWS Disaster Recovery offers a comprehensive set of services and features to help businesses plan for and recover from disruptions, ensuring their resilience and ability to withstand any storm.
+
+- Data Replication: Safeguarding Your Critical Information
+AWS offers a variety of data replication services, such as AWS Storage Gateway, Amazon S3, and AWS DataSync, to ensure that your data is consistently replicated to a secondary location.
+
+- Compute Resources: Powering Your Recovery Efforts
+In the event of a disaster, AWS provides a wide range of compute resources, such as Amazon EC2 instances, to quickly provision and deploy your applications and services in the secondary location
+
+- Traffic Routing: Seamlessly Transitioning to Recovery
+Amazon Route 53, AWS's scalable Domain Name System (DNS) web service, plays a pivotal role in routing traffic to your secondary location during a disaster.
+
+- Automated Scaling: Adapting to Fluctuating Demands
+AWS Auto Scaling allows your applications to automatically adjust their capacity based on demand. It can ensure that your secondary environment can handle increased workloads without compromising performance.
+
+- Load Balancing: Distributing Traffic for Optimal Performance
+Elastic Load Balancing (ELB) helps distribute incoming application traffic across multiple targets, ensuring high availability and fault tolerance.
+
+- Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO): Tailoring Your Recovery Plan
+AWS provides tools to set RTO and RPO targets for your applications. These targets define the acceptable downtime and data loss in a disaster scenario.
+
+- AWS Disaster Recovery Architecture Network Components
+The AWS Disaster Recovery architecture is built on a foundation of secure and reliable network components:
+	- Amazon VPC (Virtual Private Cloud):provides isolated network environments
+	- Amazon Route 53:directs traffic to the appropriate location
+	- AWS Direct Connect or VPN: provide secure connectivity between your primary and secondary environments.
+	-AWS Backup and Storage Gateway:provide data storage and replication capabilities.
+	- Load Balancers: distribute incoming traffic across multiple targets for optimal performance.
+	- AWS Backup and Storage Gateway: manage data backup, recovery, and replication.
+	- Compute Resources: host applications and services in your secondary location.
+	- Security Groups and Network ACLs: control lists control traffic to and from your resources, ensuring security.
+
+
+-------------------------- How  SSL protect your data------------------------------------------
+- Confidenciality : data is only access by client and server
+- Integrity : Data not modified between client and server
+- Authenticaiton" Client server are indeed who they say they are
+
+-----------------------------NETFLIX-----------------------------------------------------
+Two Cloud Platforms: AWS and Open Connect
+
+Client:
+	Any device capable of playing videos.
+
+Open Connect:
+	Netflix-owned CDN (Content Delivery Network) with servers placed in different locations to serve content faster.
+
+Original Server - Edge Server:
+	Videos are served from the nearest server.
+
+		Multiple CDNs deployed in various countries.
+
+		Open Connect for streaming.
+
+		Platform-specific code, with ReactJS for web.
+
+		AWS ELB (Elastic Load Balancer): Load balancing across zones and then AZ (Availability Zone) using Round Robin LB.
+
+Pre-processing before showing videos:
+
+	Transcoding: Converting videos to different formats.
+	Original movie: 50GB, transcoded for conversion.
+	File optimized for different network speeds, adjusting movie resolution based on bandwidth.
+	Multiple copies of the same movie to support different bandwidths.
+	Multiple parallel workers for converting different formats of the same movie.
+All copies placed on Open Connect servers; AWS handles all requests. When the play button is pressed, the application finds the best Open Connect server near the particular application.
+
+Zuul: Dynamic routing, monitoring, and connection management.
+
+Netty Proxy:
+
+	Inbound filter (used for authentication, routing).
+	Endpoint filter (static response).
+	Backend response.
+	Outbound filter.
+Netty server.
+	Advantages of Gateway:
+
+	Shared traffic.
+	Load testing.
+	Testing new servers.
+	Filtering bad requests.
+Hystrix:
+
+	Stops cascading failures.
+	Times out calls and rejects requests if the thread pool is full.
+	Disconnects the server if errors exceed a threshold.
+	Fallback to default response.
+	Metrics gathered for errors and latency.
+	Microservices communication through HTTP or RPC calls.
+	Ensures reliability; use Hystrix for critical microservices.
+	Microservices should be stateless for better reliability.
+	Data and response caching:
+		EH Cache: Memcached-based cache, writes to all clusters, distributed cache.
+		Faster reads near the server.
+		Cache considerations: throughput, latency (response time), cost.
+		SSDs (Solid State Drives): Faster than traditional hard drives, positioned between RAM and CPU.
+Database:
+
+	Billing, transactions, and user information in MySQL.
+	User history and other data in Cassandra.
+	Master-to-master replication, acknowledgment to the user, and local read replicas.
+	Read replicas handle all read queries locally.
+	DNS configuration.
+	Cassandra: Heavy read and write, open-source, distributed, schema-less NoSQL database.
+	User history, search, interests, redesigned in Cassandra:
+		9:1 Read:Write ratio.
+		Live view history and compressed view history running as separate jobs.
+		Kafka and Pachyderm integration for efficient data processing.
+	
+
+----------------------------------------------------------------------------------------
+PYTHON:
+	
+-Python is a dynamic, interpreted (bytecode-compiled) language that is used
+in a wide range of domains and technical fields.
+
+-we do not need to declare the type of variables, functions, etc.
+- makes our code short and flexible
+- can be used at:
+	-server side
+	- s/w develo
+	- Scientific app
+	-Educaiton
+	 - Desktop
+- Free and open src, high-level, easy to learn,dynamically type,protabl/platform indep/cross plaform
+- A programming lang ,classified in 2 categories
+	1: Complied: C,C++ > sorc code> binay code> machine/compiler understand 
+	2: Interpreted: Python :: crc> intermediate byte code> transateto native . CPythonis python interpretor
+	
+-Multipradign : support oops, Functional, Procedural
+- Extensibel:
+	- can use c,c++ in python prog
+	- also c,c++ can using python prog through scripting
+- Extensive library
+	-Text procesing,crypto,multi media, gui, debug, netwrk ...
+-Auto Garbage colleciton
+-history: 1991 >>>3.7 version in 2018
+
+
+------------------------------------------------------------------------------------
+Write an SQL query to fetch all the Employees who are also managers from the EmployeeDetails table.
+SELECT DISTINCT E.FullName
+FROM EmployeeDetails E
+INNER JOIN EmployeeDetails M
+ON E.EmpID = M.ManagerID;
+
+
+ Write an SQL query to fetch duplicate records from EmployeeDetails (without considering the primary key – EmpId).
+ SELECT FullName, ManagerId, DateOfJoining, City, COUNT(*)
+FROM EmployeeDetails
+GROUP BY FullName, ManagerId, DateOfJoining, City
+HAVING COUNT(*) > 1;
+
+
+. Write an SQL query to fetch top n records.
+
+SELECT *
+FROM EmployeeSalary
+ORDER BY Salary DESC LIMIT N;
+
+
+. Write an SQL query to find the nth highest salary from a table.
+SELECT Salary
+FROM Employee
+ORDER BY Salary DESC LIMIT N-1,1;
+
+
+ Consider a SalesData with columns SaleID, ProductID, RegionID, SaleAmount. Write a query to find the total sales amount for each product in each region.
+ 
+SELECT ProductID, RegionID, SUM(SaleAmount) AS TotalSales 
+FROM SalesData 
+GROUP BY ProductID, RegionID;
+
+Write an SQL query to fetch all those employees who work on Projects other than P1.
+SELECT EmpId
+FROM EmployeeSalary
+WHERE NOT Project='P1';
+
+
+Since MySQL doesn’t have INTERSECT operator so we can use the subquery-
+SELECT *
+FROM EmployeeSalary
+WHERE EmpId IN 
+(SELECT EmpId from ManagerSalary);
+
+Write an SQL query to fetch records that are present in one table but not in another table.
+Since MySQL doesn’t have a MINUS operator so we can use LEFT join-
+
+SELECT EmployeeSalary.*
+FROM EmployeeSalary
+LEFT JOIN
+ManagerSalary USING (EmpId)
+WHERE ManagerSalary.EmpId IS NULL;
+
+
+
+----------------------------------------------------------------------
+
+---------------------
+where allergies IS NULL
+update patients 
+select CONCAT(first_name,' ',last_name) 
+
+select first_name,last_name, province_name
+from patients 
+Left join province_names 
+ON patients.province_id = province_names.province_id
+
+
+select count(*) As total_patients
+from patients
+where YEAR(birth_date) = 2010;
+
+select  first_name,last_name ,height
+from patients
+order by height desc 
+LIMIT 1;
+
+
+select  count(*)
+from admissions
+
+
+select patient_id ,first_name
+from patients
+where first_name like 's%s'
+AND len(first_name) >5
+
+select patients.patient_id ,
+
+select first_name
+from patients
+order by LEN(first_name),first_name
+
+
+Select
+(select count(*) from
+patients 
+where gender='M') As male_count,
+
+(select count(*) from
+patients 
+where gender='F') As female_count;
+
+
+Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+
+	select patient_id,diagnosis
+	from admissions
+	group by diagnosis,patient_id
+	having count(*) >1
+
+
+Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+
+
+Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"
+	SELECT first_name, last_name, 'Patient' as role FROM patients
+		union all
+	select first_name, last_name, 'Doctor' from doctors;
+
+
+Show all allergies ordered by popularity. Remove NULL values from query.
+
+	SELECT DISTINCT 
+	allergies,count(*) as total_diagonasis
+	from patients
+	where allergies NOT NULL 
+	group by allergies
+	order by total_diagonasis DESC
+	
+
+Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+
+	select province_id ,SUM(height) as sum_of_height
+from patients 
+group by province_id
+having sum_of_height>7000
+
+Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
+
+SELECT
+  (MAX(weight) - MIN(weight)) AS weight_delta
+FROM patients
+WHERE last_name = 'Maroni';
+	
+	
+	
+SELECT City, COUNT(DISTINCT Name) Customers FROM customers GROUP BY City;.
+-HAVING acts exactly same as WHERE, except that it’s designed for aggregate functions
+-INNER JOIN allows us to select records that have matching values in 2 tables.
+- SELECT * FROM table1 INNER JOIN table2 ON table1.column1 = table2.column2.
+- whne join any column can be user but ID is appropriate because it can be used to uniquely identify each customer. 
+- if use other column say nname , we may have more rows m in join table
+- eg:we didn’t use primary key (ID) to merge tables. Hence, John in Chicago has to merge with himself and John in London. Same thing happens to another John. John in London has to merge with himself and John in Chicago.
+- when we join table ,resutl table will ahve sum of colm of 1+2 table, based on condition give on ON
+- use more colum on join :SELECT * FROM customers c1 INNER JOIN customers c2 ON c1.Name = c2.Name AND c1.City = c2.City;
+-void ambiguity by renaming tables and specifying table’s name
+-No matching value —Returns empty table
+-Check result on partition of tables:What I often do is partitioning the table first and validate the join result on small tables.
+-Select the columns we need:select either c1.Name, c1.City or c2.Name, c2.City
+-Join more than 2 tables:if we store all the data in a table, it cause redundancy and anomalies, so we need to normalize table
+-SELECT * FROM table1 INNER JOIN (table2 INNER JOIN table3 ON table2.column1 = table3.column2) ON table1.column1 = table2.column2;.
+
+-
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,168 @@
+How to upgrade from Java 8 to Java 17?
+	-Understand the Java 8 to Java 17 changes
+	- Assess compatibility
+		- Some libraries or APIs may have been deprecated or removed in newer versions, so ensure that all the external dependencies are compatible with Java 17
+	- Update dependencies
+		-Upgrade any third-party libraries, frameworks, or tools that your application relies on to versions compatible with Java 17
+	-	-Let's say in our application commonly used libraries are:
+		- Jackson, Guava, Apache Commons, Hibernate, Spring Framework, JUnit, Apache Kafka, SLF4J, Google Guice, Apache HttpClient.
+	- Update deprecated APIs
+		-review your code for any deprecated APIs that are no longer supported in Java 17.
+		- Eg: JDBC drivers till Java 8 which is now deprecated and replaced with the ServiceLoader mechanism
+	-Update language features
+		- may consider using the new switch expressions, pattern matching, or sealed classes where applicable.
+		=Instead of Stream API, Sealed classes are introduced,
+		- Optional classes are replaced with Record
+		- Lambda expressions with Pattern matching for switch statements.
+	- Test thoroughly
+		-Pay attention to any areas where changes were made or deprecated features 
+	- Performance optimization
+		-Performance-wise Java 17 is Enhanced with Garbage Collection Algorithms.
+	- Java SE, including bug fixes, security patches, and feature enhancements.
+- jstat command line tool to monitor the JVM memory and garbage collection activities
+-pankaj@Pankaj:~$ jstat -gc 9582 1000 ;//ime interval between each output, so it will print memory and garbage collection data every 1 second.
+-Java VisualVM with Visual GC
+
+--Hotspot JVM flow
+	java src file> java compiler >class file> class loader> runtime data area(Method area,heap,thread,pcr,native) > execution engine|JIT | GC
+	
+
+-------------------------------------------------------------------
+IoC:
+	-Spring Framework’s IoC container simplifies this process by taking over the responsibility of creating and managing objects
+DI: tell Spring what objects you need, and it will create them for you and provide them to your code.
+	- makes aoo more mdula and easier to mantian
+IoC is also known as dependency injection (DI).DI is a tool to achieve IoC,IoC is design principle and DI is implementation pattrn
+DI type:
+	-Constructor : useful for enforcing class invariants
+	-Setter injection:  :class to be reused in different contexts, as the dependencies can be changed at runtime
+	-Spring team generally advocates constructor injection, required dependencies are not null
+-pring Framework uses annotation-based configuration to identify Spring beans.
+	-@Component, @Service, @Repository, @Controller
+	-@Configuration: Marks this class as a source of bean definitions for Spring
+	- @ComponentScan: Specifies the base package for component scanning.
+- DEFAULT, SINGLETON SCOPE: GOO WHERE BEAN ARE staeless,do not maintain any internal state 
+- Lazy loading >> that a bean is not created until it is first requested by the application.eg:@Lazy
+-Eager loading  bean is created when the application starts up.
+-default behavior in Spring is to lazy load beans.
+-Eager loading can be useful for beans that are needed by the application as soon as it starts up. 
+
+@Autowired  >> using reflection to find the appropriate dependency to inject
+	type: bytpe,byName,byqualisfie,byConstructor
+	- to exclude any bean:autowire-candidate="false">
+	-@Autowired > used to inject dependencies into beans that are managed by the Spring container.
+	-@Inject: when developing a non-Spring application,JSR-330 annotation. 
+-Stateless beans are typically used for services that perform actions or calculations, but do not maintain any state between invocations. 
+-ervices that perform mathematical calculations, access external resources, or perform other tasks that do not require the bean to maintain state.
+- several ways to handle cyclic dependencies
+	-Lazy Initialization: By using the @Lazy annotation on one of the beans involved in the cycle, 
+	-user proxy:A proxy can be used to break the cycle by delaying the initialization of one of the beans until it is actually needed
+-Exceptiom: @ControllerAdvice, 
+	-@ExceptionHandler annotation on a method
+	-annotation on a class to define a global exception handler for multiple controllers in your application
+	-ErrorPage: 
+DispatcherServlet acts as the central “front controller” for Spring MVC
+@Controller:class serves as a web controller,handlers for specific HTTP requests
+
+-----------Java New Feature--------------------------------------------------
+
+-Prcoess API: for native call
+- akeWhile, dropWhile, and ofNullable,in stream ; eg: stream().takeWhile(n-> n<5).collect(Collector.toList())
+-HTTP client that supports HTTP/2 and WebSocket. 
+-  var keyword for local variable type inference. 
+-java.nio.file package, providing additional functionality for working with files and directories.
+- 
+“yield” statement was introduced in Java 14 to complement switch expressions.	
+		String dayType = switch (dayOfWeek) {
+    case 1, 2, 3, 4, 5 -> {
+        System.out.println("Working day");
+        yield "Weekday";
+    }
+-Java 16’s pattern matching for instanceof is a nifty feature that improves type checking and extraction.
+	-obj instanceof String s
+Record:
+	- Records in Java are a special type of class specifically designed for holding immutable data.
+	- give constructor, equal,hashcode,toString,
+	-imuutabliity and readability
+	-public record Product(String name, int price) {
+- Stream.toList , now collect(Collectors.toList()), is redundant
+- java 17 :Sealed classes(Subclassing):
+	-gives you more control over inheritance hierarchies
+	- restrict which classes can extend or implement your class or interface
+	- sealed class Shape {
+		permits Circle, Square, Triangle;
+				// ... implementation details
+			}
+- Java 18 makes UTF-8 the default character encoding for the platform,
+-Java 21Virtual Threads:ightweight threads that run on top of the operating system threads, 
+	- Lighter weight: ,Improved concurrency: ,Simpler concurrency programming: 
+Record Patterns (Project Amber):classes that act as data carriers only.
+- SequencedCollection jdk 21: ability to get the first and the last elements. 
+-Jva 21: String templates:	String name = "Ajay"
+					String greeting = "Hello \{name}";
+- --------------------------------------------------------------------------------------------------------------
+
+REST 
+	- PUT, POSt ,PAthc:-alrter only data that data,
+	- 5 httpd
+		-method(GEt,PUT,.), URI, HTT version, Request ehader(msg formate)  , Req budy
+	- 4 coponet:status code, http version respoonse meta , res body
+	- idemponent: same response reargless how many times 
+	- client, dnt depmnt on prev api, so statelesss
+	- safe http: doestnot change resouce ,eg GET
+	- header of chache control adn expirt
+	- josn, status code, uri herarchy, chaching, serutiy
+	- stateful: store date fom client on server ,eg server store client data 
+	- REST: cleint state nto store on server
+	- REST use http method for client msg
+	- URI: must be standarize, 
+		-URN : /{id}
+		-URL: /polciy/sin
+	-SOAP: stnad protocol for exchang emeg on web, strict, starfullness, client and server ,only XML, regulated and stateful
+	- REST :postman, express, 
+
+
+- USER QUERY PARAM WHEN WE NEED SORT/FILTER/PAGINATION: 
+EG: /CUSTOMERS/ORDER?SORT=PRCE &LIMIT=10
+
+-RETURN JSON/sml/yml DATA NOT PLAIN TEXT
+- dont change rest api after in PROD:, make api backward cmpatable
+- add optional, for new field
+- use versionion, adding haeder, query param,
+- uri and query param update is cahceh freidly
+-HATEOS:
+	- discoverable api, like Collection resone wil ahve prodcut details too with link
+-----------------------------------------------------------------------------
+
+
+
+---------------------How to design Twitter API -----------------------------------
+API
+	- webserver, struc of api , common REST: eac api will ahve specific url
+	-REST,SOAP,GRAPQL(developer frendly)
+	-TWEET
+		GET :lsit of tweet
+		POST :create tweet
+	-Timeline
+		-GET: timilie of tweet
+	- USer
+		-GET
+		-POST :update user profile
+	-Follower
+		-GET: list of follower
+		-PSOT: update follower
+Auth about theses API
+	- secure, noone shud place tweet with soone acc.
+	-API token,send along with req
+	- sing on to acc, get cokkeis, and this will addd to subsequnet
+-RATE LIMIT
+	-Scalbale and prevention, RATE limit
+	-  return http status code, limit of usuage per user 
+	- add tag spike of api, temp ban user or ip address
+-- describe in strucure way
+
+
+
+
+
+

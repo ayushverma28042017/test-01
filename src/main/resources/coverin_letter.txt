@@ -1,0 +1,35 @@
+[Your Name]
+[Your Address]
+
+
+Dear Hiring Manager,
+
+I am writing to apply for the position of Core Java Developer at [Company Name], as advertised on LinkedIn. With a deep-rooted passion for Java development and a track record of delivering robust and efficient software solutions, I am excited about the prospect of joining your team and contributing to your mission.
+
+My experience in Java development spans 16+ years, during which I have had the privilege of working on diverse projects, allowing me to refine my skills and gain a comprehensive understanding of software development. My proficiency in Java, coupled with my knowledge of various technologies and tools, makes me a strong fit for this role.
+
+Here are some key aspects of my qualifications and achievements:
+
+Expertise in Java Development: I possess a strong foundation in Java, with experience in Java SE and Java EE. I have developed, maintained, and optimized complex applications, demonstrating a solid grasp of object-oriented programming, design patterns, and best coding practices.
+
+Core Java Proficiency: My experience with Core Java includes a deep understanding of Java data structures, multithreading, and memory management. I am adept at writing efficient and reliable code for high-performance applications.
+
+Database Integration: I have a proven ability to integrate Java applications with databases using technologies like JDBC and Hibernate, ensuring data integrity and efficiency in data retrieval and storage.
+
+Problem Solving: I excel at identifying and resolving intricate technical challenges. My analytical mindset and dedication to creating maintainable and scalable software solutions have been a hallmark of my work.
+
+Agile Development: I am well-versed in Agile methodologies, having worked in environments that use Scrum and Kanban. My adaptability and commitment to delivering high-quality software on time align well with Agile principles.
+
+Continuous Learning: I am committed to keeping pace with the latest trends and technologies in the software development field, ensuring I can incorporate innovative solutions into my work.
+
+I am eager to contribute my skills and experience to the success of Pinnacles and its Java development team. The opportunity to collaborate on projects that challenge and inspire me is what excites me most about joining your organization.
+
+Thank you for considering my application. I look forward to the possibility of discussing how my background and skills can benefit [Company Name] further. Please find my resume attached, and feel free to contact me at ayushverma2@gmail.com to schedule an interview.
+
+Sincerely,
+
+Ayush 
+
+
+
+

@@ -1,0 +1,960 @@
+Microservice Architecture is an architectural development style which builds an application as a collection of small autonomous services developed for a business domain
+
+ WireMock, 2.) Docker and 3.) Hystrix are important Microservices tool.
+ 
+ eatures like Search, Review & Ratings, and Payments. 
+ 
+ Technology diversity, e., Microservices can mix easily with other frameworks, libraries,  and databases
+Fault isolation, e., a process failure should not bring the whole system down.
+Greater support for smaller and parallel team
+Independent deployment
+Deployment time reduce
+
+Microservices are loosely coupled architecture.
+Changes done in a single data model does not affect other Microservices.
+Microservices  focuses  on products, not projects
+
+
+three types of Tests for Microservices?
+ In Microservice architecture tests are divided into three broad categories:
+
+At the bottom level test, we can perform a general test like performance and unit tests. These kinds of tests are entirely automated.
+At the middle level, we can perform exploratory tests like the stress tests and usability tests.
+At the top level, we can conduct acceptance tests which are mostly fewer in numbers. It also helps stakeholders to know about different software features.
+
+Docker also allows you to encapsulate your microservice in a container image along with its dependencies. 
+
+Docker offers a container environment which can be used to host any application. This software application and the dependencies that support it which are tightly-packaged together.
+
+
+developers use HTTP/REST with JSON or Binary protocol. However, they can use any communication protocol.
+
+-----------------------------
+
+ScyllaDB is an open-source distributed NoSQL wide-column data store. It was designed to be compatible with Apache Cassandra while achieving significantly higher throughputs and lower latencies. It supports the same protocols as Cassandra (CQL and Thrift) and the same file formats (SSTable), but is a completely rewritten implementation, using the C++20 language replacing Cassandra's Java, and the Seastar[1] asynchronous programming library replacing classic Linux programming techniques such as threads, shared memory and mapped files. In addition to implementing Cassandra's protocols, ScyllaDB also implements the Amazon DynamoDB API.[2
+
+-----------------------------------------------------------------------------------
+
+ 
+DEVOPS HQANDS ON:
+ 
+Microservice :
+ 
+              - microservice: autonomous service 
+              - change/deploy without effecting other
+              - comm through API through network call
+              - heterogenous, diff PL
+              - Robustness: in once component fail, entire system will not get down
+              - Scalability: if user base grow, app will scale only those where load is more
+              - Easy to deploy deploy a service if bug
+              - Reusable and replicability: if better service, just replace without impact other
+              - 
+Cloud Computing
+              - Storage, network, DB, security, scaling, LB
+              - On demand, ubiquitous(can access from anywhere),Network, Shared
+              - e.g.: google drive, 15 gb free, else pay little for 100..On demand 
+              - AMI : Amazon machine image: i.e. VM
+              - just launch instance, little config.. we are done
+              - simply focus on development.
+              - Cloud provider: AWS, GCP, Oracle, IBM
+              - advantage: no capital, low latency
+Types of cloud provide:
+  - public ,-AWS,AZURE,GCP
+  -private : Dell,3M,Simenes
+  -, hybrid + public and  private :> Eg all data on hosted in our storage, but all app on AWS
+ 
+Service models:
+  -( Application ,Data(EDS),(Runtime,Middlware,(OS,Virtualization,Services,Storage,Networking)))
+  - IAAS : using cloud provide for netwrking, storage,service and virtualization,OS
+           eg: Ec2,VPC,Security grp, Cloud formation(u can carete 1000 vm using on lickc)
+  - PASS: EBS,SNS(mssaging ) : till runtime..
+  
+  - SAAS : All infra will be used from Cloud
+ 
+ This require for Microservice , under AWS ::
+ 
+- Env   : eg EBS > bring all service togetehr and intergrate with othert aws service
+- Security : Security grp and IAM
+- LB: ELB 
+ - Scaling: Auto scaling
+- Health check : cloud wathc
+ 
+CI/CD 
+ 
+  - CI , Cont. delivery and cont. deployment .. from commit to PROD
+  - commit>compile>code review>UT>
+  
+  DEVOPS:
+   - Tools for devops:
+   Source?: GIT
+   Build: Maven, war/jar
+   TEST: container:
+   Deploy : Container/Kubernetes or AWS or use eBS server
+   Monitoring: if AWS cloud watch, if Kubernetes Prometheus
+   -Jenkins build all above steps
+   
+   
+   AWS:
+     Region: Geographic location
+              Zone: for data center
+              reduce latency : use edge location, act as catch, no need to go region every time
+              local zone :for ultra-low latency
+ 
+              EC2 service:
+              
+                - Elastic cloud compute
+                - it is instance- AMI is used:  s/ws+ OS +docker + java+ mysql+
+                -connect: putty, ssh, mac terminal
+                - assign a public DNS, and public IP
+                - one u stop ec2 and start agian u will get new IP, so if u want a fix IP used Elastic IP service /static IP
+ 
+              Launch EC2:
+                - Linux: ,AMI ,CPU,RAM,HDD,
+                - AMI > Quick start>instance type t2 micro> number of instances >Add storage(8 GB)>add tag (name , machine name) >security grp(restrict access )only ssh, prot 22 . fi more add rule :my ip/anywhere ever> review and launch
+                
+                -create a new key private .. get the private key
+                - user public ip or dns .
+   EC2 UI :
+     - edit inbound port for tomcat, and other
+              - 
+               
+   SSH:
+     - use shh for communication
+              -port 22, use encryption and decrypt
+              - public and private ,shared by client
+              - all key gen process taken care by aws
+              - secure shell
+              - ssh-keygne -t rasa if u want your own
+              - ./ssh/id_rsa  to get keys ,,2048 
+               - 5000 key per region
+              FROM  MAC:
+               - monitoring is paid service
+                - change the mode to 400 for keys
+                - use console tog et the steps to connect
+                - sudo -i : make u super user
+              MOBAZTREM
+                - conttecgt using broser
+                - launch, shh tool, user private key.. that.. can have muliple teminal
+              puttygne:
+                - convert the priate key to ppk file then user putty to connect
+                load the private key.. save a ppk file and use putty to connect
+                
+              - top  : dont want connection to losse on ec2
+              - 30 gb free, 750 per mnth
+              - terminate the instance, if not using
+   LINUX directory:
+     / give u all dire 
+               command/ bin
+              - boot : kernel
+              /etc: conifg
+              /dev haerdwd s/ws
+              /lib: lib for java
+              /mnt : to mount
+              /opt : all app binaries
+              /proc: all kernel related process
+              /root: hom dir of root
+              / temp : remove periodically
+              / user
+              /log:
+              
+              command:
+                ls -a // hidden file
+                ls -l : details
+                ls - r: recursive: dir and file
+                 cp ,mv,
+                 - vi editoru , nano editor
+                 - yum pull the s/w from repo and install
+                 -yum list installed: give all s/w hat is installed
+              VCS
+              - version control system,
+              - developer can work parallel, with 
+               - every time u push new version will be created
+              -Centralize: ClearCase, CVS, VCS, cannot work offline. Single point failure
+              -Distributed: Remote repo , entire project come on local machine
+              - GIT: free open source, light weight, fast, use sha1, create merge, branch is wsy
+              - u need git client, clone the entire repo 
+               - work are>staging>commit> remote repo, head point to latest commit
+              - GIT configuration:
+                  - local, global, system
+                             -.GIT config store all these info
+                             -git config --global user.name "ayush"
+                             - u can color git editor
+              - GIT in Action
+                -git init : initialize git repo
+                - git rm - cached <file>  , // remove from staging
+                - add to staging , git add . 
+                - git commit :
+                - compare two commit: git diif coomin-id1  commitid-2
+                - git log or git log --oneline 
+              - undo changes:
+                 - if u modified the file and have not done the staging( i.e. git add) call git checkout filename will update the latest version
+                 - after git add is called: git reset HEAD filename than git checkout file
+              - create new branch:
+                 - git branch new branch then git checkout branchName
+                 - merge:
+                   - git merge dev master
+                             - git branch -d branch name
+                             - git remote repositor create from browser, then add origin and push
+              - remote merge conflict :
+                   - same branch: git pull than git push .
+                - Fetch and pull
+                    - to check change on remote, use git fetch . it will not fetch the changes
+                               - git pull to get the changes
+                               - fetch show only what are changes are not pull the changes
+                - git reset head --hard coomid-id (for older commit)
+                - git push -f , the laster commits will got.. so dangerous
+                - REVERT:
+                   - favour over reset:
+                             - we will not loos the older commint, it will create new commit form the commit we want
+                - git revert head  then git push, if need to go more back, again same process, 
+                -cherry pick:
+                   - so commit 1,2,3 and we want to remove commit 2 changes, we can reveet to i and then do cherry pick the cahnges of 3
+                             
+                - git stash,  save somehwere to local repo, then checkout other branch do stuff, and combakc to this branch and do git stash pop to get back the changes
+                - git stash pop , bring back ur changes
+                
+                - intall on linux /: yum install git
+              
+              MAVEN:
+              
+              - project management tool , run test, build jar, deploy to server.
+              - convention over configuration, i.e certain project struc
+              - Archetype is template, will create folder stuc : 
+                  - standalone, webap,ear 
+              - grab the project and do mvn clean install
+              - public repo manve download.
+              - pulugin modle: compiler, surefile(for test case) wsimport
+              - bin : all scripts, boot dir, setting .xm to customize maven bhebaviour
+              - mvn archetype:genrate -DgroupIcom.ayush -DArtifactID= heloo  -DinterfaceMode=flase
+              - plugins:one of more goals
+              - goal is taks, compile ,test ,package,:can have param,
+              -comiple, java ,war are plugin 
+              - process res, compile,test ,package,::>> install
+              - cordinates: grpid, artifaactid,version,packing..: decide the name of artifact
+              - 
+              - create project> model and repo > controller> config datasource.
+              - RestTemplate rt.getforObject("url,A.class) ,@transient for not saved in db for coupod code
+              - DTO m copupn class in prodcut service
+              - 
+              
+              S3  service:
+              -Object based storage , EC2 usees Elatic block storage or EFS
+              - create, buket, 100 default bucket, 2000 GET ,
+              - unique:across account, create folder, upload file afer bucket created
+              - set to public and make it public to access file outside
+              -Deploy service on Ec2:
+              
+              - Launch EC2 , maria-db(open soruce version of mysql)
+              - intall yum install amria-db on ec2  then start amria db server
+              - install yum java 1.8 
+              -alternatives -config java
+              - upload the service jar file, make it public
+              -java -jar serivs.jar , edit inboudn rule in sercuity 9091, and access ur server
+              
+              ------------------------------------------------
+              automate the springboot app, that will run autmatically
+              - copy jar to /home/ec2-user/
+              crate a script file under wiht:
+              vi etc/rc.local/ is update then no need to run jar coomand, 
+              
+              touch /var/local/subsys/local
+              java -jar home/ec2-user/coupnservice.jar
+              create AMI from existing instance and be sued to create lots of simlar instance
+              - all instance will ahve mariadb, SB,Java,..
+                             -you need stress command
+                             - broser , create img,it will capture ur current img ,  afte that launch, use same security grp for easy.
+                             - even rc.local is copied, it will start automaticall
+              ELB
+                - 3 ways a LB can be created ,
+                             APppliaciton LB:wrk under VPC, wrk at app layer so deal with http and https traffic
+                             - classic LB:(only with Ec2),deal with http and https
+                             - Netwrok LB: wrk on netwrk layes, so dont differtiate the content fo req., very fast. if TCP or UDP traffic
+                             - you need to configure LB listner config(which port it listen and which port it fwd), which port it will divert the traffic.
+                             - configure health check, provide a ping server, timout 5, sec tretry.
+                             - add the instance, use LB DNS to hit the traffic
+                             - RR fashioin by default
+                             - troubleshooting: got to Security gro, update inbound if not able to access
+                             -Auto Scaling:
+                               - scale up ro scal donw, auto scla grop
+                               - launch config and 
+                - cloud watch:
+                   use alarm for metrics
+                
+              ----------
+ 
+- no ordering and storing in traditianl Q
+- distirbuted, Que ssyste,
+- post msg in bulk 
+- can be single msg hosting or bulk msg
+-Topic: stream of msg
+- procuder: who create msg: take msg and put on topic
+- Topic can have multiple part: diveide: each part is partition
+-Consumer: read from topic i.each partition
+- each new msg addeda th at end of file.
+- there is no msg id: we have offfset number to each msg
+- offset: byte value form wehre the value start
+- prev msg id+ size of msg > give offset
+- if partion is more than 1 GB ,it brak it: and those file is sgment: 
+-  broket maintain segment file and ofsset info
+- Consumer: infinite iterators
+ 
+ 
+-------------------------------------------NETFLIX:
+Two cloud AWS and open connecT:
+ 
+Cleint: any device which play video
+- Open coneec:T netflixt owned CDN: sever palce in differ locaiton.. to server content faster
+- Original srveR: Edge server: vide will eb sever on nearest server
+- place lots of CDN in very country
+- Openconenct for streaming
+- plactform sepcifc code, web is reactJS
+- ELB: AWS ELB: load is balcne acroos zone , then AZ.. Rount robin LB
+- doest lots fo pre-procssing beofore showing video:
+- transcoding: differnt formate video conversion
+- oringnal movoe: 50GB> so transaction to convert:
+- File optimize for differ netwrk speeed: movie resolution changes as per bandwith
+- moltiple copy fo same movie to suppport differn bandwith- 
+- lots of parallel worker to conver in differnt formate fo same movie
+- All copies to put in open connect servers, all req are handled by AWS, and hit play button: applicaiton will find best open coneect sever: near to particulart applicaiton
+- ZUUL: dynamc routing montiotring and connection mngmt
+- NEtty proxy: > inbound filter(used for auth ,routing)> Endpoint filer(static respitn) > backend response > outboud filter> netty server
+- Advantage gatwewya:
+  - shred traffic
+  - load test
+  test new server
+  - Filter bad req
+  - Hystrix: 
+    - stop cascading faliure
+              - timeout call mRehect req if thread poll is full
+              -Disconnect server if error > 7
+              - falback to default response
+              - MEtrics ,if erro give default response for specific ms
+              - gather data for altency and all
+              - ms http call or RPC calls ebtwen them
+              - more relaibel: use hystrix, 
+              - critical ms, useer shdu be able to do basic.. so higly avalbible
+              - if any mc throw error it will move to another server.. so it shud be stateless
+              - data and response cache: 
+              - EV cahche: based on mem cache: if write write to all cluster. cahche is dtirubter
+              - read is near sever.. so faster
+              - Cache: throughput , latency(response time) , cost 
+              - SSD : between RAM adn CPU > faster
+              - DB::
+                 - billing ,transaciton and user info in MYSQL
+                 - user history adn other data in cassandra
+                 - Master to master ,thne ack to user , replica of node
+                 - Read replica locally
+                 -only write query to master all read to read replica
+                 - DNS config ,
+                 - cassandra : heavey write and heav write, open source, distributed, schemalless, nosql,
+                 - user history, earch ,intetrest .. redesing cassandra:
+                   - 9:1 Read: write
+                             - live view hisotry adn compressed view histo.. run a job
+                             - Kafka and paacha: 
+              ---------------------------
+Proposing and managing budgets for projects.
+Supervising the work of multiple teams.
+Planning and executing strategies for completing projects on time.
+Researching and developing designs and products.
+Determining the need for training and talent development.
+Hiring contractors and building teams.
+Ensuring products have the support of upper management.
+Providing clear and concise instructions to engineering teams.
+ 
+Prioritize:
+They should ask about business goals and about the level of urgency of the tasks. For instance, fixing a bug with concurrency in the server code could be very important as it blocks the sales team from demoing the product to a client, or it could be impacting thousands of customers.
+ 
+LEAD:
+based on skill level and domain knowledge. 
+ 
+ Upgraded the skills of your team
+  - should be making room for their team to grow and learn new skills or improve their knowledge of programming languages, libraries, and frameworks.
+  
+  DEADLIE:
+  communicate in a collaborative manner. Great engineering managers use collaboration as an opportunity to introduce post-mortems at the end of a sprint
+  
+   task prioritization and communication across the organization.
+leadership and management:
+management : outcome drive, if cleint happy
+Leadership: understand team,if they satisfied ,happy
+target no, extra mile
+ 
+---------------------------------------------
+- STAR techine : Situation,TASK ,ACTION,RESULT
+- 1: how u acheived ur goal:
+      : delibratly planned, use you initiative
+                 plan of action:serive we provide, adn wkr on that from customers
+   2: stresfull wkr situaiton":
+      - remain calm.
+                - i decied to eb vlunterr and wrk more hr, wrk till i mange to replicate the missing mem resposibility:
+                - 
+              3: customer care or service:
+                 - courer compnay,call custoemr we will pay extra money.. finalay delviered
+              4: Wrk with other to comple the taask:
+                 - internet went donw, s no customer  servie.. went out.. take print .. dn then call all 
+               
+              5: if disagree with mngr: 
+                 - conturtivlvey expaly y, never disrespectiful
+                 - org only befind with diverse option . so mngr was right
+                 
+              6: tight dealline:
+              
+              7: go beyond call of duty:
+                 - my desk was near to bathroom that really impacting my perf.. so i ask another 
+                 who desk is far and it was done
+                 
+ 
+    
+  
+              
+               
+               
+               
+               
+                -
+                
+                -
+              
+               
+  ---------------------------------------------------------------------
+  SPRING BOOT::
+  
+  Rapid Application Development) feature to Spring framework.
+  It provides opinionated 'starter' POMs to simplify your Maven configuration.
+  It automatically configure Spring whenever possible
+  create SB project:
+		Spring Maven Project
+		Spring Starter Project Wizard :
+		Spring Initializr :start.spring.io
+		Spring Boot CLI:tool ,dow
+		@RestController is a stereotype annotation. It adds @Controller and @ResponseBody
+		The @RequestMapping annotation is used to provide routing informatio
+		Transaction Control Language (TCL):COMMIT, ROLLBACK, SET TRANSACTION, SAVEPOINT,
+		Data control language (DCL)::GRANT and REVOKE.
+		Data manipulation language (DML):SELECT, UPDATE, INSERT, 
+		Data definition language (DDL):CREATE, ALTER, DROP,
+		A unique key is a single or combination of fields that ensure all values stores in the column will be unique
+		 primary key identifies each record in the table. In contrast, the unique key prevents duplicate entries in a column
+		 The primary use of a view is to implement the security mechanism
+		  associated with a table or view that speeds up row retrieval.
+		  SQL indexes are nothing more than a technique of minimizing the query's cost
+		     Unique Index,Clustered Index,Non-Clustered Index,Bit-Map Index,Normal Index,Composite Index
+		 Each table can have only one clustered index. It is the only index, which has been automatically created when the primary key is generated. 
+		 many data modifications needed to be done in the table, then clustered indexes are preferred.
+		 order of the table data based on the key values that can sort in only one direction
+		 non-clustered indexes are created when multiple joins conditions and various filters are used in the query. 
+		 non-clustered index and table data are both stored in different places
+		 
+		 The purpose of creating a non-clustered index is for searching the data. Its best example is a book where the content is written in one place, and the index is at a different place. We can create 0 to 249 non-clustered indexes in each table. The non-clustered indexing improves the performance of the queries which use keys without assigning the primary key
+		 
+		 built-in function in SQL called GetDate(), w
+		 INNER J : it fetches rows when there is at least one match of rows between the tables is found. 
+		 SELECT column_lists  
+FROM table1    
+INNER JOIN table2 ON join_condition1    
+INNER JOIN table3 ON join_condition2    
+
+RIHGT J: interstion+right table
+Full J: both table : fetch recor dboth table and put nul if not there
+TRIGGER: stored procedure that is invoked automatically in response to an event
+CREATE TRIGGER trigger_name      
+    (AFTER | BEFORE) (INSERT | UPDATE | DELETE)    
+         ON table_name FOR EACH ROW      
+         BEGIN      
+        --variable declarations      
+        --trigger code      
+        END;  
+		
+	A SELF JOIN is required when we want to combine data with other data in the same table itself. 
+	SELECT column_lists    
+FROM table1 AS T1, table1 AS T2    
+WHERE join_conditions;  
+
+If we want to get retrieve the student_id and name from the table where student_id is equal, and course_id is not equal, it can be done by using the self-join:
+
+
+SELECT  s1.student_id, s1.name    
+FROM student AS s1, student s2    
+WHERE s1.student_id=s2.student_id    
+AND s1.course_id<>s2.course_id;
+
+
+
+UNION: It combines two or more results from multiple SELECT queries into a single result set:
+It has a default feature to remove the duplicate rows from the tables
+ 
+SELECT columns FROM table1    
+UNION    
+SELECT columns FROM table2;   
+
+
+UNION ALL: dont remove duplicate
+ INTERSECT: This operator returns the common records from two or more SELECT statements. It always retrieves unique records and arranges them in ascending order by default.
+ 
+ MINUS: This operator returns the records from the first query, which is not found in the second query. It does not return duplicate values
+ 
+ SELECT columns FROM table1    
+MINUS  
+SELECT columns FROM table2;  
+
+IN:: It is a logical operator to determine whether or not a specific value exists within a set of values.
+SELECT * FROM table_name
+WHERE column_name IN ('value1','value 2');
+
+BETWEEN :
+This operator is used to selects the range of data between two values. The values can be numbers, text, and dates as well.
+SELECT * FROM table_name
+WHERE column_name BETWEEN 'value1' AND 'value2';
+
+SQL query to get the third maximum salary of an employee from a table named employees.
+SELECT * FROM `employees` ORDER BY `salary` DESC LIMIT 1 OFFSET 2  
+
+DELETE: 	The delete statement removes single or multiple rows from an existing table depending on the specified condition.
+
+TRUNCATE: The truncate command deletes the whole contents of an existing table without the table itself. It preserves the table structure or schema.cannot use the WHERE ,to remove all the rows ,faster as no logs is maintained,not possible to roll back delete can, occupies less space.
+
+Atomicity: COMMIT, ROLLBACK, and AUTO-COMMIT.
+Consistency:database changes state only when a transaction will be committed successfully
+Isolation:execution in the transaction unit must be operated independently
+Durability:nce a transaction has been committed, it persists permanently even if the system crashes
+
+FUNCTION: QL functions are simple code snippets that are frequently used and re-used in database systems for data processing and manipulation::: user define fun, and system func
+
+CLOB  : char large obj
+BLOB: binary large obj
+
+A materialized view is a table stored on the disk containing the data from the result set of a query.
+
+A privilege allows users to perform a set of activities on a particular database object. Privileges are divided into two categories:
+
+System Privileges: This indicates that the user has the ability to CREATE, ALTER, or "DROP" database components.
+Object Privileges: This enables the user to EXECUTE, SELECT, INSERT, or DELETE data from database objects with privileges.
+
+he trigger is a set of SQL statements that resides in system memory with unique names and is executed automatically when a database server event occurs.
+
+
+ An equijoin is a join in which the equal comparison operator is used to match the keys of both tables. In contrast, outer join is a join where rows in one table that do not have a matching row in another table are selected with NULL values for the unknown columns.
+ 
+ --------------------------------------------------------------------------------------------------
+ 
+ MICROSERVICE::
+ Distributed and loosely coupled
+Highly maintainable and testable
+Independently deployable
+Organized around business capabilities
+Owned by a small team
+
+Following are the three commonly used tools for Microservices:
+
+Wiremock
+Docker
+Hysrix
+
+
+Advantages of Microservices
+
+Provide improved scalability
+Increased Agility
+Localized Complexity
+Provide fault isolation
+Debugging & Maintenance are easy and simplified.
+Communication between developers with business users is accessible and better.
+Smaller development teams
+You can easily upgrade the technology.
+Disadvantages of Microservices
+
+As a whole project, it isn't easy because it uses multiple components in the application.
+It requires accurate pre-planning before use.
+It uses modular dependencies that are hard to calculate.
+The third-party applications are hard to control.
+Modular interdependencies are challenging to track.
+More opportunities for malicious intrusions.
+Complete end-to-end testing is complex.
+Deployment Challenges.
+ 
+ 
+
+Bottom Level Test: -  performance tests and unit tests.
+Middle-Level Tests: - perform exploratory tests such as the stress test and usability test
+Top Level Tests:: o conduct acceptance tests, mostly fewer in numbers.
+
+SOA:each other through simple data passing or activity coordination.
+MS: small functional modules that are independently deployable, scalable, target specific business goals, and communicate over standard protocols.
+
+client certificate is a digital certificate used to make authenticated requests to a remote server.
+
+Spring Cloud:
+	use to build:such as configuration management, circuit breakers, service discovery, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state
+	A distribution transaction is a type of transaction that has two or more engaged network hosts.
+	
+	2FA: username/pswd +OTP
+	
+Cross-functional testing is the verification of non-functional requirements, i.e., the requirements that we cannot implement like a standard feature.
+
+ Stop cascading of failures resulting from some of the services being down
+Akka, Envoy, Istio, Zuul, and Polly are the most popular alternatives and competitors to Hystrix.
+
+Circuit breakers are a design pattern to cREATE RESILIENT MICROSERVICES BY LIMITING THE IMPACT OF SERVICE FAILURES AND LATENCIES
+
+he major aim of the Circuit Breaker pattern is to prevent any cascading failure in the system. In a microservice system, failing fast is critical.
+
+------------------------------------------------------------------
+MICROSERVICE  ::
+
+it's a collection of small autonomous services.
+self-contained and wrap up around a single business capability.
+
+PRINCIPLE:
+ 1. Scalability
+ 2. Flexibility
+3. Independent and autonomous
+4. Decentralized governance
+5. Resiliency
+6. Failure isolation.
+7. Continuous delivery through the DevOps
+
+
+DESING PATTERN
+Database per service.
+Event Sourcing Pattern		 
+	responsible for giving a new ordered sequence of events.
+	Event Sourcing is based on the idea that any change in an entity's state should be captured by the system
+
+Command Query Segmentation (CQRS)  Pattern
+   Commands - Change the state of the object or entity.::WRITE
+   Query : Return state of entity, not chang ein state :: READ
+
+
+
+SAGA	 
+	- committing multiple commentary transactions by giving rollback opportunities.
+	2 ways:
+	  Choregraphy
+		- all ms comuu though evene.. a
+	    - all ms register to ! and ms will create eveets.
+		- eg: order ser   payment ser  resutnat ser  delviery : all will reg to Q
+		- and ms will rester to event based on type of action defined for even ms will wrk
+	  Orchestator:
+		- new Ms Orch will be act as centralize , and will communicion to all
+		- draback  as anti parr to ms, 
+		- if less ms and less event , use chreography else orch
+		
+API GATEWAY
+STRANGLER:
+	- tnsform your monolithic application to microservices by replacing old functionality with a new service
+CIRCUITE BREAKER PATTERN
+	- failure of remote call or hang without response until timout
+	- 3 state
+		-Open: if all service working
+		-close: if all serive fail. so fail res sent without exeuting servie call
+		-half-open: in order to check underlying prob still exist ,
+		
+		Eureka  :Service discovery
+
+DATA processing using step function
+	- working with large wrkflow, use distribute option
+	- item soruce: s3 , choose option cvs 
+	- enter s3: detial bucker and key
+	- 
+	-
+
+------------------------------------------------------BARD -----------------------------------------------------------
+obserbility tool used in cloud
+	Grafana
+		pen-source visualization tool that can be used to visualize data from a variety of sources. It is often used in conjunction with other observability tools to provide a more comprehensive view of cloud environments
+	Datadog
+		offers monitoring for infrastructure, applications, and services. It supports a wide range of integrations and provides a variety of visualization and alerting options.
+	New relic
+		including application performance monitoring, infrastructure monitoring, and synthetic monitoring. It is known for its easy-to-use interface and its ability to provide detailed insights into application performance.
+	dynatrace
+		including distributed tracing, performance monitoring, and log management. It is known for its AI-powered capabilities and its ability to provide deep insights into complex cloud environments.
+	splunk
+		 including log management, event correlation, and machine learning. It is known for its scalability and its ability to handle large amounts of data
+		
+		
+ factors to consider when choosing an observability tool:
+
+	Features: The tool should offer the features that you need, such as monitoring for infrastructure, applications, and services.
+	Integrations: The tool should integrate with the other tools that you use, such as your cloud provider's monitoring tools.
+	Scalability: The tool should be able to scale to meet the needs of your cloud environment.
+	Pricing: The tool should be priced within your budget.
+
+
+
+Here are some best practices for securing HTTP endpoints:
+
+	- Use HTTPS. HTTPS encrypts all traffic between the client and the server, making it more difficult for attackers to intercept and read sensitive data.
+	- Use strong passwords and authentication mechanisms. Passwords should be at least 12 characters long and should include a mix of upper and lowercase letters, numbers, and symbols. Authentication mechanisms should be robust and should include two-factor authentication if possible.
+	- Validate input. All input from the client should be validated before it is processed by the server. This helps to prevent attackers from injecting malicious code into the system.
+	- Use rate limiting. Rate limiting can help to protect against denial-of-service attacks. This involves limiting the number of requests that a client can make to the server in a given period of time.
+	- Use a web application firewall (WAF). A WAF is a software application that can help to protect against a wide range of attacks, including cross-site scripting (XSS), SQL injection, and denial-of-service attacks.
+	- Keep your software up to date. Software updates often include security patches that can help to protect your system from known vulnerabilities.
+ 
+ ADDITIONAL:
+ 
+ 
+ Use a secure coding methodology. This involves following a set of best practices to help ensure that your code is secure.
+Use a secure development environment. This involves using a development environment that is configured to be secure.
+Encrypt sensitive data. Sensitive data, such as passwords and credit card numbers, should be encrypted before it is stored or transmitted.
+Monitor your system for attacks. It is important to monitor your system for attacks so that you can take action to mitigate them.
+
+
+
+WAF::
+A web application firewall (WAF) is a security appliance or cloud-based service that typically sits between a web application and the internet. It monitors HTTP traffic and blocks requests that are likely to be malicious.
+
+WAFs can protect against a wide range of attacks, including:
+
+	- Cross-site scripting (XSS): XSS is a type of attack that injects malicious code into a web page. This code can then be executed by the victim's browser, which can lead to the theft of cookies, session tokens, or other sensitive data.
+	- SQL injection: SQL injection is a type of attack that injects malicious code into a SQL query. This code can then be executed by the database server, which can lead to the disclosure of sensitive data or the unauthorized modification of data.
+	- Denial-of-service (DoS) attacks: DoS attacks flood a web server with requests, making it unavailable to legitimate users.
+	- Botnet attacks: Botnet attacks involve using a network of infected computers to launch attacks against a web server.
+	
+	WAFs can be deployed in a variety of ways, including:
+
+		-Network-based WAFs: Network-based WAFs are deployed between a web application and the internet. They typically inspect all HTTP traffic, both inbound and outbound.
+		- Host-based WAFs: Host-based WAFs are deployed on the same server as the web application. They typically inspect only inbound HTTP traffic.
+		- Cloud-based WAFs: Cloud-based WAFs are deployed in the cloud. They typically inspect all HTTP traffic, both inbound and outbound.
+		- WAFs are an important part of a layered security approach. They can help to protect web applications from a wide range of attacks, but they are not a silver bullet. It is important to use other security measures, such as strong passwords, input validation, and security awareness training, to help protect web applications from attack.
+
+Here are some additional benefits of using a WAF:
+
+	- Reduced risk of data breaches: WAFs can help to protect sensitive data from being stolen by attackers.
+	- Increased website availability: WAFs can help to protect websites from DoS attacks, which can make them unavailable to legitimate users.
+	- Improved performance: WAFs can help to improve the performance of websites by filtering out malicious traffic.
+	- Reduced costs: WAFs can help to reduce the costs of security breaches by preventing them from happening in the first place.
+If you are responsible for the security of a web application, I recommend that you consider using a WAF. It is an important part of a layered security approach and can help to protect your application from a wide range of attacks
+
+
+---------
+SSL certificates work by using a combination of asymmetric cryptography and symmetric cryptography to encrypt data sent between a client and a server.
+
+Asymmetric cryptography uses two keys: a public key and a private key. The public key is used to encrypt data, and the private key is used to decrypt data. The public key is made available to everyone, while the private key is kept secret.
+
+Symmetric cryptography uses a single key to encrypt and decrypt data. This key is shared between the client and the server.
+
+The SSL handshake is the process that takes place when a client and a server first connect to each other. During the handshake, the client and the server exchange their public keys. The client then uses the server's public key to encrypt a message, and the server uses its private key to decrypt the message. This process ensures that the client and the server are who they say they are.
+
+Once the handshake is complete, the client and the server can start exchanging encrypted data. The data is encrypted using the symmetric key, which is shared between the client and the server.
+
+SSL certificates are an important part of website security. They help to protect sensitive data, such as credit card numbers and passwords, from being intercepted by attackers.
+
+Here are some of the benefits of using SSL certificates:
+
+Data security: SSL certificates encrypt data sent between a client and a server, making it more difficult for attackers to intercept and read sensitive data.
+Increased trust: SSL certificates can help to increase trust between a website and its visitors. Visitors are more likely to trust a website that has an SSL certificate, as it indicates that the website is secure.
+Improved search engine ranking: Google and other search engines give websites with SSL certificates a slight ranking boost. This means that websites with SSL certificates are more likely to appear higher in search results.
+
+-----------------------------------------------
+
+Reliability refers to the ability of a software product to perform its intended functions under stated conditions for a specified period of time. In other words, a reliable software product will not crash or malfunction unexpectedly.
+Robustness refers to the ability of a software product to withstand unexpected inputs or environmental conditions. In other words, a robust software product will not crash or malfunction if it is given invalid input or is exposed to harsh conditions.
+Durability refers to the ability of a software product to withstand wear and tear over time. In other words, a durable software product will not become obsolete or unusable as it ages.
+
+*****************************
+Apache NiFi and AWS Glue are both popular tools for data integration. They have different strengths and weaknesses, so the best tool for you will depend on your specific needs.
+
+Apache NiFi is an open-source, scalable, and flexible data integration platform. It is designed to be easy to use and to scale to meet the needs of large data pipelines. NiFi can be used to extract, transform, and load data from a variety of sources, including files, databases, and streaming data sources.
+
+AWS Glue is a fully-managed, serverless data integration service that makes it easy to extract, transform, and load data. Glue uses Apache Spark to process data, and it can be used to connect to a variety of data sources, including Amazon S3, Amazon Redshift, and Amazon RDS.
+
+
+Your budget: Apache NiFi is free to use, while AWS Glue is a pay-as-you-go service.
+Your technical expertise: Apache NiFi is a more complex tool than AWS Glue, so you will need to have more technical expertise to use it.
+Your specific needs: If you need a highly scalable and flexible data integration platform, then Apache NiFi is a good choice. If you need a more user-friendly tool that is easier to get started with, then AWS Glue is a good choice.
+
+
+
+
+----------------------------------------------------------
+
+public void preOrder(TreeNode root) {
+  if (root == null) {
+    return;
+  }
+
+  System.out.println(root.data);
+  preOrder(root.left);
+  preOrder(root.right);
+}
+
+-----------------
+Dynamic programming is an algorithmic paradigm that breaks down a problem into smaller subproblems and stores the results of those subproblems so that they can be reused. 
+
+to solve problems that involve overlapping subproblems. An overlapping subproblem is a subproblem that is used in more than one solution to the problem
+
+
+
+There are many different ways that microservices can communicate with each other. Some of the most common methods include:
+
+	 - HTTP/REST: HTTP/REST is a simple and lightweight protocol that is well-suited for microservices communication. It is also very well-supported by most programming languages and frameworks.
+	- gRPC: gRPC is a high-performance RPC framework that is based on HTTP/2. It is designed to be efficient and reliable, and it can be used to communicate between microservices that are running on different platforms.
+	- AMQP: AMQP is a messaging protocol that is designed for asynchronous communication. It is often used to decouple microservices and to improve scalability.
+	- WebSockets: WebSockets is a technology that allows for two-way communication between a client and a server. It is often used for real-time applications, such as chat applications or multiplayer games.
+	- Event-driven communication: Event-driven communication is a pattern where microservices communicate by emitting and listening to events. This pattern can be used to decouple microservices and to improve scalability.
+
+
+
+----------------------------
+
+Service discovery is a process of finding the location of a service. This is necessary in microservices architecture because microservices are typically deployed independently and may not have a fixed location. Service discovery typically uses a service registry to store the location of services. When a microservice needs to communicate with another microservice, it queries the service registry to find the location of the other microservice.
+
+Service mesh is a more comprehensive solution for managing microservices communication. It provides a number of features beyond service discovery, such as:
+
+Load balancing: Service mesh can distribute traffic across multiple instances of a microservice. This can improve the performance and availability of the microservice.
+Circuit breaker: Service mesh can detect when a microservice is unhealthy and stop sending traffic to it. This can prevent cascading failures.
+Metrics: Service mesh can collect metrics about microservices communication. This can be used to monitor the health of the system and to identify performance bottlenecks.
+
+
+service mesh tools that are available:
+	- NGINX: NGINX can also be used as a service mesh. It is a popular web server that is known for its performance and scalability
+	- Envoy: Envoy is a proxy server that can be used as a service mesh. It is designed to be highly performant and efficient.
+	- Consul: Consul is a service mesh that is part of the HashiCorp stack. It is designed to be highly scalable and reliable
+	- Linkerd: Linkerd is another popular open-source service mesh. It is designed to be lightweight and easy to use.
+	- Istio: Istio is an open-source service mesh that is widely used in the industry. It provides a comprehensive set of features, including load balancing, circuit breaker, metrics, and observability.
+
+
+
+MySQL HeatWave is a fully managed, cloud-native service that delivers MySQL performance at scale. It is built on top of the open-source MySQL database engine and uses the latest NVIDIA GPU technology to deliver up to 10x performance improvement over traditional MySQL.
+
+Sure, I can help you with that.
+
+MySQL HeatWave is a fully managed, cloud-native service that delivers MySQL performance at scale. It is built on top of the open-source MySQL database engine and uses the latest NVIDIA GPU technology to deliver up to 10x performance improvement over traditional MySQL.
+
+MySQL HeatWave is a good choice for applications that require high performance and scalability, such as online transaction processing (OLTP) applications, real-time analytics applications, and gaming applications.
+
+	Here are some of the benefits of using MySQL HeatWave:
+
+		High performance: MySQL HeatWave can deliver up to 10x performance improvement over traditional MySQL.
+		Scalability: MySQL HeatWave is highly scalable and can be easily scaled up or down to meet the needs of your application.
+		Reliability: MySQL HeatWave is a highly reliable service and is backed by Oracle's SLA.
+		Ease of use: MySQL HeatWave is easy to use and can be integrated with your existing MySQL applications.
+		-resilient : Basically, a system is resilient if it continues to carry out its mission in the face of adversity (i.e., if it provides required capabilities despite excessive stresses that can cause disruptions).
+		
+		
+SQL
+SELECT country, COUNT(*) AS total_customers
+FROM customers
+GROUP BY country
+HAVING COUNT(*) > 10;
+
+This query will first group the customers by country. Then, it will use the having clause to filter the results to only include countries that have more than 10 customers. Finally, it will return the country and the number of customers for each country.
+
+
+SELECT orders.order_id, customers.name, customers.email
+FROM orders
+INNER JOIN customers
+ON orders.customer_id = customers.id;
+
+This query will join the orders and customers tables on the customer_id column. The INNER JOIN keyword ensures that only rows that exist in both tables are returned. The SELECT statement specifies that the following columns should be returned:
+
+
+A subquery is a query that is nested inside of another query. A correlated subquery is a subquery that depends on the outer query. For example, a subquery could be used to retrieve the name of the customer who has placed the most orders, while a correlated subquery could be used to retrieve the name of the customer who has placed the most orders for a particular product.
+
+
+JWT is a good choice for applications that need to securely transmit authorization information. JWTs are small and lightweight, making them ideal for use in RESTful APIs.
+
+OAuth 2.0 is a good choice for applications that need to implement SSO or other authorization scenarios. OAuth 2.0 is a flexible framework that can be used to implement a variety of authorization scenarios.
+
+
+
+ circuit breaker pattern is a design pattern that helps to protect systems from cascading failures
+ prevent this by isolating the unhealthy service and preventing it from bringing down the entire system.
+ 
+ 
+ JAVA TOOLS:
+	- IDE
+	- BUILD TOOL : maven gradle
+	- TESTING TOOL :Mokito/Junit/Selenium/TestNG
+	- DEPLOY TOOL : Jenkin/teamcity/bamboo/aws build tool/travis/githu action/gitlab
+	- Verion control : GIT SVN
+	- Logging tol: log4j / logback
+	
+	
+Git merge and git rebase are both commands used to integrate changes from one branch into another
+	Git merge takes the changes from the second branch and merges them into the first branch, creating a new commit that represents the merged history. This means that the commit history of the first branch will be preserved.
+
+	Git rebase takes the changes from the second branch and applies them to the first branch, overwriting the commit history of the first branch. This means that the commit history of the first branch will be rewritten to look like it was developed in a linear fashion.
+	
+GIT:A distributed version control system
+GITHUB:A web-based hosting service for Git repositories
+GITLAB:A self-hosted Git service
+
+	git init: This command initializes a new Git repository.
+	git add: This command adds files to the staging area.
+	git commit: This command commits the changes in the staging area to the repository.
+	git checkout: This command checks out a specific version of the repository.
+	git branch: This command creates a new branch in the repository.
+	git merge: This command merges changes from one branch into another.
+	git rebase: This command applies the changes from one branch to another, overwriting the commit history.
+	git push: This command pushes the changes from the local repository to the remote repository.
+	git pull: This command pulls the changes from the remote repository to the local repository.
+
+:::
+rapid production-ready environment which enables the developers to directly focus on the logic instead of struggling with the configuration and setup.
+
+@SpringBootConfiguration, @EnableAutoConfiguration, and @ComponentScan annotations with their default attributes.
+
+LeaderShip :
+	Vision: Effective leaders have a clear vision for the future. 
+	Decision-making: Effective leaders are able to make sound decisions quickly.
+	Integrity: Effective leaders are honest and trustworthy.
+	Communication: Effective leaders are clear and concise communicators
+	Delegation: Effective leaders are able to delegate tasks effectively
+	Motivation: Effective leaders are able to motivate their team members to achieve their goals. 
+	Problem-solving: Effective leaders are able to solve problems effectively
+
+
+--------------------------------------------------------------------------------
+
+-------------------------------------21 JULY-------------------------------------------------------------------
+ Containerization 
+	- software development and deployment
+	-encapsulates applications in a container with their entire runtime environment - all the files necessary for them to run
+	-encapsulates applications in a container with their entire runtime environment - all the files necessary for them to run
+	-containers are lightweight and can be created, started, and replicated quickly
+	-	-Consistency Across Environments: 
+		- Efficient Resource Utilization:
+		- Greater Density: 
+		- Isolation: 
+		- Portability: 
+	- managing containers in the cloud,
+		- Amazon Elastic Container Service (ECS):
+			- high-performance, highly scalable service for running Docker containers.
+			-  supports Docker and allows you to run and manage Docker containers across a cluster of EC2 instances.
+		- Amazon Elastic Kubernetes Service (EKS)
+			- managed service for running Kubernetes on AWS. 
+			- EKS also manages the Kubernetes control plane for you, providing high availability, automatic updates, and security.
+		- AWS Fargate
+			-  serverless compute engine for containers that removes the need to manage the underlying infrastructure.
+			- works with both ECS and EKS and lets you focus on building and running applications
+		AWS App2Container: 
+			-AWS App2Container (A2C) is a CLI tool to transform .NET and Java applications into containerized applications.
+	- Amazon Elastic Container Registry (ECR)
+		- fully-managed Docker container registry provided by AWS. 
+		- store, manage, and deploy Docker container images.
+		- ECR is integrated with Amazon ECS and Amazon EKS,
+		- ECR is reliable and highly scalable. It uses the power of AWS to automatically scale to meet your needs. 
+		- it integrates with AWS Identity and Access Management (IAM)
+		- Use Cases
+			- Distributed application development: Amazon ECR enables you to version your application's code and dependencies, making it easier to collaborate across development teams
+			- Microservices architecture: Amazon ECR is a great tool for implementing microservices architecture, a design approach where a single application is composed of many loosely coupled and independently deployable
+			- Continuous integration and continuous delivery (CI/CD): ECR can be integrated with AWS CodeBuild and AWS CodePipeline, enabling you to streamline your CI/CD workflow.
+		-How to Use ECR
+			- Create img, push img, pull img, delete img
+	-Advantages of ECS 
+		- Deep Integration with AWS: ECS is natively integrated with many AWS services such as Elastic Load Balancer (ELB) for load distribution, ECR for Docker images, CloudWatch for logs, and IAM for role management. 
+		- Scalability: ECS allows you to easily scale your applications up or down with simple service calls, and you can ensure high availability by running applications across multiple availability zones.
+		- Security: With ECS, you can take advantage of IAM roles and policies for your applications.
+		- No Additional Cost: ECS comes at no extra cost. You only pay for the AWS resources (e.g., EC2 instances or EBS volumes) you create to store
+		- Simplicity: ECS is simpler to use than other container orchestration services such as Kubernetes
+	Disadvantages of ECS
+		- Limited Features:  Kubernetes offers a more mature and flexible platform with advanced networking, scaling, and load balancing features.
+		- AWS Specific: ECS is an AWS-specific service
+		- Service Discovery: ECS has limited service discovery capabilities
+	How to Use ECS
+		- create docker img > store img(in ECR) > 
+			task definition(json file):Docker images to use, how much CPU and memory to allocate, what ports to open, and much more.
+			-Create a Service:  maintains a specified number of instances of your task definition simultaneousl
+			-Create a Cluster: ogical grouping of tasks or services. When you first use Amazon ECS, a default cluster is created for you,
+			- Run Your Application:  the run state of your application through the Amazon ECS console, the AWS CLI, or the Amazon ECS API.

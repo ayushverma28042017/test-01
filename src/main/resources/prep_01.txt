@@ -1,0 +1,558 @@
+Microservice Architecture is an architectural development style which builds an application as a collection of small autonomous services developed for a business domain
+
+ WireMock, 2.) Docker and 3.) Hystrix are important Microservices tool.
+ 
+ eatures like Search, Review & Ratings, and Payments. 
+ 
+ Technology diversity, e., Microservices can mix easily with other frameworks, libraries,  and databases
+Fault isolation, e., a process failure should not bring the whole system down.
+Greater support for smaller and parallel team
+Independent deployment
+Deployment time reduce
+
+Microservices are loosely coupled architecture.
+Changes done in a single data model does not affect other Microservices.
+Microservices  focuses  on products, not projects
+
+
+three types of Tests for Microservices?
+ In Microservice architecture tests are divided into three broad categories:
+
+At the bottom level test, we can perform a general test like performance and unit tests. These kinds of tests are entirely automated.
+At the middle level, we can perform exploratory tests like the stress tests and usability tests.
+At the top level, we can conduct acceptance tests which are mostly fewer in numbers. It also helps stakeholders to know about different software features.
+
+Docker also allows you to encapsulate your microservice in a container image along with its dependencies. 
+
+Docker offers a container environment which can be used to host any application. This software application and the dependencies that support it which are tightly-packaged together.
+
+
+developers use HTTP/REST with JSON or Binary protocol. However, they can use any communication protocol.
+
+-----------------------------
+
+ScyllaDB is an open-source distributed NoSQL wide-column data store. It was designed to be compatible with Apache Cassandra while achieving significantly higher throughputs and lower latencies. It supports the same protocols as Cassandra (CQL and Thrift) and the same file formats (SSTable), but is a completely rewritten implementation, using the C++20 language replacing Cassandra's Java, and the Seastar[1] asynchronous programming library replacing classic Linux programming techniques such as threads, shared memory and mapped files. In addition to implementing Cassandra's protocols, ScyllaDB also implements the Amazon DynamoDB API.[2
+
+-----------------------------------------------------------------------------------
+
+ 
+DEVOPS HQANDS ON:
+ 
+Microservice :
+ 
+              - microservice: autonomous service 
+              - change/deploy without effecting other
+              - comm through API through network call
+              - heterogenous, diff PL
+              - Robustness: in once component fail, entire system will not get down
+              - Scalability: if user base grow, app will scale only those where load is more
+              - Easy to deploy deploy a service if bug
+              - Reusable and replicability: if better service, just replace without impact other
+              - 
+Cloud Computing
+              - Storage, network, DB, security, scaling, LB
+              - On demand, ubiquitous(can access from anywhere),Network, Shared
+              - e.g.: google drive, 15 gb free, else pay little for 100..On demand 
+              - AMI : Amazon machine image: i.e. VM
+              - just launch instance, little config.. we are done
+              - simply focus on development.
+              - Cloud provider: AWS, GCP, Oracle, IBM
+              - advantage: no capital, low latency
+Types of cloud provide:
+  - public ,-AWS,AZURE,GCP
+  -private : Dell,3M,Simenes
+  -, hybrid + public and  private :> Eg all data on hosted in our storage, but all app on AWS
+ 
+Service models:
+  -( Application ,Data(EDS),(Runtime,Middlware,(OS,Virtualization,Services,Storage,Networking)))
+  - IAAS : using cloud provide for netwrking, storage,service and virtualization,OS
+           eg: Ec2,VPC,Security grp, Cloud formation(u can carete 1000 vm using on lickc)
+  - PASS: EBS,SNS(mssaging ) : till runtime..
+  
+  - SAAS : All infra will be used from Cloud
+ 
+ This require for Microservice , under AWS ::
+ 
+- Env   : eg EBS > bring all service togetehr and intergrate with othert aws service
+- Security : Security grp and IAM
+- LB: ELB 
+ - Scaling: Auto scaling
+- Health check : cloud wathc
+ 
+CI/CD 
+ 
+  - CI , Cont. delivery and cont. deployment .. from commit to PROD
+  - commit>compile>code review>UT>
+  
+  DEVOPS:
+   - Tools for devops:
+   Source?: GIT
+   Build: Maven, war/jar
+   TEST: container:
+   Deploy : Container/Kubernetes or AWS or use eBS server
+   Monitoring: if AWS cloud watch, if Kubernetes Prometheus
+   -Jenkins build all above steps
+   
+   
+   AWS:
+     Region: Geographic location
+              Zone: for data center
+              reduce latency : use edge location, act as catch, no need to go region every time
+              local zone :for ultra-low latency
+ 
+              EC2 service:
+              
+                - Elastic cloud compute
+                - it is instance- AMI is used:  s/ws+ OS +docker + java+ mysql+
+                -connect: putty, ssh, mac terminal
+                - assign a public DNS, and public IP
+                - one u stop ec2 and start agian u will get new IP, so if u want a fix IP used Elastic IP service /static IP
+ 
+              Launch EC2:
+                - Linux: ,AMI ,CPU,RAM,HDD,
+                - AMI > Quick start>instance type t2 micro> number of instances >Add storage(8 GB)>add tag (name , machine name) >security grp(restrict access )only ssh, prot 22 . fi more add rule :my ip/anywhere ever> review and launch
+                
+                -create a new key private .. get the private key
+                - user public ip or dns .
+   EC2 UI :
+     - edit inbound port for tomcat, and other
+              - 
+               
+   SSH:
+     - use shh for communication
+              -port 22, use encryption and decrypt
+              - public and private ,shared by client
+              - all key gen process taken care by aws
+              - secure shell
+              - ssh-keygne -t rasa if u want your own
+              - ./ssh/id_rsa  to get keys ,,2048 
+               - 5000 key per region
+              FROM  MAC:
+               - monitoring is paid service
+                - change the mode to 400 for keys
+                - use console tog et the steps to connect
+                - sudo -i : make u super user
+              MOBAZTREM
+                - conttecgt using broser
+                - launch, shh tool, user private key.. that.. can have muliple teminal
+              puttygne:
+                - convert the priate key to ppk file then user putty to connect
+                load the private key.. save a ppk file and use putty to connect
+                
+              - top  : dont want connection to losse on ec2
+              - 30 gb free, 750 per mnth
+              - terminate the instance, if not using
+   LINUX directory:
+     / give u all dire 
+               command/ bin
+              - boot : kernel
+              /etc: conifg
+              /dev haerdwd s/ws
+              /lib: lib for java
+              /mnt : to mount
+              /opt : all app binaries
+              /proc: all kernel related process
+              /root: hom dir of root
+              / temp : remove periodically
+              / user
+              /log:
+              
+              command:
+                ls -a // hidden file
+                ls -l : details
+                ls - r: recursive: dir and file
+                 cp ,mv,
+                 - vi editoru , nano editor
+                 - yum pull the s/w from repo and install
+                 -yum list installed: give all s/w hat is installed
+              VCS
+              - version control system,
+              - developer can work parallel, with 
+               - every time u push new version will be created
+              -Centralize: ClearCase, CVS, VCS, cannot work offline. Single point failure
+              -Distributed: Remote repo , entire project come on local machine
+              - GIT: free open source, light weight, fast, use sha1, create merge, branch is wsy
+              - u need git client, clone the entire repo 
+               - work are>staging>commit> remote repo, head point to latest commit
+              - GIT configuration:
+                  - local, global, system
+                             -.GIT config store all these info
+                             -git config --global user.name "ayush"
+                             - u can color git editor
+              - GIT in Action
+                -git init : initialize git repo
+                - git rm - cached <file>  , // remove from staging
+                - add to staging , git add . 
+                - git commit :
+                - compare two commit: git diif coomin-id1  commitid-2
+                - git log or git log --oneline 
+              - undo changes:
+                 - if u modified the file and have not done the staging( i.e. git add) call git checkout filename will update the latest version
+                 - after git add is called: git reset HEAD filename than git checkout file
+              - create new branch:
+                 - git branch new branch then git checkout branchName
+                 - merge:
+                   - git merge dev master
+                             - git branch -d branch name
+                             - git remote repositor create from browser, then add origin and push
+              - remote merge conflict :
+                   - same branch: git pull than git push .
+                - Fetch and pull
+                    - to check change on remote, use git fetch . it will not fetch the changes
+                               - git pull to get the changes
+                               - fetch show only what are changes are not pull the changes
+                - git reset head --hard coomid-id (for older commit)
+                - git push -f , the laster commits will got.. so dangerous
+                - REVERT:
+                   - favour over reset:
+                             - we will not loos the older commint, it will create new commit form the commit we want
+                - git revert head  then git push, if need to go more back, again same process, 
+                -cherry pick:
+                   - so commit 1,2,3 and we want to remove commit 2 changes, we can reveet to i and then do cherry pick the cahnges of 3
+                             
+                - git stash,  save somehwere to local repo, then checkout other branch do stuff, and combakc to this branch and do git stash pop to get back the changes
+                - git stash pop , bring back ur changes
+                
+                - intall on linux /: yum install git
+              
+              MAVEN:
+              
+              - project management tool , run test, build jar, deploy to server.
+              - convention over configuration, i.e certain project struc
+              - Archetype is template, will create folder stuc : 
+                  - standalone, webap,ear 
+              - grab the project and do mvn clean install
+              - public repo manve download.
+              - pulugin modle: compiler, surefile(for test case) wsimport
+              - bin : all scripts, boot dir, setting .xm to customize maven bhebaviour
+              - mvn archetype:genrate -DgroupIcom.ayush -DArtifactID= heloo  -DinterfaceMode=flase
+              - plugins:one of more goals
+              - goal is taks, compile ,test ,package,:can have param,
+              -comiple, java ,war are plugin 
+              - process res, compile,test ,package,::>> install
+              - cordinates: grpid, artifaactid,version,packing..: decide the name of artifact
+              - 
+              - create project> model and repo > controller> config datasource.
+              - RestTemplate rt.getforObject("url,A.class) ,@transient for not saved in db for coupod code
+              - DTO m copupn class in prodcut service
+              - 
+              
+              S3  service:
+              -Object based storage , EC2 usees Elatic block storage or EFS
+              - create, buket, 100 default bucket, 2000 GET ,
+              - unique:across account, create folder, upload file afer bucket created
+              - set to public and make it public to access file outside
+              -Deploy service on Ec2:
+              
+              - Launch EC2 , maria-db(open soruce version of mysql)
+              - intall yum install amria-db on ec2  then start amria db server
+              - install yum java 1.8 
+              -alternatives -config java
+              - upload the service jar file, make it public
+              -java -jar serivs.jar , edit inboudn rule in sercuity 9091, and access ur server
+              
+              ------------------------------------------------
+              automate the springboot app, that will run autmatically
+              - copy jar to /home/ec2-user/
+              crate a script file under wiht:
+              vi etc/rc.local/ is update then no need to run jar coomand, 
+              
+              touch /var/local/subsys/local
+              java -jar home/ec2-user/coupnservice.jar
+              create AMI from existing instance and be sued to create lots of simlar instance
+              - all instance will ahve mariadb, SB,Java,..
+                             -you need stress command
+                             - broser , create img,it will capture ur current img ,  afte that launch, use same security grp for easy.
+                             - even rc.local is copied, it will start automaticall
+              ELB
+                - 3 ways a LB can be created ,
+                             APppliaciton LB:wrk under VPC, wrk at app layer so deal with http and https traffic
+                             - classic LB:(only with Ec2),deal with http and https
+                             - Netwrok LB: wrk on netwrk layes, so dont differtiate the content fo req., very fast. if TCP or UDP traffic
+                             - you need to configure LB listner config(which port it listen and which port it fwd), which port it will divert the traffic.
+                             - configure health check, provide a ping server, timout 5, sec tretry.
+                             - add the instance, use LB DNS to hit the traffic
+                             - RR fashioin by default
+                             - troubleshooting: got to Security gro, update inbound if not able to access
+                             -Auto Scaling:
+                               - scale up ro scal donw, auto scla grop
+                               - launch config and 
+                - cloud watch:
+                   use alarm for metrics
+                
+              ----------
+ 
+- no ordering and storing in traditianl Q
+- distirbuted, Que ssyste,
+- post msg in bulk 
+- can be single msg hosting or bulk msg
+-Topic: stream of msg
+- procuder: who create msg: take msg and put on topic
+- Topic can have multiple part: diveide: each part is partition
+-Consumer: read from topic i.each partition
+- each new msg addeda th at end of file.
+- there is no msg id: we have offfset number to each msg
+- offset: byte value form wehre the value start
+- prev msg id+ size of msg > give offset
+- if partion is more than 1 GB ,it brak it: and those file is sgment: 
+-  broket maintain segment file and ofsset info
+- Consumer: infinite iterators
+ 
+ 
+-------------------------------------------NETFLIX:
+Two cloud AWS and open connecT:
+ 
+Cleint: any device which play video
+- Open coneec:T netflixt owned CDN: sever palce in differ locaiton.. to server content faster
+- Original srveR: Edge server: vide will eb sever on nearest server
+- place lots of CDN in very country
+- Openconenct for streaming
+- plactform sepcifc code, web is reactJS
+- ELB: AWS ELB: load is balcne acroos zone , then AZ.. Rount robin LB
+- doest lots fo pre-procssing beofore showing video:
+- transcoding: differnt formate video conversion
+- oringnal movoe: 50GB> so transaction to convert:
+- File optimize for differ netwrk speeed: movie resolution changes as per bandwith
+- moltiple copy fo same movie to suppport differn bandwith- 
+- lots of parallel worker to conver in differnt formate fo same movie
+- All copies to put in open connect servers, all req are handled by AWS, and hit play button: applicaiton will find best open coneect sever: near to particulart applicaiton
+- ZUUL: dynamc routing montiotring and connection mngmt
+- NEtty proxy: > inbound filter(used for auth ,routing)> Endpoint filer(static respitn) > backend response > outboud filter> netty server
+- Advantage gatwewya:
+  - shred traffic
+  - load test
+  test new server
+  - Filter bad req
+  - Hystrix: 
+    - stop cascading faliure
+              - timeout call mRehect req if thread poll is full
+              -Disconnect server if error > 7
+              - falback to default response
+              - MEtrics ,if erro give default response for specific ms
+              - gather data for altency and all
+              - ms http call or RPC calls ebtwen them
+              - more relaibel: use hystrix, 
+              - critical ms, useer shdu be able to do basic.. so higly avalbible
+              - if any mc throw error it will move to another server.. so it shud be stateless
+              - data and response cache: 
+              - EV cahche: based on mem cache: if write write to all cluster. cahche is dtirubter
+              - read is near sever.. so faster
+              - Cache: throughput , latency(response time) , cost 
+              - SSD : between RAM adn CPU > faster
+              - DB::
+                 - billing ,transaciton and user info in MYSQL
+                 - user history adn other data in cassandra
+                 - Master to master ,thne ack to user , replica of node
+                 - Read replica locally
+                 -only write query to master all read to read replica
+                 - DNS config ,
+                 - cassandra : heavey write and heav write, open source, distributed, schemalless, nosql,
+                 - user history, earch ,intetrest .. redesing cassandra:
+                   - 9:1 Read: write
+                             - live view hisotry adn compressed view histo.. run a job
+                             - Kafka and paacha: 
+              ---------------------------
+Proposing and managing budgets for projects.
+Supervising the work of multiple teams.
+Planning and executing strategies for completing projects on time.
+Researching and developing designs and products.
+Determining the need for training and talent development.
+Hiring contractors and building teams.
+Ensuring products have the support of upper management.
+Providing clear and concise instructions to engineering teams.
+ 
+Prioritize:
+They should ask about business goals and about the level of urgency of the tasks. For instance, fixing a bug with concurrency in the server code could be very important as it blocks the sales team from demoing the product to a client, or it could be impacting thousands of customers.
+ 
+LEAD:
+based on skill level and domain knowledge. 
+ 
+ Upgraded the skills of your team
+  - should be making room for their team to grow and learn new skills or improve their knowledge of programming languages, libraries, and frameworks.
+  
+  DEADLIE:
+  communicate in a collaborative manner. Great engineering managers use collaboration as an opportunity to introduce post-mortems at the end of a sprint
+  
+   task prioritization and communication across the organization.
+leadership and management:
+management : outcome drive, if cleint happy
+Leadership: understand team,if they satisfied ,happy
+target no, extra mile
+ 
+---------------------------------------------
+- STAR techine : Situation,TASK ,ACTION,RESULT
+- 1: how u acheived ur goal:
+      : delibratly planned, use you initiative
+                 plan of action:serive we provide, adn wkr on that from customers
+   2: stresfull wkr situaiton":
+      - remain calm.
+                - i decied to eb vlunterr and wrk more hr, wrk till i mange to replicate the missing mem resposibility:
+                - 
+              3: customer care or service:
+                 - courer compnay,call custoemr we will pay extra money.. finalay delviered
+              4: Wrk with other to comple the taask:
+                 - internet went donw, s no customer  servie.. went out.. take print .. dn then call all 
+               
+              5: if disagree with mngr: 
+                 - conturtivlvey expaly y, never disrespectiful
+                 - org only befind with diverse option . so mngr was right
+                 
+              6: tight dealline:
+              
+              7: go beyond call of duty:
+                 - my desk was near to bathroom that really impacting my perf.. so i ask another 
+                 who desk is far and it was done
+                 
+ 
+    
+  
+              
+               
+               
+               
+               
+                -
+                
+                -
+              
+               
+  ---------------------------------------------------------------------
+  SPRING BOOT::
+  
+  Rapid Application Development) feature to Spring framework.
+  It provides opinionated 'starter' POMs to simplify your Maven configuration.
+  It automatically configure Spring whenever possible
+  create SB project:
+		Spring Maven Project
+		Spring Starter Project Wizard :
+		Spring Initializr :start.spring.io
+		Spring Boot CLI:tool ,dow
+		@RestController is a stereotype annotation. It adds @Controller and @ResponseBody
+		The @RequestMapping annotation is used to provide routing informatio
+		Transaction Control Language (TCL):COMMIT, ROLLBACK, SET TRANSACTION, SAVEPOINT,
+		Data control language (DCL)::GRANT and REVOKE.
+		Data manipulation language (DML):SELECT, UPDATE, INSERT, 
+		Data definition language (DDL):CREATE, ALTER, DROP,
+		A unique key is a single or combination of fields that ensure all values stores in the column will be unique
+		 primary key identifies each record in the table. In contrast, the unique key prevents duplicate entries in a column
+		 The primary use of a view is to implement the security mechanism
+		  associated with a table or view that speeds up row retrieval.
+		  SQL indexes are nothing more than a technique of minimizing the query's cost
+		     Unique Index,Clustered Index,Non-Clustered Index,Bit-Map Index,Normal Index,Composite Index
+		 Each table can have only one clustered index. It is the only index, which has been automatically created when the primary key is generated. 
+		 many data modifications needed to be done in the table, then clustered indexes are preferred.
+		 order of the table data based on the key values that can sort in only one direction
+		 non-clustered indexes are created when multiple joins conditions and various filters are used in the query. 
+		 non-clustered index and table data are both stored in different places
+		 
+		 The purpose of creating a non-clustered index is for searching the data. Its best example is a book where the content is written in one place, and the index is at a different place. We can create 0 to 249 non-clustered indexes in each table. The non-clustered indexing improves the performance of the queries which use keys without assigning the primary key
+		 
+		 built-in function in SQL called GetDate(), w
+		 INNER J : it fetches rows when there is at least one match of rows between the tables is found. 
+		 SELECT column_lists  
+FROM table1    
+INNER JOIN table2 ON join_condition1    
+INNER JOIN table3 ON join_condition2    
+
+RIHGT J: interstion+right table
+Full J: both table : fetch recor dboth table and put nul if not there
+TRIGGER: stored procedure that is invoked automatically in response to an event
+CREATE TRIGGER trigger_name      
+    (AFTER | BEFORE) (INSERT | UPDATE | DELETE)    
+         ON table_name FOR EACH ROW      
+         BEGIN      
+        --variable declarations      
+        --trigger code      
+        END;  
+		
+	A SELF JOIN is required when we want to combine data with other data in the same table itself. 
+	SELECT column_lists    
+FROM table1 AS T1, table1 AS T2    
+WHERE join_conditions;  
+
+If we want to get retrieve the student_id and name from the table where student_id is equal, and course_id is not equal, it can be done by using the self-join:
+
+
+SELECT  s1.student_id, s1.name    
+FROM student AS s1, student s2    
+WHERE s1.student_id=s2.student_id    
+AND s1.course_id<>s2.course_id;
+
+
+
+UNION: It combines two or more results from multiple SELECT queries into a single result set:
+It has a default feature to remove the duplicate rows from the tables
+ 
+SELECT columns FROM table1    
+UNION    
+SELECT columns FROM table2;   
+
+
+UNION ALL: dont remove duplicate
+ INTERSECT: This operator returns the common records from two or more SELECT statements. It always retrieves unique records and arranges them in ascending order by default.
+ 
+ MINUS: This operator returns the records from the first query, which is not found in the second query. It does not return duplicate values
+ 
+ SELECT columns FROM table1    
+MINUS  
+SELECT columns FROM table2;  
+
+IN:: It is a logical operator to determine whether or not a specific value exists within a set of values.
+SELECT * FROM table_name
+WHERE column_name IN ('value1','value 2');
+
+BETWEEN :
+This operator is used to selects the range of data between two values. The values can be numbers, text, and dates as well.
+SELECT * FROM table_name
+WHERE column_name BETWEEN 'value1' AND 'value2';
+
+SQL query to get the third maximum salary of an employee from a table named employees.
+SELECT * FROM `employees` ORDER BY `salary` DESC LIMIT 1 OFFSET 2  
+
+DELETE: 	The delete statement removes single or multiple rows from an existing table depending on the specified condition.
+
+TRUNCATE: The truncate command deletes the whole contents of an existing table without the table itself. It preserves the table structure or schema.cannot use the WHERE ,to remove all the rows ,faster as no logs is maintained,not possible to roll back delete can, occupies less space.
+
+Atomicity: COMMIT, ROLLBACK, and AUTO-COMMIT.
+Consistency:database changes state only when a transaction will be committed successfully
+Isolation:execution in the transaction unit must be operated independently
+Durability:nce a transaction has been committed, it persists permanently even if the system crashes
+
+FUNCTION: QL functions are simple code snippets that are frequently used and re-used in database systems for data processing and manipulation::: user define fun, and system func
+
+CLOB  : char large obj
+BLOB: binary large obj
+
+A materialized view is a table stored on the disk containing the data from the result set of a query.
+
+A privilege allows users to perform a set of activities on a particular database object. Privileges are divided into two categories:
+
+System Privileges: This indicates that the user has the ability to CREATE, ALTER, or "DROP" database components.
+Object Privileges: This enables the user to EXECUTE, SELECT, INSERT, or DELETE data from database objects with privileges.
+
+he trigger is a set of SQL statements that resides in system memory with unique names and is executed automatically when a database server event occurs.
+
+
+ An equijoin is a join in which the equal comparison operator is used to match the keys of both tables. In contrast, outer join is a join where rows in one table that do not have a matching row in another table are selected with NULL values for the unknown columns.
+ 
+ --------------------------------------------------------------------------------------------------
+ 
+ MICROSERVICE::
+ 
+ 
+
+
+
+
+
+		 
+		 
+		 
+		
+		
+		
+		
+   
+ 
+ 
+ 

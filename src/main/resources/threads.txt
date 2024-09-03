@@ -1,0 +1,58 @@
+Why threads:
+	- REsponsiveness: server mutiple user , app with user interface, multiple threa, each thread for diff task, illution all task happening in same itme, 1 core enough
+	-Perfformace: mutiple core, mutiple task run parellae, no illusion, 
+	- high performant and responive app
+	-Threas: stack  adn instruction pointer(point to addres of next instruction)
+	- each thread have won stack adn instruction pointer
+	
+session2:
+	- context swithc: act of stoping , secdling it out, startin
+		- thrasing: more time isn contxt switch than productinve work
+		- thread consuem less resources thena process:
+		-OS: Thread scheduling : First come first serve,or sortest time job first
+		-dynamci  priotiry= static prioty+bonus- to prevent stravation
+	- whne to use thread:lots of task that share lots of data
+	- if security is too hihg: separate process
+	-if task are no related in any what, no way to put in on process and use thread
+session
+	- app that perf lots of trasaction: so perf is latency
+	- perf metric is throught for for ml analytic syste
+	- latency: time of completion fo single task
+	- thrughput: task per unit of time
+	- to acvhvie latency:	 split task in sb taks, an run all in paralllel
+	- sub taks: no of subtaks = no of core process ,  so all task run parallel
+	-all sub tak- with interupption
+	-  Hyperhtreading:
+		- i core , run multiple, 
+	-performance can not only measure by latency, it can be measu by throught and quality too
+		eg: if hig vol of trsanciton , like high speed trading appp- latency can be used for perfo
+		
+		     if: videp pplayer, if move need 30 frma /se , btu u send 1000 /sed.. so min=m jitter, percision anc accuracy si preformacne
+			 if: evey 24 hr , give use data: thogurhput like ML APP
+			 
+	- imagge: pixel> ARGB (a for trnasperaacny), get all color form there 4
+	- throughput: no of task /unit of time
+	- Threadpooling: create once and resuing for furture task , task dirsctirbute by thread formQueee.. if all busy task will wait in queueu
+	- jdk tool for thread pool: fixed threadpool,
+	-jmeter:perf test, 
+	
+Stack and heap:
+	- Stack memoery: below to thread:memory where method are exceute, all local var store here
+	- stack> strcker froam whcih hvae areg.. each stack frame per method. so if thread call 2 method 2 stack frame
+	- resutle will assing to resigter,, once thread out of that.. stack frma will be invalidated
+	-variable fo one  stack fram is not visible to other stack frame.
+	- to amny menthod call as ensted, so stack overflow
+	-Heap: share memory region below to process, shared 
+	- all obje are on heap,all variable fo obj aslo alocated in heap
+	- heap managed by GC, atleast one ref ,member var same lifecycle as parents
+	- Refreces and object: nnot same, 
+	- if refrence var are member of method , they are allocated to stack , if they member of call they will be on heap
+	-Obje alwasy allocated on heap
+
+Resoruce sharing betwen threads:
+	- resource: data, or state, arraym collection, file, connection netwrk, db, msessage quuee
+	- shared : Object+clas memebr,static var by all threas as they reside on heap
+	- why shareing req: eg: dispatcher : distribute to worker , wait till it frnish: queue here is shared Data stru between thres..
+	- every, req is handle by differen thread but read or write is on dB: so Db is shared,,
+	- atomic operation: All or nothing: there is no intermediate statee
+	-

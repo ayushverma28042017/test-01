@@ -1,0 +1,219 @@
+Performance Spring DATA JPA:
+-tomacart 200 thread , HikariCP size10 default,SB usees, 10 conn created on app startup
+-is 10 enough, if we have 10 or 1000k user, still small few dozen of  connection object will handle large, 
+-switch between connection has benefit and advantage over than runnning query per connection
+-optimize qquery,no slwo query and good connection management, but frmk manage connection
+-Do you know when connection us aquired and released. during an DB call form SB applicaiton ??
+-FlexyPool tool: help to find proper size of connection pool, we use for loggin, it show when conn is quired and released, 
+-but adding external tool or pluing is spring is difficult, so tool for integrat with SB applicaiton ,>:by Arthur:DatasourceDecorator tool
+- mark @transactional: 
+	-warning=spring-jap-open-in-view: , need to disable, for permance , enabled default
+	-in property: spring.jpa.opemn.in.view=false
+	-perfm will increase ,
+	-2nd issue:
+		-if methid has 2 thing ocne external call and then update data to db, and method is annotated with @Transaction use TransactionTemple, so it will start the transaction when it actulay make db call not at start of method call.
+		-Set  auto commit will be false, ti will impact the performance 
+		- eG: @Transactional
+			public void testExternal(){
+				externalServive.callExternal();
+				rep0.finall()} // spring will nto create/open DB connection unitl repo.findAll() line, coz we made auto commit false, transaction will start here
+			-TransactionTemplatel: helo to use transaction prgoarmatically
+			- transactionTemplate.excuteWithoutResult(transacitonStatu ->{S.o.p(repo.findALL())});// it say only this part of method will have be excuted in transcation
+		-3:
+			when from one transaction, we call another menth where is configure as RequireNEW, 2 conn obj will be created and so perf.
+			-trasnactionTempleast help here too, so same conn object is being shared.
+	This is all about how to optimize using the Connection object ..
+   ---------------------------------
+   - making transaction annotation, if we have mutiple call to db so one conn will be used
+   - repo.gerRefrenceByID(id);// will not create new sql and go to db, but will return form hibernate
+   -prob: get data, update some, and save
+	- manyto one ,default set to EAGER: 
+		if we need list , we hit one query to get and for each query it will call again, this happend when we have senderID and join with ACcout , will manyto one
+	- eg: List<BankTransfer> entries = banktrasnferRepo.findBySenderId(SenderID)
+	- ManytoONCE(FethcType-LAZY) and write native query like:
+		@Query("from BankTransfer b join fetch b.sender join b.receiver where b.id=:senderID")
+		-also use @EnttiyGraph(atrribbutePaht={"sender,"reciver"}
+	- @dynamicUpdate: hiberante will trak, which filed is change will cahnge only that, but ti come with CPU
+	-NE tool:Hypersistance Optimizer: commercial, similar tool QuickPErf tool
+	-@ExpectSelect(1) @ExpectDelete(0) @ExpectUpdate(1) ;// like that we configre, we will get console msg if it same as configure or more.
+-Hybernate:
+	-Fethc more data then needed(even Lazy fethc type
+	- Loaded Entities are stored in Persitnec Context-memory
+	-Dirty Tracking -CPU
+	-Rsik of N+1
+	- Entity: handle busine loginf and enforce invariants
+	-fetch entity we need to modiy, else use projection claas, spring data, based on return tyep will se what method and what data need to be fethc
+	- NAmeOnly findNameOnlyById(String id) ; where clasue will be on result fo the method
+	-Dont use hibernate: jsut use SQL :,JPA and hibernate is not use
+	-get connection management right,log query during developemt, DIGMA tool
+	-QuickPErf for testing , must used projection for reading data
+	
+ -----------------------------------------------------------------------------------------------------------
+ 
+ The volatile keyword against the variable indicates that the content of the variable is stored in the main memory and every read of the variable should be done from the main memory and not the CPU cache and every write should be written to the main memory and not just to the CPU cache.
+ 
+ Transient is used when we do not want the variable to be serialised.
+ 
+ Volatile variables do not have any default values. but Transient have based on datatype
+ Volatile can be ued with static ,but transient cannot
+ final is okay with volatile, but not recommneded with trnsaction
+ 
+ Double, the MIN_VALUE and MAX_VALUE are positive numbers. The Double.MIN_VALUE has the value of  
+ System.out.println(Math.min(Double.MIN_VALUE, 0.0d));:: >  0.0 as obviously the Double.MIN_VALUE > 
+ 
+ 1.0/0.0:The double class provides certain rules like Double.INFINITY, NaN, -0.0, etc which aids in arithmetic calculations. The given problem will return Double.INFINITY without throwing any Arithmetic Exception
+ 
+  Is it possible to override a method to throw RuntimeException from throwing NullPointerException in the parent class?
+  -Yes, this is possible. But it is not possible if the parent class has a checked Exception
+  - to override a parent class method can not throw a higher Exception than the overridden method.
+  -if the overridden method is throwing IOException, then the overriding child class method can only throw IOException or its sub-classes
+  -This overriding method can not throw a higher Exception than the original or overridden method.
+ -String pool exists as part of the perm area in the heap.
+ ------------------------------------------------------------------------------
+ 
+ Desing log system
+ -Real time log injestion from producer of logs
+ - query efficently for anyslsyisn
+ - time-sereis, lot of storage, 
+ - low cost for infrequently data
+ -hight throught: loarge log njest, fast query 
+ 
+ -Lot of load ,so one node cannot handle
+ - to scale: disributes on multiple mahcine: sharding> hashing, which node, but read has soem isue, we need to go on other system for query
+ - write is good but read
+ - Buket solution, each shared resposible for timerange, so 2016 in one buket, solve read issue
+ - but have write issue,
+ - Best solution: buket+ multiple node:: each buket will have more thane one node, 
+ - how to move node form hot node to cold storage:(CS): slower, sharding and how its impl,
+ 
+ SYSTEM DESIGN 2 ::DROPBOX CLONE:
+ 
+ -USer Have destop client 
+ All file ad folder present on the destop need to syn to the cloud
+ -user should be able to see changes on another computer
+ -Pay for more storage->10GB is free
+ 
+ Assumption:
+	100 Mil user and 2 million user is daily active user DAU
+	User avg file is 10 mb size:
+	avg 10 file  store on : 
+	avg have 2 clinet,for upload and download 
+	av 100 edit per uer each day so 100 can be upload and 100 can be download 
+
+ user>POST> 1GB:> ingest_server > BLOB(S3) > metadta(DB (filename,urlid,))
+                >Ingest after upload>service server> notify user>file is uploaded
+user >G#ET: serviing server> in meta db > file form s3> provide that to user
+
+Bandwithd: 1GB to upload. and 1GB to download, if 1 million, 2 Milion bandwith.not scaleable
+
+NEW :
+	Chunking updaeS:
+		-1 GB :> upload 1GB
+		-update: only chunk will be updated, chunks reduce badwith useage
+		- small amnt of data to user
+	user> chunk of file> injest> save to s3: meta data will change
+	  -mapping from file to chunk, 
+	  -file chunk chunk> URL , s3: use 
+	  -
+	  Metadta:
+		Nam of file - 100 char file name, 100byte
+		created timestamp
+		edt timestanp: 13 byte  all<< 500 byte
+	 Bandwithd:
+		1 MB chunk:>> 500 page of text>>2KB max chunk size
+		
+	Storge:
+		100million x10 MB > 10 PB
+		metadata: 100Milionx500 bytpex10 file per suer : 500GB
+		Bandwith: 1 miliion DAU x 100 editx 2kb chunk = 200GB dailu upload
+		200 GB: frile downlaod for client 2
+		
+	-Everytime use upload, ingest will chekc th size form s3: ang see if >10GB, update meta data db
+	-DB IO> 1 millx 100 update = 86400 sec in a day == 11500 /sec io operation
+	- marknig user full: boolean, 
+	
+DB SCALE:
+	File
+		- mos s3 in 10PB
+		- 1 milx10 update = 10b write 
+		-Options 
+			- Read Replica : doest help for write , mast master replicaiton
+			- Sharding  : more complex, more scabale
+Queue: to handle peak or more volumn
+S3: for blob storage
+DB: meta data
+Subscription: create/update/check if limit reached
+Injest_service:ASG: > upload req
+Service_GET: ASG: download/chunks/update
+
+hash_key : more cardinality and low frequence: user_id+file_id 
+			- if only user_id: once user can be more file to upload
+			- if only file id: same user file may be scatter acoross differnt shared
+			- combination: support query pattern as well, 
+			- for suerdata: user will be based shard key
+
+Futher consideration:
+	-Orchestrate service: ASG
+	-Connection Management: notificaiton and user: liek websocket
+	-Destop clinet desing: how cleint brk file into chunks
+	-failure caes: random shud doen, if s3 goes donw
+	
+			
+		
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use HashMap for general-purpose hashing-based operations where order is not important and fast access to elements is required.
+Use LinkedHashMap when you need to maintain the insertion order of elements or access order for implementing features like LRU caches,Dobley Linklist,
+Use TreeMap when you need to maintain elements in sorted order based on their keys or perform range queries efficiently,RB Tree ,Self balance,no null key
+
+security of a Java application
+	- MFA,Role based Auth,Attribute base dAuth
+	- encrypt sensitive data, https/TLS,
+	-validate ,sanitize input ,so sql injection, XSS,CSRF
+	
+------------------------------------
+In a previous Java project, we encountered a performance issue related to database access that was causing significant latency and impacting the overall responsiveness of the application. Here's how we addressed the problem:
+Solution:
+	-The application was a web-based system that required frequent interaction with a relational database to fetch and manipulate data.
+	-As the user base grew and the volume of data increased, we started experiencing performance degradation, particularly during peak usage hours
+	-The application was taking longer to respond to user requests, resulting in poor user experience and increased frustration among users.
+	-Root Cause Analysis:
+		-After conducting thorough performance profiling and analysis using profiling tools and monitoring utilities, we identified several bottlenecks in the database access layer
+		-Inefficient Queries: Some database queries were poorly optimized and were fetching more data than necessary, resulting in unnecessary overhead and increased response times.
+		-Database Connection Pooling: The default configuration of the connection pool was inadequate to handle the increasing load, leading to contention and resource exhaustion
+		-Lack of Caching: The application was not effectively caching frequently accessed data, resulting in repeated database hits and unnecessary overhead.
+	Solutions:
+		-Query Optimization: We reviewed and optimized all database queries, ensuring they were using appropriate indexes, avoiding unnecessary joins, and fetching only the required data. 
+		-Connection Pool Tuning: We fine-tuned the database connection pool settings, including increasing the maximum pool size, adjusting the connection timeout
+		-Data Caching: We introduced an in-memory caching layer using libraries like Redis or Ehcache to cache frequently accessed data and reduce the number of database hits.
+		-Load Testing and Monitoring: We conducted extensive load testing to evaluate the impact of our optimizations and ensure the application could handle the expected workload. 
+
+User
+why do we need base64 encoding
+	- convert binary data into a text-based format that is safe for transmission over text-based communication channels, such as email or HTTP
+	-Binary to Text Conversion: Base64 encoding allows binary data, which may contain non-printable characters or special control characters, to be represented as plain text
+	- Data Integrity: Base64 encoding ensures that the data remains intact during transmission by encoding it into a format that is immune to such interpretation.
+	-URL and Filename Safety: Base64 encoding is commonly used to encode binary data in URLs or filenames. Base64-encoded data does not contain characters 
+	-Binary Data in Text Protocols: In protocols or formats that only support text-based data, such as JSON or XML, Base64 encoding allows binary data to be embedded as text without causing parsing or encoding issues.
+	-Binary Data in Email: Email protocols, such as SMTP (Simple Mail Transfer Protocol), are text-based and cannot directly transmit binary data.
+
+How would you optimize the performance of a Java application that is experiencing memory leaks?
+	-Identify Memory Leaks: Use profiling tools like VisualVM, Java Mission Control, or YourKit to , increase memory consumption over time
+	-Analyze Heap Dumps: Take heap dumps of the application at regular intervals or when memory usage spikes. 
+	-Check for Unintentional Object Retention: Look for objects that are unintentionally retained in memory due to references that should have been released.
+	-Review Thread Management: Check for any thread-related issues, such as thread leaks or excessive thread creation,
+	-Review Resource Management: Check for any resource leaks, such as unclosed file handles, database connections, or network sockets. 
+	
+
+
+
+ 
+ 
+ 
+ -
+ -
+ 
+				
+		
+	
+-
